@@ -20,7 +20,7 @@ const modules = [
         name: "Linear Algebra",
         description:
             "Work with vectors and matrices, solve linear systems, perform decompositions, compute eigenvalues, and build reliable numerical linear algebra workflows.",
-        path: "/docs/v0.3/modules/numerical-computations/linear-algebra",
+        path: "/docs/v0.3/modules/linear-algebra",
         topics: [
             "Matrices",
             "Solvers",
@@ -141,205 +141,419 @@ export function HomePage() {
         <main className="docs-home">
 
             {/* =========================================================
-          HERO
-      ========================================================= */}
+                HERO
+            ========================================================= */}
+<section className="home-hero">
+    <div className="hero-content">
+        <div className="hero-eyebrow">
+            ONITHRASML · SCIENTIFIC COMPUTING
+        </div>
 
-            <section className="home-hero">
+        <h1>
+            Scientific computing,
+            <br />
+            <span>built for Python.</span>
+        </h1>
 
-                <div className="hero-content">
+        <p className="hero-description">
+            OnithrasML is a Python-focused scientific computing
+            library for numerical computation, linear algebra,
+            statistics, mathematical algorithms, and machine-learning
+            workflows. Explore the concepts behind the APIs,
+            understand how the algorithms behave, and use them
+            directly in your projects.
+        </p>
 
-                    <div className="hero-eyebrow">
-                        ONITHRASML · SCIENTIFIC COMPUTING
-                    </div>
+        <div className="hero-actions">
+            <Link to="/docs/v0.3" className="primary-button">
+                Read the User Guide
+                <span>→</span>
+            </Link>
 
-                    <h1>
-                        Scientific computing,
-                        <br />
-                        <span>built for Python.</span>
-                    </h1>
+            <Link
+                to="/docs/v0.3/modules/numerical-computations"
+                className="secondary-button"
+            >
+                Explore Modules
+            </Link>
+        </div>
 
-                    <p className="hero-description">
-                        OnithrasML is a Python-focused scientific computing library
-                        for numerical computation, linear algebra, statistics,
-                        mathematical algorithms, and machine-learning workflows.
-                        Explore the concepts behind the APIs, understand how the
-                        algorithms behave, and use them directly in your projects.
-                    </p>
+        <div className="hero-meta">
+            <span>
+                <i className="status-dot" />
+                Documentation
+            </span>
 
-                    <div className="hero-actions">
+            <strong>v0.3</strong>
 
-                        <Link
-                            to="/docs/v0.3"
-                            className="primary-button"
-                        >
-                            Read the User Guide
-                            <span>→</span>
-                        </Link>
+            <span className="meta-divider" />
 
-                        <Link
-                            to="/docs/v0.3/modules/numerical-computations"
-                            className="secondary-button"
-                        >
-                            Explore Modules
-                        </Link>
-
-                    </div>
-
-                    <div className="hero-meta">
-
-                        <span>
-                            <i className="status-dot" />
-                            Documentation
-                        </span>
-
-                        <strong>v0.3</strong>
-
-                        <span className="meta-divider" />
-
-                        <span>
-                            Python scientific computing
-                        </span>
-
-                    </div>
-
-                </div>
+            <span>Python scientific computing</span>
+        </div>
+    </div>
 
 
-                {/* =====================================================
-            HERO CODE WINDOW
-        ===================================================== */}
+    {/* =====================================================
+        MATHEMATICAL VISUALIZATION
+       ===================================================== */}
 
-                <div className="hero-visual">
+    <div className="hero-math-visual">
 
-                    <div className="terminal-window">
-
-                        <div className="terminal-header">
-
-                            <div className="terminal-dots">
-                                <span />
-                                <span />
-                                <span />
-                            </div>
-
-                            <span className="terminal-file">
-                                example.py
-                            </span>
-
-                            <span className="terminal-language">
-                                Python
-                            </span>
-
-                        </div>
+        <div className="math-visual-label">
+            <span className="math-live-dot" />
+            NUMERICAL FIELD
+        </div>
 
 
-                        <div className="terminal-body">
+        <svg
+            className="math-scene"
+            viewBox="0 0 700 560"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+        >
 
-                            <div>
-                                <span className="code-keyword">
-                                    import
-                                </span>{" "}
-                                <span className="code-module">
-                                    numpy
-                                </span>{" "}
-                                <span className="code-keyword">
-                                    as
-                                </span>{" "}
-                                <span className="code-module">
-                                    np
-                                </span>
-                            </div>
+            {/* =========================================
+                BACKGROUND GRID
+               ========================================= */}
 
-                            <div>
-                                <span className="code-keyword">
-                                    from
-                                </span>{" "}
-                                <span className="code-module">
-                                    onithrasml
-                                </span>{" "}
-                                <span className="code-keyword">
-                                    import
-                                </span>{" "}
-                                <span className="code-function">
-                                    linalg
-                                </span>
-                            </div>
+            <g className="math-grid">
 
-                            <div className="code-space" />
+                {Array.from({ length: 11 }).map((_, i) => (
+                    <line
+                        key={`h-${i}`}
+                        x1="90"
+                        y1={100 + i * 32}
+                        x2="630"
+                        y2={100 + i * 32}
+                    />
+                ))}
 
-                            <div>
-                                <span className="code-variable">
-                                    A
-                                </span>{" "}
-                                = np.array(
-                                <span className="code-bracket">
-                                    [
-                                </span>
-                            </div>
+                {Array.from({ length: 18 }).map((_, i) => (
+                    <line
+                        key={`v-${i}`}
+                        x1={90 + i * 32}
+                        y1="100"
+                        x2={90 + i * 32}
+                        y2="420"
+                    />
+                ))}
 
-                            <div className="code-indent">
-                                [4, 2],
-                            </div>
+            </g>
 
-                            <div className="code-indent">
-                                [1, 3]
-                            </div>
 
-                            <div>
-                                <span className="code-bracket">
-                                    ]
-                                </span>
-                                )
-                            </div>
+            {/* =========================================
+                3D FLOOR PLANES
+               ========================================= */}
 
-                            <div className="code-space" />
+            <path
+                className="math-plane"
+                d="M90 420L360 505L630 420L360 335L90 420Z"
+            />
 
-                            <div>
-                                <span className="code-variable">
-                                    b
-                                </span>{" "}
-                                = np.array(
-                                <span className="code-bracket">
-                                    [8, 7]
-                                </span>
-                                )
-                            </div>
+            <path
+                className="math-plane-line"
+                d="M90 420L360 505L630 420"
+            />
 
-                            <div className="code-space" />
+            <path
+                className="math-plane-line"
+                d="M90 420L360 335L630 420"
+            />
 
-                            <div>
-                                <span className="code-variable">
-                                    x
-                                </span>{" "}
-                                = linalg.
-                                <span className="code-function">
-                                    solve
-                                </span>
-                                (A, b)
-                            </div>
 
-                            <div className="code-space" />
+            {/* =========================================
+                X AXIS
+               ========================================= */}
 
-                            <div className="code-comment">
-                                # Solution of Ax = b
-                            </div>
+            <line
+                className="math-axis"
+                x1="360"
+                y1="335"
+                x2="625"
+                y2="420"
+            />
 
-                            <div className="code-output">
-                                <span>→</span>{" "}
-                                [1.0, 2.0]
-                            </div>
+            <path
+                className="math-axis-arrow"
+                d="M625 420L608 408M625 420L604 421"
+            />
 
-                        </div>
+            <text
+                className="math-axis-label"
+                x="636"
+                y="426"
+            >
+                x
+            </text>
 
-                    </div>
 
-                </div>
+            {/* =========================================
+                Y AXIS
+               ========================================= */}
 
-            </section>
+            <line
+                className="math-axis"
+                x1="360"
+                y1="335"
+                x2="95"
+                y2="420"
+            />
+
+            <path
+                className="math-axis-arrow"
+                d="M95 420L112 408M95 420L116 421"
+            />
+
+            <text
+                className="math-axis-label"
+                x="76"
+                y="426"
+            >
+                y
+            </text>
+
+
+            {/* =========================================
+                Z AXIS
+               ========================================= */}
+
+            <line
+                className="math-axis"
+                x1="360"
+                y1="335"
+                x2="360"
+                y2="65"
+            />
+
+            <path
+                className="math-axis-arrow"
+                d="M360 65L349 83M360 65L371 83"
+            />
+
+            <text
+                className="math-axis-label"
+                x="373"
+                y="70"
+            >
+                z
+            </text>
+
+
+            {/* =========================================
+                MATHEMATICAL SURFACE
+               ========================================= */}
+
+            <path
+                className="surface surface-back"
+                d="
+                    M105 300
+                    C150 245 195 250 235 290
+                    C275 330 315 325 350 270
+                    C390 210 425 210 465 255
+                    C510 305 555 310 620 255
+                "
+            />
+
+            <path
+                className="surface surface-main"
+                d="
+                    M95 320
+                    C145 255 185 265 225 305
+                    C270 350 315 345 355 280
+                    C395 215 430 225 470 275
+                    C515 330 560 330 625 270
+                "
+            />
+
+            <path
+                className="surface surface-front"
+                d="
+                    M95 345
+                    C145 280 185 290 225 330
+                    C270 375 315 370 355 305
+                    C395 240 430 250 470 300
+                    C515 355 560 355 625 295
+                "
+            />
+
+
+            {/* =========================================
+                SURFACE WIREFRAME
+               ========================================= */}
+
+            <path
+                className="surface-wire"
+                d="M105 300C150 350 190 350 235 290"
+            />
+
+            <path
+                className="surface-wire"
+                d="M155 275C200 325 245 330 285 275"
+            />
+
+            <path
+                className="surface-wire"
+                d="M210 270C250 315 300 320 340 255"
+            />
+
+            <path
+                className="surface-wire"
+                d="M275 275C315 315 355 315 395 245"
+            />
+
+            <path
+                className="surface-wire"
+                d="M340 265C380 310 420 310 455 255"
+            />
+
+            <path
+                className="surface-wire"
+                d="M405 245C445 295 490 310 525 275"
+            />
+
+            <path
+                className="surface-wire"
+                d="M470 255C515 300 560 315 610 270"
+            />
+
+
+            {/* =========================================
+                VECTOR
+               ========================================= */}
+
+            <line
+                className="math-vector"
+                x1="360"
+                y1="335"
+                x2="505"
+                y2="245"
+            />
+
+            <path
+                className="math-vector-arrow"
+                d="M505 245L484 249M505 245L497 263"
+            />
+
+            <circle
+                className="math-origin"
+                cx="360"
+                cy="335"
+                r="7"
+            />
+
+            <circle
+                className="math-vector-point"
+                cx="505"
+                cy="245"
+                r="7"
+            />
+
+
+            {/* =========================================
+                FLOATING DATA POINTS
+               ========================================= */}
+
+            <circle
+                className="math-particle particle-1"
+                cx="190"
+                cy="240"
+                r="4"
+            />
+
+            <circle
+                className="math-particle particle-2"
+                cx="535"
+                cy="180"
+                r="4"
+            />
+
+            <circle
+                className="math-particle particle-3"
+                cx="590"
+                cy="350"
+                r="4"
+            />
+
+            <circle
+                className="math-particle particle-4"
+                cx="250"
+                cy="160"
+                r="3"
+            />
+
+
+            {/* =========================================
+                FORMULA
+               ========================================= */}
+
+            <text
+                className="math-formula"
+                x="115"
+                y="135"
+            >
+                f(x, y)
+            </text>
+
+            <text
+                className="math-formula-small"
+                x="115"
+                y="160"
+            >
+                ∂f / ∂x → ∇f
+            </text>
+
+        </svg>
+
+
+        {/* =============================================
+            FLOATING INFO CARD
+           ============================================= */}
+
+        <div className="math-info-card">
+
+            <div className="math-info-top">
+                <span>VECTOR FIELD</span>
+                <span className="math-status">LIVE</span>
+            </div>
+
+            <div className="math-info-value">
+                ∇f(x, y)
+            </div>
+
+            <div className="math-info-description">
+                Numerical gradient
+            </div>
+
+        </div>
+
+
+        {/* =============================================
+            MATRIX CARD
+           ============================================= */}
+
+        <div className="math-matrix-card">
+
+            <span className="matrix-label">
+                MATRIX A
+            </span>
+
+            <div className="matrix">
+                <span>4</span>
+                <span>2</span>
+                <span>1</span>
+                <span>3</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
 
             {/* =========================================================
-          INTRODUCTION
-      ========================================================= */}
+                INTRODUCTION
+            ========================================================= */}
 
             <section className="intro-section">
 
@@ -362,9 +576,9 @@ export function HomePage() {
                     <div className="intro-content">
 
                         <p>
-                            Scientific computing sits at the foundation of modern
-                            engineering, machine learning, data science, simulation,
-                            optimization, and mathematical research.
+                            Scientific computing sits at the foundation of
+                            modern engineering, machine learning, data science,
+                            simulation, optimization, and mathematical research.
                         </p>
 
                         <p>
@@ -377,11 +591,12 @@ export function HomePage() {
                         </p>
 
                         <p>
-                            Whether you are learning numerical methods, implementing
-                            a mathematical model, experimenting with machine
-                            learning, or building a larger scientific application,
-                            the documentation provides a path from the underlying
-                            concept to executable Python code.
+                            Whether you are learning numerical methods,
+                            implementing a mathematical model, experimenting
+                            with machine learning, or building a larger
+                            scientific application, the documentation provides
+                            a path from the underlying concept to executable
+                            Python code.
                         </p>
 
                     </div>
@@ -392,8 +607,8 @@ export function HomePage() {
 
 
             {/* =========================================================
-          MODULES
-      ========================================================= */}
+                MODULES
+            ========================================================= */}
 
             <section className="modules-section">
 
@@ -477,8 +692,8 @@ export function HomePage() {
 
 
             {/* =========================================================
-          WHY ONITHRASML
-      ========================================================= */}
+                WHY ONITHRASML
+            ========================================================= */}
 
             <section className="principles-section">
 
@@ -496,8 +711,8 @@ export function HomePage() {
 
                     <p>
                         Scientific software is most useful when its behavior is
-                        predictable, its APIs are understandable, and its numerical
-                        foundations are clearly documented.
+                        predictable, its APIs are understandable, and its
+                        numerical foundations are clearly documented.
                     </p>
 
                 </div>
@@ -534,8 +749,8 @@ export function HomePage() {
 
 
             {/* =========================================================
-          WORKFLOW
-      ========================================================= */}
+                WORKFLOW
+            ========================================================= */}
 
             <section className="workflow-section">
 
@@ -552,10 +767,11 @@ export function HomePage() {
                     </h2>
 
                     <p>
-                        The documentation is designed to follow the way developers
-                        actually learn scientific software: understand the problem,
-                        explore the available API, and then implement the solution
-                        in a real Python workflow.
+                        The documentation is designed to follow the way
+                        developers actually learn scientific software:
+                        understand the problem, explore the available API,
+                        and then implement the solution in a real Python
+                        workflow.
                     </p>
 
                     <Link
@@ -612,8 +828,8 @@ export function HomePage() {
 
 
             {/* =========================================================
-          API EXPERIENCE
-      ========================================================= */}
+                API EXPERIENCE
+            ========================================================= */}
 
             <section className="api-section">
 
@@ -630,10 +846,11 @@ export function HomePage() {
                     </h2>
 
                     <p>
-                        Every API should answer more than one question. What does
-                        the function do? What inputs does it accept? What does it
-                        return? What happens at the numerical boundaries? And when
-                        should you use it instead of another method?
+                        Every API should answer more than one question. What
+                        does the function do? What inputs does it accept?
+                        What does it return? What happens at the numerical
+                        boundaries? And when should you use it instead of
+                        another method?
                     </p>
 
                 </div>
@@ -642,74 +859,53 @@ export function HomePage() {
                 <div className="api-feature-grid">
 
                     <div className="api-feature">
+                        <span className="api-feature-index">A</span>
 
-                        <span className="api-feature-index">
-                            A
-                        </span>
-
-                        <h3>
-                            Signature
-                        </h3>
+                        <h3>Signature</h3>
 
                         <p>
-                            Understand the function signature, required arguments,
-                            optional parameters, defaults, and expected input types.
+                            Understand the function signature, required
+                            arguments, optional parameters, defaults, and
+                            expected input types.
                         </p>
-
                     </div>
 
 
                     <div className="api-feature">
+                        <span className="api-feature-index">B</span>
 
-                        <span className="api-feature-index">
-                            B
-                        </span>
-
-                        <h3>
-                            Parameters
-                        </h3>
+                        <h3>Parameters</h3>
 
                         <p>
-                            Learn what each parameter represents and how changing
-                            it affects the numerical operation.
+                            Learn what each parameter represents and how
+                            changing it affects the numerical operation.
                         </p>
-
                     </div>
 
 
                     <div className="api-feature">
+                        <span className="api-feature-index">C</span>
 
-                        <span className="api-feature-index">
-                            C
-                        </span>
-
-                        <h3>
-                            Returns
-                        </h3>
+                        <h3>Returns</h3>
 
                         <p>
-                            Understand the returned value, its structure, numerical
-                            meaning, and how it can be used in subsequent operations.
+                            Understand the returned value, its structure,
+                            numerical meaning, and how it can be used in
+                            subsequent operations.
                         </p>
-
                     </div>
 
 
                     <div className="api-feature">
+                        <span className="api-feature-index">D</span>
 
-                        <span className="api-feature-index">
-                            D
-                        </span>
-
-                        <h3>
-                            Examples
-                        </h3>
+                        <h3>Examples</h3>
 
                         <p>
-                            See practical Python examples that demonstrate the API
-                            in a realistic numerical-computing workflow.
+                            See practical Python examples that demonstrate
+                            the API in a realistic numerical-computing
+                            workflow.
                         </p>
-
                     </div>
 
                 </div>
@@ -718,8 +914,8 @@ export function HomePage() {
 
 
             {/* =========================================================
-          CODE PHILOSOPHY
-      ========================================================= */}
+                CODE PHILOSOPHY
+            ========================================================= */}
 
             <section className="code-section">
 
@@ -736,10 +932,11 @@ export function HomePage() {
                     </h2>
 
                     <p>
-                        Scientific computing APIs should remain readable even when
-                        the mathematics behind them is complex. OnithrasML aims to
-                        make numerical operations composable inside normal Python
-                        programs without hiding the underlying computational model.
+                        Scientific computing APIs should remain readable even
+                        when the mathematics behind them is complex. OnithrasML
+                        aims to make numerical operations composable inside
+                        normal Python programs without hiding the underlying
+                        computational model.
                     </p>
 
                     <Link
@@ -877,8 +1074,8 @@ export function HomePage() {
 
 
             {/* =========================================================
-          VERSION
-      ========================================================= */}
+                VERSION
+            ========================================================= */}
 
             <section className="version-section">
 
@@ -896,8 +1093,8 @@ export function HomePage() {
                         </h2>
 
                         <p>
-                            Explore the current documentation and API reference for
-                            the latest documented version of OnithrasML.
+                            Explore the current documentation and API reference
+                            for the latest documented version of OnithrasML.
                         </p>
 
                     </div>
@@ -925,8 +1122,8 @@ export function HomePage() {
 
 
             {/* =========================================================
-          FINAL CTA
-      ========================================================= */}
+                FINAL CTA
+            ========================================================= */}
 
             <section className="home-cta">
 
@@ -941,9 +1138,9 @@ export function HomePage() {
                     </h2>
 
                     <p>
-                        Start with the user guide, choose a module, and move from
-                        mathematical concepts to practical Python implementations
-                        with OnithrasML.
+                        Start with the user guide, choose a module, and move
+                        from mathematical concepts to practical Python
+                        implementations with OnithrasML.
                     </p>
 
                 </div>
