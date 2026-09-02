@@ -1,0 +1,1191 @@
+/* =========================================================
+   ONITHRASML USER GUIDE
+   ========================================================= */
+
+.user-guide-page {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 76px 0 80px;
+    color: #172033;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.user-guide-header {
+    max-width: 900px;
+    padding-bottom: 76px;
+}
+
+.user-guide-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 32px;
+
+    color: #98a1af;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.65rem;
+    font-weight: 650;
+}
+
+.user-guide-breadcrumb a {
+    color: #64748b;
+    text-decoration: none;
+}
+
+.user-guide-breadcrumb a:hover {
+    color: #2563eb;
+}
+
+.user-guide-eyebrow,
+.ug-section-eyebrow {
+    display: block;
+
+    color: #8c96a5;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.61rem;
+    font-weight: 750;
+
+    letter-spacing: 0.13em;
+}
+
+.user-guide-header h1 {
+    margin: 13px 0 22px;
+
+    color: #111827;
+
+    font-size: clamp(2.8rem, 6vw, 4.7rem);
+    font-weight: 760;
+
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+}
+
+.user-guide-header-description {
+    max-width: 850px;
+
+    margin: 0;
+
+    color: #687386;
+
+    font-size: 1rem;
+    line-height: 1.85;
+}
+
+.user-guide-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 28px;
+}
+
+.user-guide-tags span {
+    padding: 7px 10px;
+
+    color: #5f6b7b;
+
+    background: #f6f8fa;
+
+    border: 1px solid #e7eaee;
+    border-radius: 6px;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.58rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.ug-section {
+    padding: 74px 0;
+
+    border-top: 1px solid #e6e9ed;
+}
+
+.ug-section-heading {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.ug-section-number {
+    color: #b0b8c4;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.66rem;
+    font-weight: 750;
+
+    padding-top: 6px;
+}
+
+.ug-section-heading h2 {
+    margin: 8px 0 0;
+
+    color: #172033;
+
+    font-size: clamp(1.65rem, 3vw, 2.25rem);
+    font-weight: 730;
+
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+}
+
+.ug-section-intro {
+    max-width: 850px;
+
+    margin-left: 56px;
+    margin-bottom: 36px;
+}
+
+.ug-section-intro p {
+    margin: 0 0 13px;
+
+    color: #697486;
+
+    font-size: 0.88rem;
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   MODULE TABLE
+   ========================================================= */
+
+.ug-module-table {
+    margin-left: 56px;
+
+    border: 1px solid #e1e5ea;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 30px rgba(15, 23, 42, 0.035);
+}
+
+.ug-table-head {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+
+    min-height: 47px;
+
+    align-items: center;
+
+    padding: 0 22px;
+
+    color: #8c96a5;
+
+    background: #f8fafb;
+
+    border-bottom: 1px solid #e5e8ec;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.59rem;
+    font-weight: 750;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ug-module-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+
+    min-height: 145px;
+
+    border-bottom: 1px solid #edf0f3;
+}
+
+.ug-module-row:last-child {
+    border-bottom: 0;
+}
+
+.ug-module-name {
+    padding: 27px 22px;
+
+    background: #fbfcfd;
+}
+
+.ug-module-name a {
+    text-decoration: none;
+}
+
+.ug-module-name code {
+    color: #47577a;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.ug-module-name code:hover {
+    color: #2563eb;
+}
+
+.ug-module-content {
+    padding: 25px 25px;
+}
+
+.ug-module-title {
+    color: #1f2937;
+
+    text-decoration: none;
+
+    font-size: 0.94rem;
+    font-weight: 700;
+}
+
+.ug-module-title:hover {
+    color: #2563eb;
+}
+
+.ug-module-content p {
+    max-width: 650px;
+
+    margin: 9px 0 14px;
+
+    color: #778293;
+
+    font-size: 0.77rem;
+    line-height: 1.7;
+}
+
+.ug-explore-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #64748b;
+
+    text-decoration: none;
+
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+.ug-explore-link span {
+    transition: transform 160ms ease;
+}
+
+.ug-explore-link:hover {
+    color: #2563eb;
+}
+
+.ug-explore-link:hover span {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   GUIDE CARDS
+   ========================================================= */
+
+.ug-guide-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin-left: 56px;
+}
+
+.ug-guide-card {
+    position: relative;
+
+    min-height: 245px;
+
+    display: flex;
+
+    gap: 18px;
+
+    padding: 26px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e6eb;
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.ug-guide-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    background: #2563eb;
+
+    opacity: 0;
+
+    transition: opacity 180ms ease;
+}
+
+.ug-guide-card:hover {
+    border-color: #d4dae2;
+
+    box-shadow:
+        0 14px 35px rgba(15, 23, 42, 0.07);
+
+    transform: translateY(-2px);
+}
+
+.ug-guide-card:hover::before {
+    opacity: 1;
+}
+
+.ug-guide-number {
+    color: #c3c9d1;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.65rem;
+    font-weight: 750;
+}
+
+.ug-guide-content {
+    flex: 1;
+}
+
+.ug-guide-label {
+    color: #8d97a5;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.55rem;
+    font-weight: 750;
+
+    letter-spacing: 0.1em;
+}
+
+.ug-guide-content h3 {
+    margin: 10px 0 11px;
+
+    color: #1c2534;
+
+    font-size: 1.05rem;
+    font-weight: 720;
+
+    letter-spacing: -0.02em;
+}
+
+.ug-guide-content p {
+    margin: 0 0 19px;
+
+    color: #7a8493;
+
+    font-size: 0.75rem;
+    line-height: 1.75;
+}
+
+.ug-guide-content a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #536174;
+
+    text-decoration: none;
+
+    font-size: 0.64rem;
+    font-weight: 700;
+}
+
+.ug-guide-content a:hover {
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   CODE EXAMPLE
+   ========================================================= */
+
+.ug-code-example {
+    margin-left: 56px;
+
+    overflow: hidden;
+
+    background: #0d1421;
+
+    border: 1px solid #202c3d;
+    border-radius: 10px;
+
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.1);
+}
+
+.ug-code-header {
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 15px;
+
+    background: #111a29;
+
+    border-bottom: 1px solid #202c3d;
+}
+
+.ug-code-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #8290a2;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.61rem;
+    font-weight: 600;
+}
+
+.ug-window-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.ug-window-dots span {
+    width: 6px;
+    height: 6px;
+
+    background: #526174;
+
+    border-radius: 50%;
+}
+
+.ug-code-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+.ug-language {
+    color: #59687b;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.56rem;
+}
+
+.ug-copy-button {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 6px 8px;
+
+    color: #8794a6;
+
+    background: transparent;
+
+    border: 1px solid #2a3749;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 0.57rem;
+    font-weight: 650;
+
+    transition:
+        color 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease;
+}
+
+.ug-copy-button svg {
+    width: 12px;
+    height: 12px;
+
+    fill: none;
+
+    stroke: currentColor;
+    stroke-width: 1.7;
+}
+
+.ug-copy-button:hover,
+.ug-copy-button.copied {
+    color: #f8fafc;
+
+    background: #182437;
+
+    border-color: #3a485b;
+}
+
+.ug-code-example pre {
+    margin: 0;
+
+    padding: 25px;
+
+    overflow-x: auto;
+
+    color: #b8c3d2;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.67rem;
+
+    line-height: 1.8;
+
+    tab-size: 4;
+}
+
+.ug-code-example code {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   WORKFLOW
+   ========================================================= */
+
+.ug-workflow {
+    display: flex;
+    align-items: center;
+
+    margin:
+        14px 0 0 56px;
+
+    padding: 17px 20px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e4e8ed;
+    border-radius: 8px;
+
+    overflow-x: auto;
+}
+
+.ug-workflow-item {
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+}
+
+.ug-workflow-step {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+}
+
+.ug-workflow-step span {
+    color: #9aa4b1;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.55rem;
+    font-weight: 750;
+}
+
+.ug-workflow-step strong {
+    color: #5e6979;
+
+    font-size: 0.62rem;
+    font-weight: 700;
+}
+
+.ug-workflow-arrow {
+    flex: 1;
+
+    margin: 0 13px;
+
+    color: #b4bcc7;
+
+    text-align: center;
+
+    font-size: 0.75rem;
+}
+
+.ug-after-code {
+    margin:
+        25px 0 0 56px;
+
+    color: #727d8c;
+
+    font-size: 0.78rem;
+
+    line-height: 1.85;
+}
+
+.ug-after-code strong {
+    color: #3e4b5f;
+}
+
+
+/* =========================================================
+   PERFORMANCE
+   ========================================================= */
+
+.ug-performance-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-left: 56px;
+}
+
+.ug-performance-card {
+    min-height: 230px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e6eb;
+    border-radius: 8px;
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.ug-performance-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 13px 30px rgba(15, 23, 42, 0.065);
+}
+
+.ug-performance-number {
+    color: #b4bdc8;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.58rem;
+    font-weight: 750;
+}
+
+.ug-performance-card h3 {
+    margin: 25px 0 10px;
+
+    color: #202938;
+
+    font-size: 0.92rem;
+    font-weight: 720;
+}
+
+.ug-performance-card p {
+    margin: 0;
+
+    color: #788393;
+
+    font-size: 0.7rem;
+
+    line-height: 1.7;
+}
+
+.ug-performance-card a {
+    margin-top: auto;
+
+    padding-top: 18px;
+
+    color: #657286;
+
+    text-decoration: none;
+
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.ug-performance-card a:hover {
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   DEVELOPER PANEL
+   ========================================================= */
+
+.ug-developer-panel {
+    display: grid;
+
+    grid-template-columns: 1fr 1.2fr;
+
+    gap: 50px;
+
+    margin:
+        20px 0 65px 56px;
+
+    padding: 38px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #101827,
+            #0c1421
+        );
+
+    border: 1px solid #1d2a3b;
+    border-radius: 10px;
+
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.1);
+}
+
+.ug-developer-content .ug-section-eyebrow {
+    color: #718096;
+}
+
+.ug-developer-content h2 {
+    margin: 11px 0 12px;
+
+    color: #f8fafc;
+
+    font-size: 1.5rem;
+    font-weight: 720;
+
+    letter-spacing: -0.035em;
+}
+
+.ug-developer-content p {
+    margin: 0;
+
+    color: #8190a4;
+
+    font-size: 0.75rem;
+
+    line-height: 1.75;
+}
+
+.ug-developer-links {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.ug-developer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 63px;
+
+    padding: 0 17px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    background: #131e2f;
+
+    border: 1px solid #213047;
+    border-radius: 6px;
+
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+}
+
+.ug-developer-link:hover {
+    background: #172438;
+
+    border-color: #30415a;
+
+    transform: translateX(3px);
+}
+
+.ug-developer-link div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.ug-developer-link div span {
+    color: #64748b;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.48rem;
+    font-weight: 750;
+
+    letter-spacing: 0.1em;
+}
+
+.ug-developer-link strong {
+    color: #cbd5e1;
+
+    font-size: 0.7rem;
+}
+
+.ug-developer-link > span {
+    color: #64748b;
+
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   DOCUMENTATION NAV
+   ========================================================= */
+
+.ug-documentation-nav {
+    position: sticky;
+
+    bottom: 18px;
+
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    width: fit-content;
+
+    margin: 0 auto;
+
+    padding: 10px 14px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid #e0e5ea;
+    border-radius: 8px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+
+    backdrop-filter: blur(16px);
+}
+
+.ug-documentation-nav span {
+    color: #9aa3af;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.55rem;
+    font-weight: 750;
+}
+
+.ug-documentation-nav a {
+    color: #667386;
+
+    text-decoration: none;
+
+    font-size: 0.61rem;
+    font-weight: 650;
+}
+
+.ug-documentation-nav a:hover {
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .ug-performance-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ug-developer-panel {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+    .user-guide-page {
+        width: calc(100% - 32px);
+
+        padding-top: 50px;
+    }
+
+    .user-guide-header {
+        padding-bottom: 55px;
+    }
+
+    .user-guide-header h1 {
+        font-size: 3rem;
+    }
+
+    .user-guide-header-description {
+        font-size: 0.88rem;
+        line-height: 1.8;
+    }
+
+    .ug-section {
+        padding: 55px 0;
+    }
+
+    .ug-section-heading {
+        gap: 14px;
+    }
+
+    .ug-section-heading h2 {
+        font-size: 1.55rem;
+    }
+
+    .ug-section-intro,
+    .ug-module-table,
+    .ug-guide-grid,
+    .ug-code-example,
+    .ug-workflow,
+    .ug-after-code,
+    .ug-performance-grid {
+        margin-left: 0;
+    }
+
+    .ug-table-head {
+        display: none;
+    }
+
+    .ug-module-row {
+        grid-template-columns: 1fr;
+    }
+
+    .ug-module-name {
+        padding: 19px 20px 8px;
+        background: #ffffff;
+    }
+
+    .ug-module-content {
+        padding: 8px 20px 22px;
+    }
+
+    .ug-guide-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ug-workflow {
+        padding: 15px;
+
+        gap: 20px;
+    }
+
+    .ug-workflow-item {
+        flex: 0 0 auto;
+    }
+
+    .ug-workflow-arrow {
+        flex: 0 0 auto;
+    }
+
+    .ug-performance-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ug-developer-panel {
+        margin-left: 0;
+
+        padding: 25px;
+    }
+
+    .ug-documentation-nav {
+        max-width: calc(100% - 20px);
+
+        overflow-x: auto;
+
+        margin-top: 20px;
+
+        white-space: nowrap;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 470px) {
+
+    .user-guide-page {
+        width: calc(100% - 24px);
+    }
+
+    .user-guide-header h1 {
+        font-size: 2.55rem;
+    }
+
+    .user-guide-tags span {
+        font-size: 0.53rem;
+    }
+
+    .ug-performance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ug-code-example pre {
+        padding: 19px;
+
+        font-size: 0.59rem;
+    }
+
+    .ug-code-header {
+        padding: 0 10px;
+    }
+
+    .ug-language {
+        display: none;
+    }
+
+    .ug-developer-panel {
+        padding: 21px;
+    }
+
+    .ug-documentation-nav {
+        display: none;
+    }
+}

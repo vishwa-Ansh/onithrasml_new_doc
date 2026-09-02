@@ -1,0 +1,849 @@
+.premium-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 8px 0;
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(226, 229, 233, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+
+.header-shell {
+  width: min(1380px, calc(100% - 48px));
+  height: 58px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 9px 0 10px;
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid #e4e7eb;
+  border-radius: 11px;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.035),
+    0 12px 35px rgba(15, 23, 42, 0.035);
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.premium-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #111827;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   ONITHRASML LOGO
+   ========================================================= */
+
+.premium-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+
+    color: #111827;
+
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+
+/* -------------------------
+   SVG Logo
+   ------------------------- */
+
+.logo-mark {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 38px;
+}
+
+.logo-mark svg {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    transition:
+        transform 220ms ease,
+        filter 220ms ease;
+}
+
+.premium-brand:hover .logo-mark svg {
+    transform: rotate(-5deg) scale(1.04);
+
+    filter:
+        drop-shadow(0 4px 8px rgba(247, 147, 30, 0.24));
+}
+
+
+/* -------------------------
+   Logo Typography
+   ------------------------- */
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 1px;
+}
+
+.logo-text strong {
+    color: #47577a;
+
+    font-size: 1rem;
+    font-weight: 750;
+
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+}
+
+.logo-text strong::first-letter {
+    text-transform: lowercase;
+}
+
+.logo-text em {
+    color: #8a94a3;
+
+    font-size: 0.54rem;
+    font-style: normal;
+    font-weight: 600;
+
+    line-height: 1.2;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.premium-nav {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  margin-left: 72px;
+}
+
+.premium-nav-link {
+  position: relative;
+
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 13px;
+
+  color: #6b7280;
+
+  border-radius: 7px;
+
+  font-size: 0.79rem;
+  font-weight: 600;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.premium-nav-link:hover {
+  color: #111827;
+  background: #f6f7f9;
+}
+
+.premium-nav-link.active {
+  color: #111827;
+  background: #f4f5f7;
+}
+
+.premium-nav-link.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -10px;
+
+  width: 4px;
+  height: 4px;
+
+  transform: translateX(-50%);
+
+  background: #2563eb;
+
+  border-radius: 50%;
+}
+
+.premium-nav-link.api-link {
+  color: #475569;
+}
+
+.premium-nav-link.api-link::after {
+  content: "↗";
+
+  margin-left: 5px;
+
+  color: #a0a8b3;
+
+  font-size: 0.7rem;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
+
+.header-right {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.header-divider {
+  width: 1px;
+  height: 24px;
+
+  margin-right: 18px;
+
+  background: #e6e9ed;
+}
+
+.github-button {
+  height: 37px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 0 11px;
+
+  color: #374151;
+  background: #ffffff;
+
+  border: 1px solid transparent;
+  border-radius: 7px;
+
+  font-size: 0.77rem;
+  font-weight: 620;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.github-button:hover {
+  color: #111827;
+  background: #f7f8fa;
+  border-color: #e3e7eb;
+
+  transform: translateY(-1px);
+}
+
+.github-button svg {
+  width: 16px;
+  height: 16px;
+
+  fill: currentColor;
+}
+
+.github-arrow {
+  color: #9aa3af;
+  font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   MOBILE BUTTON
+   ========================================================= */
+
+.premium-menu {
+  display: none;
+
+  width: 39px;
+  height: 39px;
+
+  margin-left: auto;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e1e5e9;
+  border-radius: 7px;
+
+  cursor: pointer;
+}
+
+.premium-menu span {
+  width: 17px;
+  height: 1.5px;
+
+  background: #111827;
+
+  transition:
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+
+.premium-menu.open span:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.premium-menu.open span:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+.premium-mobile-menu {
+  display: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .premium-nav {
+    margin-left: 35px;
+  }
+
+  .premium-nav-link {
+    padding: 0 10px;
+  }
+
+  .github-button span:not(.github-arrow) {
+    display: none;
+  }
+
+ .logo-mark {
+
+        width: 34px;
+
+        height: 34px;
+
+        flex-basis: 34px;
+
+    }
+
+    .logo-text strong {
+
+        font-size: 0.94rem;
+
+    }
+
+    .logo-text em {
+
+        font-size: 0.48rem;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .premium-header {
+    padding: 10px 0;
+  }
+
+
+  .logo-mark {
+
+        width: 34px;
+
+        height: 34px;
+
+        flex-basis: 34px;
+
+    }
+
+    .logo-text strong {
+
+        font-size: 0.94rem;
+
+    }
+
+    .logo-text em {
+
+        font-size: 0.48rem;
+
+    }
+
+  .header-shell {
+    width: calc(100% - 24px);
+    height: 56px;
+
+    padding-left: 8px;
+    padding-right: 8px;
+
+    border-radius: 10px;
+  }
+
+  .premium-nav,
+  .header-right {
+    display: none;
+  }
+
+  .premium-menu {
+    display: flex;
+  }
+
+
+  /* -----------------------------------------
+     Mobile panel
+     ----------------------------------------- */
+
+  .premium-mobile-menu {
+    display: block;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border-bottom: 0 solid #e5e7eb;
+
+    box-shadow:
+      0 20px 40px rgba(15, 23, 42, 0.08);
+
+    transition:
+      max-height 300ms ease,
+      border-color 300ms ease;
+  }
+
+  .premium-mobile-menu.open {
+    max-height: 480px;
+
+    border-bottom-width: 1px;
+  }
+
+  .mobile-menu-inner {
+    width: calc(100% - 32px);
+
+    margin: 0 auto;
+
+    padding: 18px 0 15px;
+  }
+
+
+  /* -----------------------------------------
+     Heading
+     ----------------------------------------- */
+
+  .mobile-menu-heading {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 3px 2px 13px;
+
+    color: #9aa3af;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 0.59rem;
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+  }
+
+
+  /* -----------------------------------------
+     Links
+     ----------------------------------------- */
+
+  .mobile-menu-inner nav {
+    border-top: 1px solid #edf0f2;
+  }
+
+  .mobile-link {
+    min-height: 59px;
+
+    display: grid;
+    grid-template-columns: 35px 1fr auto;
+    align-items: center;
+
+    gap: 11px;
+
+    color: #475569;
+
+    border-bottom: 1px solid #edf0f2;
+
+    font-size: 0.91rem;
+    font-weight: 620;
+
+    transition:
+      color 160ms ease,
+      padding 160ms ease;
+  }
+
+  .mobile-link:hover,
+  .mobile-link.active {
+    color: #111827;
+  }
+
+  .mobile-link:hover {
+    padding-left: 5px;
+  }
+
+  .mobile-index {
+    color: #a1a9b4;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 0.63rem;
+  }
+
+  .mobile-link.active .mobile-index {
+    color: #2563eb;
+  }
+
+  .mobile-arrow {
+    color: #a1a9b4;
+
+    font-size: 0.95rem;
+
+    transition: transform 160ms ease;
+  }
+
+  .mobile-link:hover .mobile-arrow {
+    color: #111827;
+    transform: translateX(4px);
+  }
+
+
+  /* -----------------------------------------
+     Footer
+     ----------------------------------------- */
+
+  .mobile-menu-footer {
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #8a94a3;
+
+    font-family:
+      "SFMono-Regular",
+      "Cascadia Code",
+      "Roboto Mono",
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 0.62rem;
+  }
+
+  .mobile-menu-footer strong {
+    margin-left: auto;
+
+    color: #475569;
+    font-weight: 700;
+  }
+
+  .online-indicator {
+    width: 6px;
+    height: 6px;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+    box-shadow:
+      0 0 0 3px rgba(34, 197, 94, 0.08);
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+  .header-shell {
+    width: calc(100% - 18px);
+  }
+
+  .brand-text {
+    font-size: 0.91rem;
+  }
+
+  .version-badge {
+    display: none;
+  }
+
+  .brand-symbol {
+    width: 29px;
+    height: 29px;
+  }
+
+  .mobile-menu-inner {
+    width: calc(100% - 24px);
+  }
+
+  .logo-mark {
+
+        width: 32px;
+
+        height: 32px;
+
+        flex-basis: 32px;
+
+    }
+
+    .logo-text strong {
+
+        font-size: 0.9rem;
+
+    }
+
+    .logo-text em {
+
+        display: none;
+
+    }
+
+}
+
+
+
+.version-switcher {
+    position: relative;
+}
+
+.version-switcher-button {
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 0 11px;
+
+    color: #475569;
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 7px;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.67rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.version-switcher-button:hover,
+.version-switcher-button.open {
+    color: #111827;
+    background: #ffffff;
+    border-color: #d5dae1;
+
+    box-shadow:
+        0 4px 12px rgba(15, 23, 42, 0.07);
+}
+
+.version-dot {
+    width: 6px;
+    height: 6px;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 3px rgba(34, 197, 94, 0.08);
+}
+
+.version-chevron {
+    color: #94a3b8;
+    font-size: 0.8rem;
+
+    transition:
+        transform 160ms ease;
+}
+
+.version-switcher-button.open .version-chevron {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   VERSION DROPDOWN
+   ========================================================= */
+
+.version-dropdown {
+    position: absolute;
+
+    top: calc(100% + 9px);
+    right: 0;
+
+    z-index: 1000;
+
+    width: 205px;
+
+    padding: 7px;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border: 1px solid #e1e5e9;
+    border-radius: 10px;
+
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.12),
+        0 4px 12px rgba(15, 23, 42, 0.05);
+
+    backdrop-filter: blur(18px);
+}
+
+.version-dropdown-title {
+    padding: 8px 9px;
+
+    color: #9aa3af;
+
+    font-size: 0.57rem;
+    font-weight: 750;
+
+    letter-spacing: 0.1em;
+}
+
+.version-option {
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 10px;
+
+    color: #64748b;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.68rem;
+    font-weight: 650;
+
+    transition:
+        color 150ms ease,
+        background 150ms ease;
+}
+
+.version-option:hover {
+    color: #111827;
+    background: #f5f7f9;
+}
+
+.version-option.selected {
+    color: #111827;
+    background: #f8fafc;
+}
+
+.version-option-main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.version-option-main small {
+    padding: 3px 6px;
+
+    color: #2563eb;
+    background: #eff6ff;
+
+    border-radius: 4px;
+
+    font-family: inherit;
+    font-size: 0.5rem;
+    font-weight: 700;
+}
+
+.version-check {
+    color: #2563eb;
+
+    font-size: 0.8rem;
+    font-weight: 800;
+}
