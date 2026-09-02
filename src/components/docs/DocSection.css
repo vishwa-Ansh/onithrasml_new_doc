@@ -1,0 +1,504 @@
+/* =========================================================
+   ONITHRASML
+   DOCUMENTATION SECTION
+   ========================================================= */
+
+.doc-section {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 18px;
+    padding: 0 0 58px;
+    scroll-margin-top: 100px;
+}
+
+
+/* =========================================================
+   SECTION NUMBER
+   ========================================================= */
+
+.doc-section-number {
+    padding-top: 6px;
+    color: #c2c8d0;
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   SECTION CONTENT
+   ========================================================= */
+
+.doc-section-content {
+    min-width: 0;
+}
+
+.doc-section-content h2 {
+    margin: 0 0 18px;
+    color: #172033;
+    font-size: 1.55rem;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    font-weight: 720;
+}
+
+.doc-section-description,
+.doc-section-paragraph {
+    max-width: 720px;
+    margin: 0 0 16px;
+    color: #596579;
+    font-size: 0.98rem;
+    line-height: 1.85;
+}
+
+.doc-section-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   FORMULA
+   ========================================================= */
+
+.doc-formula {
+    margin: 28px 0;
+    padding: 20px 22px;
+    background: #fafbfc;
+    border: 1px solid #e4e8ed;
+    border-left: 3px solid #f7931e;
+    border-radius: 8px;
+}
+
+.doc-formula-title {
+    margin-bottom: 14px;
+    color: #8b95a3;
+    font-family: monospace;
+    font-size: 0.56rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.doc-formula-expression {
+    overflow-x: auto;
+    padding: 8px 0;
+    color: #172033;
+    font-family:
+        "STIX Two Math",
+        "Cambria Math",
+        Georgia,
+        serif;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.doc-formula p {
+    margin: 14px 0 0;
+    padding-top: 14px;
+    color: #697586;
+    border-top: 1px solid #e8ebef;
+    font-size: 0.82rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PARAMETERS
+   ========================================================= */
+
+.doc-parameters {
+    margin: 30px 0;
+}
+
+.doc-parameters h3,
+.doc-returns h3,
+.doc-complexity h3 {
+    margin: 0 0 13px;
+    color: #334155;
+    font-family: monospace;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.doc-parameter-list {
+    overflow: hidden;
+    border: 1px solid #e3e7ec;
+    border-radius: 8px;
+}
+
+.doc-parameter {
+    padding: 16px 18px;
+    background: #ffffff;
+    border-bottom: 1px solid #e8ebef;
+}
+
+.doc-parameter:last-child {
+    border-bottom: 0;
+}
+
+.doc-parameter-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.doc-parameter-header code {
+    color: #172033;
+    font-family: monospace;
+    font-size: 0.78rem;
+    font-weight: 750;
+}
+
+.doc-parameter-header span {
+    padding: 3px 6px;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.55rem;
+    font-weight: 700;
+}
+
+.doc-parameter-header small {
+    padding: 3px 6px;
+    color: #64748b;
+    background: #f8fafc;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.5rem;
+    font-weight: 700;
+}
+
+.doc-parameter p {
+    max-width: 680px;
+    margin: 8px 0 0;
+    color: #697586;
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+.doc-parameter-default {
+    margin-top: 9px;
+    color: #8b95a3;
+    font-size: 0.68rem;
+}
+
+.doc-parameter-default code {
+    color: #475569;
+    font-family: monospace;
+}
+
+
+/* =========================================================
+   RETURNS
+   ========================================================= */
+
+.doc-returns {
+    margin: 30px 0;
+}
+
+.doc-return {
+    padding: 16px 18px;
+    background: #f8fafc;
+    border: 1px solid #e3e7ec;
+    border-radius: 8px;
+}
+
+.doc-return > code {
+    color: #172033;
+    font-family: monospace;
+    font-size: 0.78rem;
+    font-weight: 750;
+}
+
+.doc-return > span {
+    margin-left: 9px;
+    padding: 3px 6px;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.55rem;
+    font-weight: 700;
+}
+
+.doc-return p {
+    margin: 8px 0 0;
+    color: #697586;
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   CODE EXAMPLE
+   ========================================================= */
+
+.doc-example {
+    margin: 30px 0;
+    overflow: hidden;
+    background: #0d1421;
+    border: 1px solid #1d2939;
+    border-radius: 9px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.doc-example-header {
+    min-height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    background: #111b2b;
+    border-bottom: 1px solid #1e293b;
+    color: #8996a8;
+    font-family: monospace;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.doc-example-header span:first-child {
+    color: #f7931e;
+}
+
+.doc-example pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.doc-example code {
+    color: #d9e1eb;
+    font-family:
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+    font-size: 0.78rem;
+    line-height: 1.75;
+    white-space: pre;
+}
+
+
+/* =========================================================
+   OUTPUT
+   ========================================================= */
+
+.doc-output {
+    border-top: 1px solid #1e293b;
+    background: #0a111d;
+}
+
+.doc-output-label {
+    padding: 10px 20px 0;
+    color: #66758a;
+    font-family: monospace;
+    font-size: 0.5rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+}
+
+.doc-output pre {
+    padding-top: 7px;
+}
+
+.doc-output code {
+    color: #aebaca;
+}
+
+
+/* =========================================================
+   EXAMPLE EXPLANATION
+   ========================================================= */
+
+.doc-example-explanation {
+    margin: 0;
+    padding: 14px 20px 18px;
+    color: #8996a8;
+    border-top: 1px solid #1e293b;
+    font-size: 0.76rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   NOTE / WARNING
+   ========================================================= */
+
+.doc-callout {
+    margin: 28px 0;
+    padding: 16px 18px;
+    border-radius: 7px;
+}
+
+.doc-callout-label {
+    margin-bottom: 8px;
+    font-family: monospace;
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+}
+
+.doc-callout ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.doc-callout li {
+    margin: 5px 0;
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+.doc-note {
+    background: #f8fafc;
+    border: 1px solid #dfe5eb;
+    border-left: 3px solid #64748b;
+}
+
+.doc-note .doc-callout-label {
+    color: #475569;
+}
+
+.doc-note li {
+    color: #64748b;
+}
+
+.doc-warning {
+    background: #fffaf3;
+    border: 1px solid #f4e2c5;
+    border-left: 3px solid #f7931e;
+}
+
+.doc-warning .doc-callout-label {
+    color: #c46d00;
+}
+
+.doc-warning li {
+    color: #78521e;
+}
+
+
+/* =========================================================
+   COMPLEXITY
+   ========================================================= */
+
+.doc-complexity {
+    margin-top: 30px;
+}
+
+.doc-complexity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.doc-complexity-grid > div {
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1px solid #e3e7ec;
+    border-radius: 7px;
+}
+
+.doc-complexity-grid span {
+    display: block;
+    margin-bottom: 6px;
+    color: #9aa3af;
+    font-family: monospace;
+    font-size: 0.5rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.doc-complexity-grid code {
+    color: #334155;
+    font-family: monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 760px) {
+    .doc-section {
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 10px;
+        padding-bottom: 45px;
+    }
+
+    .doc-section-content h2 {
+        font-size: 1.35rem;
+    }
+
+    .doc-section-description,
+    .doc-section-paragraph {
+        font-size: 0.92rem;
+        line-height: 1.78;
+    }
+
+    .doc-formula {
+        padding: 17px;
+    }
+
+    .doc-formula-expression {
+        font-size: 1.08rem;
+    }
+
+    .doc-example code {
+        font-size: 0.72rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+    .doc-section {
+        grid-template-columns: 26px minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .doc-section-content h2 {
+        font-size: 1.22rem;
+    }
+
+    .doc-section-number {
+        font-size: 0.58rem;
+    }
+
+    .doc-parameter {
+        padding: 14px;
+    }
+
+    .doc-complexity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .doc-example pre {
+        padding: 16px;
+    }
+}

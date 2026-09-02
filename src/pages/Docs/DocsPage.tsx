@@ -1,25 +1,33 @@
 import { useParams } from "react-router-dom";
+
 import { DocsLayout } from "../../components/layout/DocsLayout";
-import {
-    numericalComputing,
-    type ModuleDocumentation,
-} from "../../data/modules/numericalComputing";
+import { DocSection } from "../../components/docs/DocSection";
+
+import { numericalComputing } from "../../data/modules/numericalComputing";
+import { linearAlgebra } from "../../data/modules/linearAlgebra";
+import { statistics } from "../../data/modules/statistics";
+
+import type { ModuleDocumentation } from "../../data/docs/types";
+
 import "./DocsPage.css";
 
 const moduleDocs: Record<string, ModuleDocumentation> = {
     "numerical-computations": numericalComputing,
+    "linear-algebra": linearAlgebra,
+    statistics: statistics,
 };
 
 export function DocsPage() {
-    const { version = "v0.3", slug } = useParams<{
+    const {
+        version = "v0.3",
+        slug,
+    } = useParams<{
         version: string;
         slug?: string;
     }>();
 
     /*
-     * At the moment we are building v0.3.
-     * More versions will be added later without changing
-     * the documentation component itself.
+     * Version validation
      */
     if (version !== "v0.3") {
         return (
@@ -37,9 +45,7 @@ export function DocsPage() {
     }
 
     /*
-     * /docs/v0.3
-     *
-     * User Guide will be connected here later.
+     * User Guide
      */
     if (!slug) {
         return (
@@ -56,6 +62,9 @@ export function DocsPage() {
         );
     }
 
+    /*
+     * Find module documentation
+     */
     const page = moduleDocs[slug];
 
     /*
@@ -76,6 +85,9 @@ export function DocsPage() {
         );
     }
 
+    /*
+     * Table of contents
+     */
     const tocItems = page.sections.map(
         (section) => section.title
     );
@@ -86,11 +98,10 @@ export function DocsPage() {
             tocItems={tocItems}
         >
             <article className="docs-page">
-                {/* =========================================
-                    PAGE HEADER
-                   ========================================= */}
 
+                {/* Page Header */}
                 <header className="docs-page-header">
+
                     <div className="docs-page-eyebrow">
                         <span className="docs-page-eyebrow-dot" />
 
@@ -103,70 +114,59 @@ export function DocsPage() {
                         {page.description}
                     </p>
 
-                    <div className="docs-page-tags">
-                        {page.tags.map((tag) => (
-                            <span
-                                className="docs-page-tag"
-                                key={tag}
-                            >
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
+                    {page.tags &&
+                        page.tags.length > 0 && (
+                            <div className="docs-page-tags">
+                                {page.tags.map((tag) => (
+                                    <span
+                                        className="docs-page-tag"
+                                        key={tag}
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
                 </header>
 
-                {/* =========================================
-                    DOCUMENTATION CONTENT
-                   ========================================= */}
-
+                {/* Documentation Sections */}
                 <div className="docs-page-content">
                     {page.sections.map(
                         (section, index) => (
-                            <section
-                                className="docs-section"
-                                id={section.id}
+                            <DocSection
                                 key={section.id}
-                            >
-                                <div className="docs-section-number">
-                                    {String(index + 1).padStart(
-                                        2,
-                                        "0"
-                                    )}
-                                </div>
-
-                                <div className="docs-section-body">
-                                    <h2>
-                                        {section.title}
-                                    </h2>
-
-                                    <p>
-                                        {section.content}
-                                    </p>
-                                </div>
-                            </section>
+                                section={section}
+                                number={index + 1}
+                            />
                         )
                     )}
                 </div>
 
-                {/* =========================================
-                    PAGE FOOTER
-                   ========================================= */}
-
+                {/* Page Footer */}
                 <footer className="docs-page-footer">
-                    <div>
-                        <span>DOCUMENTATION</span>
 
-                        <strong>V0.3</strong>
+                    <div>
+                        <span>
+                            DOCUMENTATION
+                        </span>
+
+                        <strong>
+                            V0.3
+                        </strong>
                     </div>
 
                     <div className="docs-page-footer-next">
-                        <span>MORE TO EXPLORE</span>
+                        <span>
+                            MORE TO EXPLORE
+                        </span>
 
                         <strong>
                             Explore the documentation →
                         </strong>
                     </div>
+
                 </footer>
+
             </article>
         </DocsLayout>
     );
