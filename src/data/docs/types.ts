@@ -1,63 +1,21 @@
-export interface Formula {
-    title?: string;
-    expression: string;
-    explanation?: string;
-}
-
-export interface Parameter {
-    name: string;
-    type: string;
-    description: string;
-    default?: string;
-    required?: boolean;
-}
-
-export interface ReturnValue {
-    name?: string;
-    type: string;
-    description: string;
-}
-
-export interface CodeExample {
-    language: string;
-    code: string;
-    output?: string;
-    explanation?: string;
-}
-
-export interface Complexity {
-    time?: string;
-    space?: string;
-}
-
-export interface DocumentationSection {
-    id: string;
-    title: string;
-    description?: string;
-    paragraphs?: string[];
-    formula?: Formula;
-    parameters?: Parameter[];
-    returns?: ReturnValue;
-    example?: CodeExample;
-    notes?: string[];
-    warnings?: string[];
-    complexity?: Complexity;
-}
-
-/* ─────────────────────────────────────────────
-   Method Documentation
-   ───────────────────────────────────────────── */
-
 export interface MethodParameter {
     name: string;
     type: string;
+    shape?: string;
     description: string;
     default?: string;
     required?: boolean;
 }
 
 export interface MethodReturn {
+    name?: string;
     type: string;
+    shape?: string;
+    description: string;
+}
+
+export interface MethodRaise {
+    error: string;
     description: string;
 }
 
@@ -70,13 +28,10 @@ export interface MethodExample {
 
 export interface MethodDocumentation {
     slug: string;
-
     name: string;
-
     category: string;
 
     title: string;
-
     description: string;
 
     status?: "implemented" | "planned";
@@ -87,15 +42,17 @@ export interface MethodDocumentation {
 
     returns?: MethodReturn;
 
+    raises?: MethodRaise[];
+
     formula?: Formula;
 
     examples?: MethodExample[];
 
+    notes?: string[];
+
     implementation?: string[];
 
     numericalConsiderations?: string[];
-
-    notes?: string[];
 
     warnings?: string[];
 
@@ -104,22 +61,4 @@ export interface MethodDocumentation {
     complexity?: Complexity;
 
     relatedMethods?: string[];
-}
-
-/* ─────────────────────────────────────────────
-   Module Documentation
-   ───────────────────────────────────────────── */
-
-export interface ModuleDocumentation {
-    slug: string;
-
-    eyebrow: string;
-
-    title: string;
-
-    description: string;
-
-    tags?: string[];
-
-    sections: DocumentationSection[];
 }

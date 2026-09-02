@@ -7,6 +7,13 @@
     margin: 0 auto;
     padding: 76px 0 80px;
     color: #172033;
+    box-sizing: border-box;
+}
+
+.user-guide-page *,
+.user-guide-page *::before,
+.user-guide-page *::after {
+    box-sizing: border-box;
 }
 
 
@@ -22,6 +29,7 @@
 .user-guide-breadcrumb {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
 
     margin-bottom: 32px;
@@ -76,11 +84,13 @@
 
     color: #111827;
 
-    font-size: clamp(2.8rem, 6vw, 4.7rem);
+    font-size: clamp(2.6rem, 6vw, 4.7rem);
     font-weight: 760;
 
     line-height: 0.98;
     letter-spacing: -0.055em;
+
+    overflow-wrap: anywhere;
 }
 
 .user-guide-header-description {
@@ -104,6 +114,8 @@
 }
 
 .user-guide-tags span {
+    max-width: 100%;
+
     padding: 7px 10px;
 
     color: #5f6b7b;
@@ -124,6 +136,8 @@
 
     font-size: 0.58rem;
     font-weight: 700;
+
+    overflow-wrap: anywhere;
 }
 
 
@@ -147,6 +161,8 @@
 }
 
 .ug-section-number {
+    flex: 0 0 auto;
+
     color: #b0b8c4;
 
     font-family:
@@ -165,6 +181,8 @@
 }
 
 .ug-section-heading h2 {
+    min-width: 0;
+
     margin: 8px 0 0;
 
     color: #172033;
@@ -174,6 +192,8 @@
 
     line-height: 1.15;
     letter-spacing: -0.035em;
+
+    overflow-wrap: anywhere;
 }
 
 .ug-section-intro {
@@ -200,6 +220,8 @@
 .ug-module-table {
     margin-left: 56px;
 
+    width: calc(100% - 56px);
+
     border: 1px solid #e1e5ea;
     border-radius: 10px;
 
@@ -213,7 +235,7 @@
 
 .ug-table-head {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 240px minmax(0, 1fr);
 
     min-height: 47px;
 
@@ -245,7 +267,7 @@
 
 .ug-module-row {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 240px minmax(0, 1fr);
 
     min-height: 145px;
 
@@ -257,6 +279,8 @@
 }
 
 .ug-module-name {
+    min-width: 0;
+
     padding: 27px 22px;
 
     background: #fbfcfd;
@@ -280,6 +304,8 @@
 
     font-size: 0.72rem;
     font-weight: 700;
+
+    overflow-wrap: anywhere;
 }
 
 .ug-module-name code:hover {
@@ -287,7 +313,9 @@
 }
 
 .ug-module-content {
-    padding: 25px 25px;
+    min-width: 0;
+
+    padding: 25px;
 }
 
 .ug-module-title {
@@ -297,6 +325,8 @@
 
     font-size: 0.94rem;
     font-weight: 700;
+
+    overflow-wrap: anywhere;
 }
 
 .ug-module-title:hover {
@@ -347,16 +377,19 @@
 .ug-guide-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 14px;
 
     margin-left: 56px;
+
+    width: calc(100% - 56px);
 }
 
 .ug-guide-card {
     position: relative;
 
+    min-width: 0;
     min-height: 245px;
 
     display: flex;
@@ -410,6 +443,8 @@
 }
 
 .ug-guide-number {
+    flex: 0 0 auto;
+
     color: #c3c9d1;
 
     font-family:
@@ -426,6 +461,7 @@
 }
 
 .ug-guide-content {
+    min-width: 0;
     flex: 1;
 }
 
@@ -456,6 +492,8 @@
     font-weight: 720;
 
     letter-spacing: -0.02em;
+
+    overflow-wrap: anywhere;
 }
 
 .ug-guide-content p {
@@ -492,6 +530,8 @@
 .ug-code-example {
     margin-left: 56px;
 
+    width: calc(100% - 56px);
+
     overflow: hidden;
 
     background: #0d1421;
@@ -510,6 +550,8 @@
     align-items: center;
     justify-content: space-between;
 
+    gap: 12px;
+
     padding: 0 15px;
 
     background: #111a29;
@@ -518,6 +560,8 @@
 }
 
 .ug-code-title {
+    min-width: 0;
+
     display: flex;
     align-items: center;
     gap: 10px;
@@ -535,10 +579,14 @@
 
     font-size: 0.61rem;
     font-weight: 600;
+
+    overflow: hidden;
 }
 
 .ug-window-dots {
     display: flex;
+    flex: 0 0 auto;
+
     gap: 5px;
 }
 
@@ -554,6 +602,8 @@
 .ug-code-actions {
     display: flex;
     align-items: center;
+
+    flex: 0 0 auto;
 
     gap: 13px;
 }
@@ -619,6 +669,8 @@
 }
 
 .ug-code-example pre {
+    max-width: 100%;
+
     margin: 0;
 
     padding: 25px;
@@ -641,6 +693,8 @@
     line-height: 1.8;
 
     tab-size: 4;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .ug-code-example code {
@@ -659,6 +713,8 @@
     margin:
         14px 0 0 56px;
 
+    width: calc(100% - 56px);
+
     padding: 17px 20px;
 
     background: #f8fafc;
@@ -667,6 +723,8 @@
     border-radius: 8px;
 
     overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .ug-workflow-item {
@@ -724,15 +782,13 @@
     margin:
         25px 0 0 56px;
 
+    width: calc(100% - 56px);
+
     color: #727d8c;
 
     font-size: 0.78rem;
 
     line-height: 1.85;
-}
-
-.ug-after-code strong {
-    color: #3e4b5f;
 }
 
 
@@ -743,14 +799,17 @@
 .ug-performance-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 
     gap: 12px;
 
     margin-left: 56px;
+
+    width: calc(100% - 56px);
 }
 
 .ug-performance-card {
+    min-width: 0;
     min-height: 230px;
 
     display: flex;
@@ -835,12 +894,14 @@
 .ug-developer-panel {
     display: grid;
 
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
 
     gap: 50px;
 
     margin:
         20px 0 65px 56px;
+
+    width: calc(100% - 56px);
 
     padding: 38px;
 
@@ -856,6 +917,10 @@
 
     box-shadow:
         0 20px 45px rgba(15, 23, 42, 0.1);
+}
+
+.ug-developer-content {
+    min-width: 0;
 }
 
 .ug-developer-content .ug-section-eyebrow {
@@ -884,6 +949,8 @@
 }
 
 .ug-developer-links {
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
 
@@ -894,6 +961,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 15px;
 
     min-height: 63px;
 
@@ -923,6 +992,8 @@
 }
 
 .ug-developer-link div {
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
 
@@ -951,9 +1022,13 @@
     color: #cbd5e1;
 
     font-size: 0.7rem;
+
+    overflow-wrap: anywhere;
 }
 
 .ug-developer-link > span {
+    flex: 0 0 auto;
+
     color: #64748b;
 
     font-size: 0.8rem;
@@ -977,6 +1052,7 @@
     gap: 18px;
 
     width: fit-content;
+    max-width: calc(100% - 24px);
 
     margin: 0 auto;
 
@@ -1016,6 +1092,8 @@
 
     font-size: 0.61rem;
     font-weight: 650;
+
+    white-space: nowrap;
 }
 
 .ug-documentation-nav a:hover {
@@ -1024,25 +1102,117 @@
 
 
 /* =========================================================
-   TABLET
+   LARGE LAPTOP
    ========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
 
-    .ug-performance-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .user-guide-page {
+        width: min(1080px, calc(100% - 44px));
     }
 
+    .ug-module-table,
+    .ug-guide-grid,
+    .ug-code-example,
+    .ug-workflow,
+    .ug-after-code,
+    .ug-performance-grid,
     .ug-developer-panel {
-        grid-template-columns: 1fr;
+        margin-left: 42px;
+    }
 
-        gap: 30px;
+    .ug-module-table,
+    .ug-guide-grid,
+    .ug-code-example,
+    .ug-workflow,
+    .ug-after-code,
+    .ug-performance-grid,
+    .ug-developer-panel {
+        width: calc(100% - 42px);
+    }
+
+    .ug-performance-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 
 /* =========================================================
-   MOBILE
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .user-guide-page {
+        width: calc(100% - 40px);
+        padding: 60px 0 65px;
+    }
+
+    .user-guide-header {
+        padding-bottom: 60px;
+    }
+
+    .user-guide-header h1 {
+        font-size: clamp(2.5rem, 7vw, 3.8rem);
+    }
+
+    .user-guide-header-description {
+        font-size: 0.92rem;
+        line-height: 1.8;
+    }
+
+    .ug-section {
+        padding: 60px 0;
+    }
+
+    .ug-section-heading {
+        gap: 16px;
+    }
+
+    .ug-section-intro,
+    .ug-module-table,
+    .ug-guide-grid,
+    .ug-code-example,
+    .ug-workflow,
+    .ug-after-code,
+    .ug-performance-grid,
+    .ug-developer-panel {
+        margin-left: 0;
+    }
+
+    .ug-module-table,
+    .ug-guide-grid,
+    .ug-code-example,
+    .ug-workflow,
+    .ug-after-code,
+    .ug-performance-grid,
+    .ug-developer-panel {
+        width: 100%;
+    }
+
+    .ug-table-head,
+    .ug-module-row {
+        grid-template-columns: 190px minmax(0, 1fr);
+    }
+
+    .ug-module-content {
+        padding: 23px 20px;
+    }
+
+    .ug-guide-card {
+        padding: 22px;
+    }
+
+    .ug-developer-panel {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET / LARGE MOBILE
    ========================================================= */
 
 @media (max-width: 720px) {
@@ -1057,8 +1227,12 @@
         padding-bottom: 55px;
     }
 
+    .user-guide-breadcrumb {
+        margin-bottom: 25px;
+    }
+
     .user-guide-header h1 {
-        font-size: 3rem;
+        font-size: clamp(2.35rem, 10vw, 3.2rem);
     }
 
     .user-guide-header-description {
@@ -1066,27 +1240,39 @@
         line-height: 1.8;
     }
 
+    .user-guide-tags {
+        margin-top: 23px;
+    }
+
     .ug-section {
         padding: 55px 0;
     }
 
     .ug-section-heading {
-        gap: 14px;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .ug-section-number {
+        padding-top: 4px;
     }
 
     .ug-section-heading h2 {
         font-size: 1.55rem;
     }
 
-    .ug-section-intro,
-    .ug-module-table,
-    .ug-guide-grid,
-    .ug-code-example,
-    .ug-workflow,
-    .ug-after-code,
-    .ug-performance-grid {
-        margin-left: 0;
+    .ug-section-intro {
+        margin-bottom: 28px;
     }
+
+    .ug-section-intro p {
+        font-size: 0.82rem;
+    }
+
+
+    /* -------------------------
+       MODULE TABLE
+       ------------------------- */
 
     .ug-table-head {
         display: none;
@@ -1094,10 +1280,13 @@
 
     .ug-module-row {
         grid-template-columns: 1fr;
+
+        min-height: 0;
     }
 
     .ug-module-name {
         padding: 19px 20px 8px;
+
         background: #ffffff;
     }
 
@@ -1105,9 +1294,27 @@
         padding: 8px 20px 22px;
     }
 
+    .ug-module-content p {
+        font-size: 0.75rem;
+    }
+
+
+    /* -------------------------
+       GUIDE CARDS
+       ------------------------- */
+
     .ug-guide-grid {
         grid-template-columns: 1fr;
     }
+
+    .ug-guide-card {
+        min-height: 0;
+    }
+
+
+    /* -------------------------
+       WORKFLOW
+       ------------------------- */
 
     .ug-workflow {
         padding: 15px;
@@ -1123,69 +1330,420 @@
         flex: 0 0 auto;
     }
 
+
+    /* -------------------------
+       PERFORMANCE
+       ------------------------- */
+
     .ug-performance-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+
+    /* -------------------------
+       DEVELOPER
+       ------------------------- */
 
     .ug-developer-panel {
-        margin-left: 0;
-
+        margin-bottom: 50px;
         padding: 25px;
     }
+
+    .ug-developer-content h2 {
+        font-size: 1.35rem;
+    }
+
+
+    /* -------------------------
+       DOC NAV
+       ------------------------- */
 
     .ug-documentation-nav {
         max-width: calc(100% - 20px);
 
-        overflow-x: auto;
-
         margin-top: 20px;
 
+        overflow-x: auto;
+
         white-space: nowrap;
+
+        -webkit-overflow-scrolling: touch;
     }
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   MOBILE
    ========================================================= */
 
-@media (max-width: 470px) {
+@media (max-width: 560px) {
 
     .user-guide-page {
-        width: calc(100% - 24px);
+        width: calc(100% - 28px);
+
+        padding: 42px 0 50px;
+    }
+
+    .user-guide-header {
+        padding-bottom: 45px;
+    }
+
+    .user-guide-breadcrumb {
+        gap: 7px;
+
+        margin-bottom: 22px;
+
+        font-size: 0.58rem;
     }
 
     .user-guide-header h1 {
-        font-size: 2.55rem;
+        margin-top: 11px;
+        margin-bottom: 18px;
+
+        font-size: clamp(2.2rem, 11vw, 3rem);
+
+        line-height: 1;
+    }
+
+    .user-guide-header-description {
+        font-size: 0.83rem;
+    }
+
+    .user-guide-tags {
+        gap: 6px;
+        margin-top: 20px;
     }
 
     .user-guide-tags span {
-        font-size: 0.53rem;
+        padding: 6px 8px;
+
+        font-size: 0.54rem;
     }
 
-    .ug-performance-grid {
-        grid-template-columns: 1fr;
+
+    /* -------------------------
+       SECTIONS
+       ------------------------- */
+
+    .ug-section {
+        padding: 45px 0;
     }
 
-    .ug-code-example pre {
+    .ug-section-heading {
+        display: block;
+
+        margin-bottom: 22px;
+    }
+
+    .ug-section-number {
+        display: block;
+
+        padding: 0;
+        margin-bottom: 7px;
+
+        font-size: 0.58rem;
+    }
+
+    .ug-section-heading h2 {
+        margin: 0;
+
+        font-size: 1.4rem;
+    }
+
+    .ug-section-intro p {
+        font-size: 0.78rem;
+        line-height: 1.8;
+    }
+
+
+    /* -------------------------
+       MODULES
+       ------------------------- */
+
+    .ug-module-name {
+        padding: 17px 17px 7px;
+    }
+
+    .ug-module-content {
+        padding: 7px 17px 19px;
+    }
+
+    .ug-module-name code {
+        font-size: 0.65rem;
+    }
+
+    .ug-module-title {
+        font-size: 0.86rem;
+    }
+
+    .ug-module-content p {
+        font-size: 0.71rem;
+    }
+
+    .ug-explore-link {
+        font-size: 0.61rem;
+    }
+
+
+    /* -------------------------
+       GUIDE CARDS
+       ------------------------- */
+
+    .ug-guide-card {
+        gap: 13px;
+
         padding: 19px;
-
-        font-size: 0.59rem;
     }
+
+    .ug-guide-number {
+        font-size: 0.58rem;
+    }
+
+    .ug-guide-label {
+        font-size: 0.51rem;
+    }
+
+    .ug-guide-content h3 {
+        margin: 8px 0 9px;
+
+        font-size: 0.96rem;
+    }
+
+    .ug-guide-content p {
+        font-size: 0.7rem;
+        line-height: 1.7;
+    }
+
+    .ug-guide-content a {
+        font-size: 0.6rem;
+    }
+
+
+    /* -------------------------
+       CODE
+       ------------------------- */
 
     .ug-code-header {
+        min-height: 44px;
+
         padding: 0 10px;
+    }
+
+    .ug-code-title {
+        font-size: 0.55rem;
+    }
+
+    .ug-code-actions {
+        gap: 7px;
     }
 
     .ug-language {
         display: none;
     }
 
+    .ug-copy-button {
+        padding: 6px 7px;
+
+        font-size: 0.54rem;
+    }
+
+    .ug-code-example pre {
+        padding: 19px;
+
+        font-size: 0.59rem;
+
+        line-height: 1.75;
+    }
+
+
+    /* -------------------------
+       WORKFLOW
+       ------------------------- */
+
+    .ug-workflow {
+        padding: 13px;
+
+        border-radius: 7px;
+    }
+
+    .ug-workflow-step span {
+        font-size: 0.5rem;
+    }
+
+    .ug-workflow-step strong {
+        font-size: 0.56rem;
+    }
+
+    .ug-workflow-arrow {
+        margin: 0 8px;
+
+        font-size: 0.65rem;
+    }
+
+    .ug-after-code {
+        margin-top: 20px;
+
+        font-size: 0.7rem;
+    }
+
+
+    /* -------------------------
+       PERFORMANCE
+       ------------------------- */
+
+    .ug-performance-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .ug-performance-card {
+        min-height: 0;
+
+        padding: 19px;
+    }
+
+    .ug-performance-card h3 {
+        margin-top: 18px;
+
+        font-size: 0.86rem;
+    }
+
+    .ug-performance-card p {
+        font-size: 0.67rem;
+    }
+
+
+    /* -------------------------
+       DEVELOPER
+       ------------------------- */
+
     .ug-developer-panel {
         padding: 21px;
+
+        border-radius: 8px;
     }
+
+    .ug-developer-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .ug-developer-content p {
+        font-size: 0.69rem;
+    }
+
+    .ug-developer-link {
+        min-height: 57px;
+
+        padding: 0 13px;
+    }
+
+    .ug-developer-link div span {
+        font-size: 0.43rem;
+    }
+
+    .ug-developer-link strong {
+        font-size: 0.64rem;
+    }
+
+
+    /* -------------------------
+       DOCUMENTATION NAV
+       ------------------------- */
 
     .ug-documentation-nav {
         display: none;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .user-guide-page {
+        width: calc(100% - 22px);
+
+        padding-top: 35px;
+    }
+
+    .user-guide-header h1 {
+        font-size: 2.05rem;
+    }
+
+    .user-guide-header-description {
+        font-size: 0.78rem;
+    }
+
+    .ug-section {
+        padding: 38px 0;
+    }
+
+    .ug-section-heading h2 {
+        font-size: 1.28rem;
+    }
+
+    .ug-guide-card {
+        padding: 16px;
+
+        gap: 10px;
+    }
+
+    .ug-code-example pre {
+        padding: 15px;
+
+        font-size: 0.55rem;
+    }
+
+    .ug-developer-panel {
+        padding: 17px;
+    }
+
+    .ug-developer-link {
+        padding: 0 11px;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .ug-guide-card:hover,
+    .ug-performance-card:hover,
+    .ug-developer-link:hover {
+        transform: none;
+    }
+
+    .ug-guide-card:hover {
+        box-shadow: none;
+    }
+
+    .ug-performance-card:hover {
+        box-shadow: none;
+    }
+
+    .ug-developer-link:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ug-guide-card,
+    .ug-guide-card::before,
+    .ug-performance-card,
+    .ug-developer-link,
+    .ug-explore-link span,
+    .ug-copy-button {
+        transition: none;
     }
 }

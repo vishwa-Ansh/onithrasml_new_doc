@@ -1,87 +1,202 @@
+/* =========================================================
+   NOT FOUND PAGE
+   ========================================================= */
+
 .not-found-page {
+    width: 100%;
     min-height: 65vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 80px 24px;
+
+    box-sizing: border-box;
 }
 
 .not-found-content {
     width: min(620px, 100%);
+    margin: 0 auto;
+
     text-align: center;
+
+    box-sizing: border-box;
 }
+
+/* =========================================================
+   404 CODE
+   ========================================================= */
 
 .not-found-code {
     display: block;
+
     margin-bottom: 18px;
-    font-family: "SFMono-Regular", Consolas, monospace;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
     font-size: 14px;
     font-weight: 700;
+
+    line-height: 1.4;
+
     letter-spacing: 0.16em;
+
     color: #f97316;
 }
 
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
 .not-found-eyebrow {
     display: inline-block;
+
     margin-bottom: 18px;
+
     font-size: 12px;
     font-weight: 700;
+
+    line-height: 1.4;
+
     letter-spacing: 0.14em;
+
     color: #64748b;
 }
+
+/* =========================================================
+   HEADING
+   ========================================================= */
 
 .not-found-content h1 {
     margin: 0;
-    font-size: clamp(42px, 6vw, 72px);
+
+    font-size: clamp(
+        42px,
+        6vw,
+        72px
+    );
+
     line-height: 1;
+
     letter-spacing: -0.04em;
+
     color: #0f172a;
+
+    overflow-wrap: break-word;
 }
 
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
 .not-found-content p {
+    width: 100%;
     max-width: 500px;
+
     margin: 24px auto 0;
+
     font-size: 17px;
     line-height: 1.7;
+
     color: #64748b;
+
+    overflow-wrap: break-word;
 }
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
 
 .not-found-actions {
     display: flex;
+    align-items: center;
     justify-content: center;
+
     gap: 12px;
+
+    width: 100%;
+
     margin-top: 32px;
+
     flex-wrap: wrap;
+
+    box-sizing: border-box;
 }
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 .not-found-primary,
 .not-found-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     min-height: 46px;
+
     padding: 0 20px;
+
     border-radius: 10px;
+
     text-decoration: none;
+
+    font-family: inherit;
     font-size: 14px;
     font-weight: 700;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
-        background 0.2s ease;
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
+/* =========================================================
+   PRIMARY
+   ========================================================= */
+
 .not-found-primary {
-    color: white;
+    color: #ffffff;
+
     background: #f97316;
-    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.2);
+
+    border: 1px solid #f97316;
+
+    box-shadow:
+        0 8px 24px
+        rgba(249, 115, 22, 0.20);
 }
+
+/* =========================================================
+   SECONDARY
+   ========================================================= */
 
 .not-found-secondary {
     color: #334155;
+
     background: #f8fafc;
+
     border: 1px solid #e2e8f0;
 }
+
+/* =========================================================
+   HOVER
+   ========================================================= */
 
 .not-found-primary:hover,
 .not-found-secondary:hover {
@@ -89,33 +204,337 @@
 }
 
 .not-found-primary:hover {
-    box-shadow: 0 12px 30px rgba(249, 115, 22, 0.28);
+    box-shadow:
+        0 12px 30px
+        rgba(249, 115, 22, 0.28);
 }
 
 .not-found-secondary:hover {
     background: #f1f5f9;
+    border-color: #cbd5e1;
 }
 
-@media (max-width: 640px) {
+/* =========================================================
+   FOCUS — KEYBOARD ACCESSIBILITY
+   ========================================================= */
+
+.not-found-primary:focus-visible,
+.not-found-secondary:focus-visible {
+    outline: 3px solid rgba(249, 115, 22, 0.25);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1440px) {
     .not-found-page {
-        min-height: 60vh;
-        padding: 60px 20px;
+        min-height: 68vh;
+
+        padding: 100px 32px;
     }
 
-    .not-found-content h1 {
-        font-size: 46px;
+    .not-found-content {
+        width: min(680px, 100%);
     }
 
     .not-found-content p {
+        font-size: 18px;
+    }
+
+    .not-found-actions {
+        margin-top: 36px;
+    }
+}
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    .not-found-page {
+        min-height: 64vh;
+
+        padding: 75px 28px;
+    }
+
+    .not-found-content {
+        max-width: 600px;
+    }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .not-found-page {
+        min-height: 62vh;
+
+        padding: 70px 24px;
+    }
+
+    .not-found-content {
+        width: min(580px, 100%);
+    }
+
+    .not-found-code {
+        margin-bottom: 16px;
+
+        font-size: 13px;
+    }
+
+    .not-found-eyebrow {
+        margin-bottom: 16px;
+
+        font-size: 11px;
+    }
+
+    .not-found-content h1 {
+        font-size: clamp(
+            42px,
+            8vw,
+            64px
+        );
+    }
+
+    .not-found-content p {
+        max-width: 480px;
+
+        margin-top: 21px;
+
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .not-found-actions {
+        margin-top: 28px;
+    }
+}
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .not-found-page {
+        min-height: 60vh;
+
+        padding: 64px 22px;
+    }
+
+    .not-found-content {
+        width: 100%;
+        max-width: 540px;
+    }
+
+    .not-found-content h1 {
+        font-size: clamp(
+            40px,
+            9vw,
+            58px
+        );
+    }
+
+    .not-found-content p {
+        max-width: 460px;
+
         font-size: 15px;
     }
 
     .not-found-actions {
+        gap: 10px;
+    }
+
+    .not-found-primary,
+    .not-found-secondary {
+        min-height: 44px;
+
+        padding: 0 18px;
+
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    .not-found-page {
+        min-height: calc(100vh - 120px);
+
+        padding: 60px 20px;
+    }
+
+    .not-found-content {
+        width: 100%;
+        max-width: 480px;
+    }
+
+    .not-found-code {
+        margin-bottom: 15px;
+
+        font-size: 12px;
+
+        letter-spacing: 0.14em;
+    }
+
+    .not-found-eyebrow {
+        margin-bottom: 15px;
+
+        font-size: 10px;
+
+        letter-spacing: 0.12em;
+    }
+
+    .not-found-content h1 {
+        font-size: clamp(
+            40px,
+            13vw,
+            52px
+        );
+
+        line-height: 1.02;
+
+        letter-spacing: -0.045em;
+    }
+
+    .not-found-content p {
+        max-width: 420px;
+
+        margin-top: 19px;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+    .not-found-actions {
         flex-direction: column;
+
+        gap: 10px;
+
+        margin-top: 26px;
     }
 
     .not-found-primary,
     .not-found-secondary {
         width: 100%;
+
+        min-height: 46px;
+
+        padding: 0 18px;
+
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+    .not-found-page {
+        min-height: calc(100vh - 110px);
+
+        padding: 50px 16px;
+    }
+
+    .not-found-code {
+        font-size: 11px;
+    }
+
+    .not-found-eyebrow {
+        font-size: 9px;
+    }
+
+    .not-found-content h1 {
+        font-size: 42px;
+    }
+
+    .not-found-content p {
+        margin-top: 17px;
+
+        font-size: 13px;
+
+        line-height: 1.65;
+    }
+
+    .not-found-actions {
+        margin-top: 23px;
+    }
+
+    .not-found-primary,
+    .not-found-secondary {
+        min-height: 44px;
+
+        border-radius: 9px;
+
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+    .not-found-page {
+        padding: 42px 14px;
+    }
+
+    .not-found-content h1 {
+        font-size: 38px;
+    }
+
+    .not-found-content p {
+        font-size: 12px;
+    }
+
+    .not-found-primary,
+    .not-found-secondary {
+        min-height: 42px;
+
+        font-size: 11px;
+    }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+    .not-found-primary:hover,
+    .not-found-secondary:hover {
+        transform: none;
+    }
+
+    .not-found-primary:hover {
+        box-shadow:
+            0 8px 24px
+            rgba(249, 115, 22, 0.20);
+    }
+
+    .not-found-secondary:hover {
+        background: #f8fafc;
+        border-color: #e2e8f0;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .not-found-primary,
+    .not-found-secondary {
+        transition: none;
+    }
+
+    .not-found-primary:hover,
+    .not-found-secondary:hover {
+        transform: none;
     }
 }

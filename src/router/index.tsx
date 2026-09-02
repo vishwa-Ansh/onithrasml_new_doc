@@ -2,40 +2,45 @@ import { Routes, Route } from "react-router-dom";
 
 import { HomePage } from "../pages/Home/HomePage";
 import { DocsPage } from "../pages/Docs/DocsPage";
-import { LinearAlgebraPage } from "../pages/Docs/LinearAlgebraPage";
 import { NotFoundPage } from "../pages/NotFound/NotFoundPage";
+import { InstallPage } from "../pages/Docs/InstallPage";
 
 export function AppRouter() {
     return (
         <Routes>
+            {/* Home */}
             <Route
                 path="/"
                 element={<HomePage />}
             />
 
+            {/* Documentation home / User Guide */}
             <Route
                 path="/docs/:version"
                 element={<DocsPage />}
             />
 
-            {/* Linear Algebra overview */}
             <Route
-                path="/docs/:version/modules/linear-algebra"
-                element={<LinearAlgebraPage />}
+
+                path="/docs/:version/install"
+
+                element={<InstallPage />}
+
             />
 
-            {/* Individual method documentation */}
-            <Route
-                path="/docs/:version/modules/:module/:method"
-                element={<DocsPage />}
-            />
-
-            {/* Other module documentation */}
+            {/* Module pages */}
             <Route
                 path="/docs/:version/modules/:slug"
                 element={<DocsPage />}
             />
 
+            {/* Method pages */}
+            <Route
+                path="/docs/:version/modules/:module/:method"
+                element={<DocsPage />}
+            />
+
+            {/* 404 */}
             <Route
                 path="*"
                 element={<NotFoundPage />}

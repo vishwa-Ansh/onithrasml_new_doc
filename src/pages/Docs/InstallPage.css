@@ -1,0 +1,1196 @@
+/* =========================================================
+   ONITHRASML
+   PREMIUM INSTALLATION PAGE
+   FULL RESPONSIVE
+   ========================================================= */
+
+.install-page {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 0 110px;
+    color: #0f172a;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.install-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    margin: 0 0 76px;
+    padding: 78px 58px 60px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(37, 99, 235, 0.10),
+            transparent 32%
+        ),
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f8fafc 100%
+        );
+
+    box-shadow:
+        0 4px 12px rgba(15, 23, 42, 0.035),
+        0 20px 55px rgba(15, 23, 42, 0.065);
+}
+
+.install-hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    pointer-events: none;
+
+    opacity: 0.5;
+
+    background-image:
+        linear-gradient(
+            rgba(148, 163, 184, 0.10) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.10) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+}
+
+.install-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 730px;
+}
+
+.install-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 23px;
+
+    color: #64748b;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+}
+
+.install-eyebrow-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #16a34a;
+
+    box-shadow:
+        0 0 0 4px rgba(22, 163, 74, 0.10);
+}
+
+.install-hero h1 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: clamp(42px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.02;
+
+    letter-spacing: -0.048em;
+}
+
+.install-hero h1 span {
+    color: #2563eb;
+}
+
+.install-hero p {
+    max-width: 660px;
+
+    margin: 23px 0 35px;
+
+    color: #64748b;
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+/* =========================================================
+   HERO COMMAND
+   ========================================================= */
+
+.install-hero-command {
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+    min-height: 58px;
+
+    overflow: hidden;
+
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+
+    background: #0b1120;
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.15),
+        0 3px 8px rgba(15, 23, 42, 0.08);
+}
+
+.install-command-label {
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+    min-width: 0;
+
+    padding: 0 18px;
+}
+
+.install-prompt {
+    flex-shrink: 0;
+
+    margin-right: 13px;
+
+    color: #64748b;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 15px;
+}
+
+.install-command-label code {
+    overflow-x: auto;
+
+    color: #e2e8f0;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.install-hero-command button {
+    flex-shrink: 0;
+
+    min-width: 70px;
+
+    border: 0;
+    border-left: 1px solid #1e293b;
+
+    color: #94a3b8;
+    background: #111827;
+
+    font-size: 11px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background 160ms ease,
+        color 160ms ease;
+}
+
+.install-hero-command button:hover {
+    color: #ffffff;
+    background: #1e293b;
+}
+
+.install-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+
+    margin-top: 18px;
+}
+
+.install-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.install-hero-meta i {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #94a3b8;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.install-section {
+    position: relative;
+
+    margin-bottom: 84px;
+
+    scroll-margin-top: 105px;
+}
+
+.install-section-heading {
+    display: grid;
+
+    grid-template-columns: 46px minmax(0, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+.install-section-heading > span {
+    padding-top: 6px;
+
+    color: #94a3b8;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.install-section-heading h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 27px;
+    font-weight: 750;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.025em;
+}
+
+.install-section-heading p {
+    max-width: 680px;
+
+    margin: 8px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   REQUIREMENTS
+   ========================================================= */
+
+.install-requirements {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.install-requirement {
+    min-width: 0;
+
+    min-height: 154px;
+
+    padding: 20px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.install-requirement:hover {
+    transform: translateY(-2px);
+
+    border-color: #cbd5e1;
+
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.07);
+}
+
+.install-requirement-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 17px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+
+    color: #334155;
+    background: #f8fafc;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.install-requirement-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.install-requirement-main strong {
+    color: #0f172a;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.install-requirement-main span {
+    color: #475569;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 11px;
+}
+
+.install-requirement small {
+    display: block;
+
+    margin-top: 14px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+/* =========================================================
+   TERMINAL
+   ========================================================= */
+
+.install-terminal {
+    width: 100%;
+
+    overflow: hidden;
+
+    margin: 20px 0;
+
+    border: 1px solid #1e293b;
+    border-radius: 11px;
+
+    background: #0b1120;
+
+    box-shadow:
+        0 10px 28px rgba(15, 23, 42, 0.10);
+}
+
+.install-terminal.primary {
+    margin-top: 26px;
+
+    box-shadow:
+        0 14px 34px rgba(15, 23, 42, 0.14);
+}
+
+.install-terminal-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 39px;
+
+    padding: 0 12px 0 13px;
+
+    border-bottom: 1px solid #1e293b;
+
+    background: #111827;
+}
+
+.install-terminal-left {
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+}
+
+.install-terminal-dots {
+    display: flex;
+    flex-shrink: 0;
+
+    gap: 5px;
+
+    margin-right: 13px;
+}
+
+.install-terminal-dots span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #475569;
+}
+
+.install-terminal-label {
+    overflow: hidden;
+
+    color: #64748b;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.install-copy-button {
+    flex-shrink: 0;
+
+    min-height: 26px;
+
+    padding: 0 9px;
+
+    border: 1px solid #334155;
+    border-radius: 5px;
+
+    color: #94a3b8;
+    background: transparent;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 160ms ease,
+        color 160ms ease,
+        border-color 160ms ease;
+}
+
+.install-copy-button:hover {
+    color: #ffffff;
+    background: #1e293b;
+    border-color: #475569;
+}
+
+.install-terminal pre {
+    margin: 0;
+
+    padding: 19px 21px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.install-terminal code {
+    color: #dbeafe;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 13px;
+    line-height: 1.75;
+
+    white-space: pre;
+}
+
+/* =========================================================
+   TERMINAL SCROLLBAR
+   ========================================================= */
+
+.install-terminal pre::-webkit-scrollbar {
+    width: 6px;
+    height: 7px;
+}
+
+.install-terminal pre::-webkit-scrollbar-track {
+    background: #0b1120;
+}
+
+.install-terminal pre::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #334155;
+}
+
+.install-terminal pre::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* =========================================================
+   TIP
+   ========================================================= */
+
+.install-tip {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin: 25px 0;
+
+    padding: 17px 18px;
+
+    border: 1px solid #dbe4ef;
+    border-radius: 10px;
+
+    background: #f8fafc;
+}
+
+.install-tip-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 26px;
+    height: 26px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+
+    color: #475569;
+    background: #ffffff;
+
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.install-tip strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #1e293b;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.install-tip p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.install-tip code {
+    padding: 2px 5px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+
+    color: #334155;
+    background: #ffffff;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   STEPS
+   ========================================================= */
+
+.install-step-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 31px;
+}
+
+.install-step {
+    display: grid;
+
+    grid-template-columns: 40px minmax(0, 1fr);
+
+    gap: 17px;
+}
+
+.install-step-number {
+    padding-top: 9px;
+
+    color: #94a3b8;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+.install-step-content {
+    min-width: 0;
+}
+
+.install-step-content h3 {
+    margin: 0 0 12px;
+
+    color: #334155;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   SUCCESS
+   ========================================================= */
+
+.install-success {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin-top: 26px;
+
+    padding: 18px;
+
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+
+    background: #f7fef9;
+}
+
+.install-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 27px;
+    height: 27px;
+
+    border-radius: 7px;
+
+    color: #15803d;
+    background: #dcfce7;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.install-success strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #166534;
+
+    font-size: 13px;
+}
+
+.install-success p {
+    margin: 0;
+
+    color: #4d7c5b;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   TROUBLESHOOTING
+   ========================================================= */
+
+.install-troubleshooting {
+    display: flex;
+    flex-direction: column;
+
+    gap: 17px;
+}
+
+.install-problem {
+    min-width: 0;
+
+    padding: 23px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.install-problem:hover {
+    border-color: #cbd5e1;
+
+    box-shadow:
+        0 7px 22px rgba(15, 23, 42, 0.05);
+}
+
+.install-problem-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.install-problem-heading > span {
+    color: #94a3b8;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.install-problem-heading h3 {
+    margin: 0;
+
+    color: #334155;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.install-problem > p {
+    margin: 11px 0 16px;
+
+    color: #64748b;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+    .install-page {
+        max-width: 880px;
+    }
+
+    .install-hero {
+        padding: 68px 48px 54px;
+    }
+}
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .install-page {
+        max-width: 100%;
+    }
+
+    .install-hero {
+        padding: 60px 38px 50px;
+    }
+
+    .install-requirements {
+        grid-template-columns: 1fr;
+    }
+
+    .install-requirement {
+        min-height: auto;
+
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        column-gap: 14px;
+        align-items: center;
+    }
+
+    .install-requirement-icon {
+        grid-row: span 2;
+
+        margin: 0;
+    }
+
+    .install-requirement-main {
+        align-self: end;
+    }
+
+    .install-requirement small {
+        grid-column: 2;
+
+        margin-top: 2px;
+
+        align-self: start;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    .install-page {
+        padding-bottom: 70px;
+    }
+
+    .install-hero {
+        margin-bottom: 55px;
+
+        padding: 45px 22px 32px;
+
+        border-radius: 13px;
+    }
+
+    .install-eyebrow {
+        margin-bottom: 19px;
+
+        font-size: 9px;
+    }
+
+    .install-hero h1 {
+        font-size: clamp(36px, 11vw, 46px);
+
+        letter-spacing: -0.045em;
+    }
+
+    .install-hero p {
+        margin: 18px 0 27px;
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .install-hero-command {
+        display: block;
+
+        min-height: 0;
+    }
+
+    .install-command-label {
+        min-height: 54px;
+
+        padding: 0 15px;
+    }
+
+    .install-command-label code {
+        font-size: 11px;
+    }
+
+    .install-prompt {
+        margin-right: 9px;
+
+        font-size: 13px;
+    }
+
+    .install-hero-command button {
+        width: 100%;
+        min-height: 39px;
+
+        border-top: 1px solid #1e293b;
+        border-left: 0;
+    }
+
+    .install-hero-meta {
+        gap: 9px 13px;
+
+        margin-top: 15px;
+    }
+
+    .install-hero-meta span {
+        font-size: 10px;
+    }
+
+    .install-section {
+        margin-bottom: 62px;
+    }
+
+    .install-section-heading {
+        grid-template-columns: 34px minmax(0, 1fr);
+
+        gap: 10px;
+
+        margin-bottom: 24px;
+    }
+
+    .install-section-heading > span {
+        padding-top: 5px;
+
+        font-size: 9px;
+    }
+
+    .install-section-heading h2 {
+        font-size: 23px;
+    }
+
+    .install-section-heading p {
+        margin-top: 7px;
+
+        font-size: 13px;
+    }
+
+    .install-requirement {
+        padding: 17px;
+    }
+
+    .install-terminal {
+        margin: 17px 0;
+
+        border-radius: 9px;
+    }
+
+    .install-terminal-bar {
+        min-height: 36px;
+    }
+
+    .install-terminal-dots {
+        margin-right: 9px;
+    }
+
+    .install-terminal-dots span {
+        width: 6px;
+        height: 6px;
+    }
+
+    .install-terminal-label {
+        font-size: 9px;
+    }
+
+    .install-copy-button {
+        min-height: 24px;
+
+        padding: 0 8px;
+
+        font-size: 9px;
+    }
+
+    .install-terminal pre {
+        padding: 15px;
+    }
+
+    .install-terminal code {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+    .install-tip {
+        gap: 11px;
+
+        padding: 14px;
+    }
+
+    .install-tip-mark {
+        width: 24px;
+        height: 24px;
+    }
+
+    .install-tip p {
+        font-size: 11px;
+    }
+
+    .install-step-list {
+        gap: 25px;
+    }
+
+    .install-step {
+        grid-template-columns: 28px minmax(0, 1fr);
+
+        gap: 9px;
+    }
+
+    .install-step-number {
+        padding-top: 8px;
+
+        font-size: 9px;
+    }
+
+    .install-step-content h3 {
+        margin-bottom: 9px;
+
+        font-size: 13px;
+    }
+
+    .install-success {
+        gap: 11px;
+
+        padding: 15px;
+    }
+
+    .install-success p {
+        font-size: 11px;
+    }
+
+    .install-problem {
+        padding: 17px;
+    }
+
+    .install-problem-heading {
+        gap: 9px;
+    }
+
+    .install-problem-heading h3 {
+        font-size: 13px;
+    }
+
+    .install-problem > p {
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+    .install-hero {
+        margin-left: -2px;
+        margin-right: -2px;
+
+        padding: 38px 17px 27px;
+    }
+
+    .install-hero h1 {
+        font-size: 34px;
+    }
+
+    .install-hero p {
+        font-size: 13px;
+    }
+
+    .install-section-heading {
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .install-section-heading h2 {
+        font-size: 21px;
+    }
+
+    .install-requirement {
+        grid-template-columns: 38px minmax(0, 1fr);
+
+        padding: 15px;
+    }
+
+    .install-requirement-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .install-terminal pre {
+        padding: 13px;
+    }
+
+    .install-terminal code {
+        font-size: 10.5px;
+    }
+
+    .install-hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .install-requirement,
+    .install-problem,
+    .install-hero-command button,
+    .install-copy-button {
+        transition: none;
+    }
+
+    .install-requirement:hover,
+    .install-problem:hover {
+        transform: none;
+    }
+}

@@ -1,28 +1,51 @@
+/* =========================================================
+   ONITHRASML DOCUMENTATION
+   METHOD PAGE
+   FULL RESPONSIVE
+   ========================================================= */
+
 .method-page {
     width: 100%;
     max-width: 900px;
+
     margin: 0 auto;
     padding-bottom: 80px;
+
+    box-sizing: border-box;
 }
 
-/* ─────────────────────────────────────────
-   Header
-───────────────────────────────────────── */
+.method-page *,
+.method-page *::before,
+.method-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .method-page-header {
+    width: 100%;
+
     padding: 20px 0 48px;
+
     border-bottom: 1px solid #e5e7eb;
 }
 
 .method-page-eyebrow {
     display: flex;
     align-items: center;
+
     gap: 9px;
+
     margin-bottom: 18px;
 
     color: #f97316;
+
     font-size: 11px;
     font-weight: 800;
+
     letter-spacing: 0.14em;
     text-transform: uppercase;
 }
@@ -30,60 +53,105 @@
 .method-page-eyebrow-dot {
     width: 7px;
     height: 7px;
+
+    flex: 0 0 7px;
+
     border-radius: 50%;
+
     background: #f97316;
-    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
+
+    box-shadow:
+        0 0 0 4px rgba(249, 115, 22, 0.1);
 }
 
 .method-page-title-row {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+
     gap: 24px;
+
+    min-width: 0;
+}
+
+.method-page-title-row > * {
+    min-width: 0;
 }
 
 .method-page-header h1 {
+    max-width: 100%;
+
     margin: 0;
+
     color: #0f172a;
-    font-size: clamp(38px, 5vw, 58px);
+
+    font-size: clamp(
+        38px,
+        5vw,
+        58px
+    );
+
     line-height: 1.05;
+
     letter-spacing: -0.045em;
+
+    overflow-wrap: break-word;
 }
 
 .method-page-name {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
     gap: 12px;
+
     margin-top: 14px;
+
+    min-width: 0;
 }
 
 .method-page-name code {
+    max-width: 100%;
+
     color: #475569;
+
     font-family:
         "SFMono-Regular",
         "SF Mono",
         Consolas,
         "Liberation Mono",
         monospace;
+
     font-size: 15px;
+
+    overflow-wrap: anywhere;
 }
 
 .method-status {
     display: inline-flex;
     align-items: center;
+
     min-height: 24px;
+
     padding: 0 9px;
+
     border-radius: 999px;
 
     font-family:
         "SFMono-Regular",
         "SF Mono",
         Consolas,
+        "Liberation Mono",
         monospace;
+
     font-size: 10px;
     font-weight: 800;
+
     letter-spacing: 0.08em;
+
     text-transform: uppercase;
+
+    white-space: nowrap;
 }
 
 .method-status-planned {
@@ -97,26 +165,41 @@
 }
 
 .method-page-description {
+    width: 100%;
     max-width: 760px;
+
     margin: 22px 0 0;
 
     color: #64748b;
+
     font-size: 17px;
+
     line-height: 1.75;
+
+    overflow-wrap: break-word;
 }
 
-/* ─────────────────────────────────────────
-   Sections
-───────────────────────────────────────── */
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 
 .method-section {
     display: grid;
-    grid-template-columns: 58px minmax(0, 1fr);
+
+    grid-template-columns:
+        58px
+        minmax(0, 1fr);
+
     gap: 24px;
+
+    width: 100%;
 
     padding: 48px 0;
 
     border-bottom: 1px solid #e5e7eb;
+
+    scroll-margin-top: 100px;
 }
 
 .method-section-number {
@@ -128,15 +211,18 @@
         "SFMono-Regular",
         "SF Mono",
         Consolas,
+        "Liberation Mono",
         monospace;
 
     font-size: 11px;
     font-weight: 800;
+
     letter-spacing: 0.12em;
 }
 
 .method-section-content {
     min-width: 0;
+    width: 100%;
 }
 
 .method-section-content h2,
@@ -144,25 +230,42 @@
     margin: 0 0 18px;
 
     color: #0f172a;
+
     font-size: 27px;
+
     line-height: 1.25;
+
     letter-spacing: -0.025em;
+
+    font-weight: 720;
+
+    overflow-wrap: break-word;
 }
 
 .method-paragraph {
+    width: 100%;
+
     margin: 0 0 16px;
 
     color: #475569;
+
     font-size: 16px;
+
     line-height: 1.8;
+
+    overflow-wrap: break-word;
 }
 
-/* ─────────────────────────────────────────
-   Signature
-───────────────────────────────────────── */
+
+/* =========================================================
+   SIGNATURE
+   ========================================================= */
 
 .method-signature {
+    width: 100%;
+
     overflow-x: auto;
+    overflow-y: hidden;
 
     padding: 20px 22px;
 
@@ -173,6 +276,8 @@
 
     box-shadow:
         0 12px 30px rgba(15, 23, 42, 0.08);
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .method-signature code {
@@ -186,25 +291,34 @@
         monospace;
 
     font-size: 15px;
+
+    line-height: 1.7;
+
     white-space: pre;
 }
 
-/* ─────────────────────────────────────────
-   Parameters
-───────────────────────────────────────── */
+
+/* =========================================================
+   PARAMETERS
+   ========================================================= */
 
 .method-parameter-list {
     display: flex;
     flex-direction: column;
 
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
+    width: 100%;
 
     overflow: hidden;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
 }
 
 .method-parameter {
+    width: 100%;
+
     padding: 20px 22px;
+
     background: #ffffff;
 }
 
@@ -216,10 +330,15 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+
     gap: 9px;
+
+    min-width: 0;
 }
 
 .method-parameter-header code {
+    max-width: 100%;
+
     color: #c2410c;
 
     font-family:
@@ -230,9 +349,13 @@
 
     font-size: 14px;
     font-weight: 700;
+
+    overflow-wrap: anywhere;
 }
 
 .method-parameter-header span {
+    max-width: 100%;
+
     padding: 3px 7px;
 
     border-radius: 5px;
@@ -247,6 +370,8 @@
         monospace;
 
     font-size: 11px;
+
+    overflow-wrap: anywhere;
 }
 
 .method-parameter-header small {
@@ -259,6 +384,7 @@
         monospace;
 
     font-size: 10px;
+
     text-transform: uppercase;
 }
 
@@ -266,26 +392,36 @@
     margin: 10px 0 0;
 
     color: #64748b;
+
     font-size: 14px;
+
     line-height: 1.65;
+
+    overflow-wrap: break-word;
 }
 
 .method-parameter-default {
     margin-top: 10px;
 
     color: #94a3b8;
+
     font-size: 12px;
+
+    overflow-wrap: break-word;
 }
 
 .method-parameter-default code {
     color: #475569;
 }
 
-/* ─────────────────────────────────────────
-   Returns
-───────────────────────────────────────── */
+
+/* =========================================================
+   RETURNS
+   ========================================================= */
 
 .method-return {
+    width: 100%;
+
     padding: 20px 22px;
 
     border: 1px solid #e2e8f0;
@@ -305,21 +441,30 @@
 
     font-size: 13px;
     font-weight: 700;
+
+    overflow-wrap: anywhere;
 }
 
 .method-return p {
     margin: 10px 0 0;
 
     color: #64748b;
+
     font-size: 14px;
+
     line-height: 1.7;
+
+    overflow-wrap: break-word;
 }
 
-/* ─────────────────────────────────────────
-   Formula
-───────────────────────────────────────── */
+
+/* =========================================================
+   FORMULA
+   ========================================================= */
 
 .method-formula {
+    width: 100%;
+
     padding: 28px;
 
     border: 1px solid #e2e8f0;
@@ -335,12 +480,17 @@
 
     font-size: 11px;
     font-weight: 800;
+
     letter-spacing: 0.12em;
+
     text-transform: uppercase;
 }
 
 .method-formula-expression {
+    width: 100%;
+
     overflow-x: auto;
+    overflow-y: hidden;
 
     padding: 24px;
 
@@ -349,6 +499,8 @@
     background: #ffffff;
 
     text-align: center;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .method-formula-expression code {
@@ -359,27 +511,39 @@
         serif;
 
     font-size: 22px;
+
+    white-space: nowrap;
 }
 
 .method-formula p {
     margin: 18px 0 0;
 
     color: #64748b;
+
     font-size: 14px;
+
     line-height: 1.7;
+
+    overflow-wrap: break-word;
 }
 
-/* ─────────────────────────────────────────
-   Examples
-───────────────────────────────────────── */
+
+/* =========================================================
+   EXAMPLES
+   ========================================================= */
 
 .method-examples {
     display: flex;
     flex-direction: column;
+
     gap: 24px;
+
+    width: 100%;
 }
 
 .method-example {
+    width: 100%;
+
     overflow: hidden;
 
     border: 1px solid #1e293b;
@@ -393,8 +557,10 @@
 
 .method-example-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
 
     padding: 11px 16px;
 
@@ -410,14 +576,23 @@
 
     font-size: 10px;
     font-weight: 800;
+
     letter-spacing: 0.1em;
+
+    text-transform: uppercase;
 }
 
 .method-example pre {
+    width: 100%;
+
     margin: 0;
+
     padding: 22px;
 
     overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .method-example pre code {
@@ -430,10 +605,15 @@
         monospace;
 
     font-size: 13px;
+
     line-height: 1.75;
+
+    white-space: pre;
 }
 
 .method-example-output {
+    width: 100%;
+
     border-top: 1px solid #334155;
 }
 
@@ -450,6 +630,7 @@
 
     font-size: 10px;
     font-weight: 800;
+
     letter-spacing: 0.1em;
 }
 
@@ -463,20 +644,26 @@
 
 .method-example-explanation {
     margin: 0;
+
     padding: 0 22px 20px;
 
     color: #94a3b8;
 
     font-size: 13px;
+
     line-height: 1.7;
+
+    overflow-wrap: break-word;
 }
 
-/* ─────────────────────────────────────────
-   Lists
-───────────────────────────────────────── */
+
+/* =========================================================
+   LISTS
+   ========================================================= */
 
 .method-list {
     margin: 0;
+
     padding-left: 22px;
 }
 
@@ -484,21 +671,30 @@
     margin-bottom: 11px;
 
     color: #475569;
+
     font-size: 15px;
+
     line-height: 1.7;
+
+    overflow-wrap: break-word;
 }
 
 .method-list li::marker {
     color: #f97316;
 }
 
-/* ─────────────────────────────────────────
-   Complexity
-───────────────────────────────────────── */
+
+/* =========================================================
+   COMPLEXITY
+   ========================================================= */
 
 .method-complexity {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    width: 100%;
 
     overflow: hidden;
 
@@ -507,7 +703,10 @@
 }
 
 .method-complexity > div {
+    min-width: 0;
+
     padding: 20px 22px;
+
     background: #f8fafc;
 }
 
@@ -517,12 +716,14 @@
 
 .method-complexity span {
     display: block;
+
     margin-bottom: 8px;
 
     color: #94a3b8;
 
     font-size: 10px;
     font-weight: 800;
+
     letter-spacing: 0.12em;
 }
 
@@ -536,14 +737,20 @@
         monospace;
 
     font-size: 14px;
+
+    overflow-wrap: anywhere;
 }
 
-/* ─────────────────────────────────────────
-   Callouts
-───────────────────────────────────────── */
+
+/* =========================================================
+   CALLOUTS
+   ========================================================= */
 
 .method-callout {
+    width: 100%;
+
     margin-top: 32px;
+
     padding: 20px 22px;
 
     border-radius: 12px;
@@ -554,11 +761,15 @@
 
     font-size: 10px;
     font-weight: 800;
+
     letter-spacing: 0.12em;
+
+    text-transform: uppercase;
 }
 
 .method-callout ul {
     margin: 0;
+
     padding-left: 20px;
 }
 
@@ -566,11 +777,15 @@
     margin-bottom: 8px;
 
     font-size: 14px;
+
     line-height: 1.65;
+
+    overflow-wrap: break-word;
 }
 
 .method-note {
     border: 1px solid #fed7aa;
+
     background: #fff7ed;
 }
 
@@ -584,6 +799,7 @@
 
 .method-warning {
     border: 1px solid #fde68a;
+
     background: #fffbeb;
 }
 
@@ -597,6 +813,7 @@
 
 .method-errors {
     border: 1px solid #fecaca;
+
     background: #fef2f2;
 }
 
@@ -608,24 +825,37 @@
     color: #7f1d1d;
 }
 
-/* ─────────────────────────────────────────
-   Related Methods
-───────────────────────────────────────── */
+
+/* =========================================================
+   RELATED METHODS
+   ========================================================= */
 
 .method-related {
+    width: 100%;
+
     padding: 48px 0;
+}
+
+.method-related h2 {
+    margin-bottom: 18px;
 }
 
 .method-related-list {
     display: flex;
     flex-wrap: wrap;
+
     gap: 10px;
+
+    width: 100%;
 }
 
 .method-related-item {
     display: inline-flex;
     align-items: center;
+
     gap: 10px;
+
+    max-width: 100%;
 
     padding: 10px 13px;
 
@@ -636,6 +866,8 @@
     background: #ffffff;
 
     font-size: 13px;
+
+    overflow-wrap: anywhere;
 }
 
 .method-related-item code {
@@ -646,29 +878,224 @@
         "SF Mono",
         Consolas,
         monospace;
+
+    overflow-wrap: anywhere;
 }
 
-/* ─────────────────────────────────────────
-   Responsive
-───────────────────────────────────────── */
 
-@media (max-width: 800px) {
+/* =========================================================
+   PRISM / VS CODE SYNTAX HIGHLIGHTING
+   ========================================================= */
+
+.method-example pre.method-code {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 22px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    background: #0d1117;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.method-example pre.method-code code {
+    color: #d4d4d4;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        "Cascadia Code",
+        "Roboto Mono",
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.75;
+
+    white-space: pre;
+}
+
+.method-example .token.comment,
+.method-example .token.prolog,
+.method-example .token.doctype,
+.method-example .token.cdata {
+    color: #6a9955;
+}
+
+.method-example .token.keyword {
+    color: #569cd6;
+}
+
+.method-example .token.string,
+.method-example .token.char,
+.method-example .token.regex {
+    color: #ce9178;
+}
+
+.method-example .token.function {
+    color: #dcdcaa;
+}
+
+.method-example .token.class-name {
+    color: #4ec9b0;
+}
+
+.method-example .token.number {
+    color: #b5cea8;
+}
+
+.method-example .token.boolean {
+    color: #569cd6;
+}
+
+.method-example .token.operator {
+    color: #d4d4d4;
+}
+
+.method-example .token.punctuation {
+    color: #808080;
+}
+
+.method-example .token.builtin {
+    color: #4ec9b0;
+}
+
+.method-example .token.decorator {
+    color: #dcdcaa;
+}
+
+.method-example .token.important {
+    color: #c586c0;
+}
+
+
+/* =========================================================
+   CODE SCROLLBAR
+   ========================================================= */
+
+.method-example pre::-webkit-scrollbar,
+.method-signature::-webkit-scrollbar,
+.method-formula-expression::-webkit-scrollbar {
+    height: 7px;
+}
+
+.method-example pre::-webkit-scrollbar-track,
+.method-signature::-webkit-scrollbar-track,
+.method-formula-expression::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+
+.method-example pre::-webkit-scrollbar-thumb,
+.method-signature::-webkit-scrollbar-thumb,
+.method-formula-expression::-webkit-scrollbar-thumb {
+    background: #30363d;
+
+    border-radius: 10px;
+}
+
+.method-example pre::-webkit-scrollbar-thumb:hover,
+.method-signature::-webkit-scrollbar-thumb:hover,
+.method-formula-expression::-webkit-scrollbar-thumb:hover {
+    background: #484f58;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
     .method-page {
-        padding-bottom: 50px;
+        max-width: 100%;
+
+        padding-bottom: 65px;
     }
 
     .method-page-header {
-        padding-bottom: 36px;
+        padding-top: 10px;
+        padding-bottom: 40px;
+    }
+
+    .method-page-title-row {
+        gap: 18px;
+    }
+
+    .method-page-header h1 {
+        font-size: clamp(
+            36px,
+            6vw,
+            52px
+        );
+    }
+
+    .method-page-description {
+        font-size: 16px;
     }
 
     .method-section {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        grid-template-columns:
+            42px
+            minmax(0, 1fr);
+
+        gap: 16px;
+
+        padding: 42px 0;
+    }
+
+    .method-section-content h2,
+    .method-related h2 {
+        font-size: 25px;
+    }
+
+    .method-paragraph {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .method-page-title-row {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .method-page-name {
+        margin-top: 11px;
+    }
+
+    .method-section {
+        grid-template-columns:
+            30px
+            minmax(0, 1fr);
+
+        gap: 11px;
+
         padding: 36px 0;
     }
 
     .method-section-number {
-        padding-top: 0;
+        padding-top: 5px;
+
+        font-size: 10px;
+    }
+
+    .method-section-content h2,
+    .method-related h2 {
+        font-size: 23px;
     }
 
     .method-complexity {
@@ -681,33 +1108,421 @@
     }
 }
 
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 560px) {
+    .method-page {
+        padding-bottom: 50px;
+    }
+
+    .method-page-header {
+        padding-top: 0;
+
+        padding-bottom: 32px;
+    }
+
+    .method-page-eyebrow {
+        gap: 7px;
+
+        margin-bottom: 15px;
+
+        font-size: 9px;
+
+        letter-spacing: 0.12em;
+    }
+
+    .method-page-eyebrow-dot {
+        width: 6px;
+        height: 6px;
+
+        flex-basis: 6px;
+    }
+
     .method-page-header h1 {
-        font-size: 38px;
+        font-size: clamp(
+            32px,
+            10vw,
+            42px
+        );
+
+        line-height: 1.04;
+    }
+
+    .method-page-name {
+        gap: 8px;
+
+        margin-top: 10px;
+    }
+
+    .method-page-name code {
+        font-size: 12px;
+
+        line-height: 1.6;
+    }
+
+    .method-status {
+        min-height: 22px;
+
+        padding: 0 7px;
+
+        font-size: 8px;
     }
 
     .method-page-description {
-        font-size: 15px;
+        margin-top: 17px;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+    .method-section {
+        grid-template-columns:
+            24px
+            minmax(0, 1fr);
+
+        gap: 8px;
+
+        padding: 31px 0;
+    }
+
+    .method-section-number {
+        padding-top: 4px;
+
+        font-size: 8px;
+
+        letter-spacing: 0.08em;
     }
 
     .method-section-content h2,
     .method-related h2 {
-        font-size: 23px;
+        margin-bottom: 14px;
+
+        font-size: 21px;
     }
 
-    .method-formula {
-        padding: 18px;
+    .method-paragraph {
+        margin-bottom: 13px;
+
+        font-size: 14px;
+
+        line-height: 1.75;
     }
 
-    .method-formula-expression {
-        padding: 18px 12px;
+    /* SIGNATURE */
+
+    .method-signature {
+        padding: 16px;
+
+        border-radius: 9px;
     }
 
-    .method-example pre {
-        padding: 17px;
+    .method-signature code {
+        font-size: 11px;
+    }
+
+    /* PARAMETERS */
+
+    .method-parameter-list {
+        border-radius: 9px;
     }
 
     .method-parameter {
-        padding: 17px;
+        padding: 16px;
+    }
+
+    .method-parameter-header {
+        gap: 6px;
+    }
+
+    .method-parameter-header code {
+        font-size: 12px;
+    }
+
+    .method-parameter-header span {
+        padding: 3px 5px;
+
+        font-size: 9px;
+    }
+
+    .method-parameter-header small {
+        font-size: 8px;
+    }
+
+    .method-parameter p {
+        margin-top: 9px;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+    .method-parameter-default {
+        margin-top: 8px;
+
+        font-size: 10px;
+    }
+
+    /* RETURNS */
+
+    .method-return {
+        padding: 16px;
+
+        border-radius: 9px;
+    }
+
+    .method-return code {
+        font-size: 11px;
+    }
+
+    .method-return p {
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+    /* FORMULA */
+
+    .method-formula {
+        padding: 16px;
+
+        border-radius: 10px;
+    }
+
+    .method-formula-title {
+        margin-bottom: 13px;
+
+        font-size: 9px;
+    }
+
+    .method-formula-expression {
+        padding: 17px 12px;
+
+        border-radius: 8px;
+    }
+
+    .method-formula-expression code {
+        font-size: 18px;
+    }
+
+    .method-formula p {
+        margin-top: 14px;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+    /* EXAMPLES */
+
+    .method-examples {
+        gap: 17px;
+    }
+
+    .method-example {
+        border-radius: 9px;
+    }
+
+    .method-example-header {
+        gap: 10px;
+
+        padding: 9px 12px;
+
+        font-size: 8px;
+    }
+
+    .method-example pre,
+    .method-example pre.method-code {
+        padding: 15px;
+    }
+
+    .method-example pre code,
+    .method-example pre.method-code code {
+        font-size: 10.5px;
+
+        line-height: 1.7;
+    }
+
+    .method-output-label {
+        padding: 8px 12px;
+
+        font-size: 8px;
+    }
+
+    .method-example-output pre {
+        padding-top: 3px;
+    }
+
+    .method-example-explanation {
+        padding: 0 15px 15px;
+
+        font-size: 11px;
+
+        line-height: 1.65;
+    }
+
+    /* LIST */
+
+    .method-list {
+        padding-left: 18px;
+    }
+
+    .method-list li {
+        margin-bottom: 8px;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+    /* COMPLEXITY */
+
+    .method-complexity {
+        border-radius: 9px;
+    }
+
+    .method-complexity > div {
+        padding: 16px;
+    }
+
+    .method-complexity span {
+        margin-bottom: 6px;
+
+        font-size: 8px;
+    }
+
+    .method-complexity code {
+        font-size: 11px;
+    }
+
+    /* CALLOUT */
+
+    .method-callout {
+        margin-top: 24px;
+
+        padding: 15px;
+
+        border-radius: 9px;
+    }
+
+    .method-callout-label {
+        margin-bottom: 8px;
+
+        font-size: 8px;
+    }
+
+    .method-callout ul {
+        padding-left: 17px;
+    }
+
+    .method-callout li {
+        margin-bottom: 7px;
+
+        font-size: 12px;
+
+        line-height: 1.65;
+    }
+
+    /* RELATED */
+
+    .method-related {
+        padding: 34px 0;
+    }
+
+    .method-related-list {
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+    .method-related-item {
+        width: 100%;
+
+        padding: 9px 11px;
+
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+    .method-page-header h1 {
+        font-size: 30px;
+    }
+
+    .method-page-description {
+        font-size: 13px;
+    }
+
+    .method-section {
+        grid-template-columns:
+            21px
+            minmax(0, 1fr);
+
+        gap: 7px;
+    }
+
+    .method-section-content h2,
+    .method-related h2 {
+        font-size: 19px;
+    }
+
+    .method-paragraph {
+        font-size: 13px;
+    }
+
+    .method-signature {
+        padding: 13px;
+    }
+
+    .method-signature code {
+        font-size: 10px;
+    }
+
+    .method-example pre,
+    .method-example pre.method-code {
+        padding: 13px;
+    }
+
+    .method-example pre code,
+    .method-example pre.method-code code {
+        font-size: 9.5px;
+    }
+
+    .method-formula-expression code {
+        font-size: 16px;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+    .method-example pre,
+    .method-signature,
+    .method-formula-expression {
+        scrollbar-width: thin;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .method-page *,
+    .method-page *::before,
+    .method-page *::after {
+        scroll-behavior: auto;
     }
 }

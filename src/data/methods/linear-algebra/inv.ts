@@ -1,105 +1,258 @@
 import type { MethodDocumentation } from "../../docs/types";
 
 export const inv: MethodDocumentation = {
-    slug: "inv",
+  slug: "inv",
+  name: "inv",
+  category: "Basic Routines",
 
-    name: "inv",
+  title: "Matrix Inverse",
 
-    category: "Basic Routines",
+  description: "Compute the inverse of a square matrix.",
 
+  status: "planned",
+
+  signature: "oml.linalg.inv(A, overwrite_a=False, check_finite=True)",
+
+  parameters: [
+    {
+      name: "A",
+      type: "array-like",
+      shape: "(M, M)",
+      description: "Square matrix to be inverted.",
+      required: true,
+    },
+    {
+      name: "overwrite_a",
+      type: "bool",
+      description:
+        "Allow the implementation to overwrite the input matrix. This may improve performance by avoiding an additional copy.",
+      default: "False",
+      required: false,
+    },
+    {
+      name: "check_finite",
+      type: "bool",
+      description:
+        "Check whether the input matrix contains NaN or infinite values. Disabling this check may improve performance but requires valid finite input.",
+      default: "True",
+      required: false,
+    },
+  ],
+
+  returns: {
+    name: "A_inv",
+    type: "ndarray",
+    shape: "(M, M)",
+    description: "The inverse of the input matrix.",
+  },
+
+  raises: [
+    {
+      error: "LinAlgError",
+      description:
+        "Raised when the matrix is singular and therefore has no inverse.",
+    },
+    {
+      error: "ValueError",
+      description: "Raised when the input is not a square matrix.",
+    },
+  ],
+
+  formula: {
     title: "Matrix Inverse",
-
-    description:
-        "Compute the multiplicative inverse of a square matrix. The inverse matrix A⁻¹ satisfies A A⁻¹ = A⁻¹ A = I, where I is the identity matrix.",
-
-    status: "planned",
-
-    signature: "oml.linalg.inv(A)",
-
-    parameters: [
-        {
-            name: "A",
-            type: "array-like",
-            description:
-                "A square, non-singular matrix whose inverse is required.",
-            required: true,
-        },
-    ],
-
-    returns: {
-        type: "2-D array",
-        description:
-            "The inverse of the input matrix A.",
-    },
-
-    formula: {
-        title: "Matrix Inverse",
-        expression: "AA^{-1}=A^{-1}A=I",
-        explanation:
-            "A matrix has an inverse when it is square and non-singular. The product of a matrix and its inverse is the identity matrix.",
-    },
-
-    examples: [
-        {
-            language: "python",
-            code: `import onithrasML as oml
+    expression: "AA^{-1} = A^{-1}A = I",
+    explanation:
+      "For a nonsingular square matrix A, its inverse A⁻¹ produces the identity matrix when multiplied from either side.",
+  },
+examples: [
+    {
+        language: "python",
+        code: `import onithrasML as oml
 import numpy as np
 
+# Create a square matrix
 A = np.array([
-    [1.0, 3.0],
-    [2.0, 4.0]
+    [1.0, 2.0],
+    [3.0, 4.0]
 ])
 
+# Compute the inverse
 A_inv = oml.linalg.inv(A)
 
-print(A_inv)`,
-            output: `[
-    [-2.0,  1.5],
-    [ 1.0, -0.5]
-]`,
-            explanation:
-                "The returned matrix is the inverse of A. Multiplying A by A_inv produces the identity matrix up to floating-point precision.",
-        },
-    ],
+print("Original matrix:")
+print(A)
 
-    implementation: [
-        "OnithrasML exposes the inverse operation through its own linear algebra API.",
-        "The underlying implementation may dispatch the computation to an optimized numerical backend such as SciPy/LAPACK or a BLAS-compatible C++ backend.",
-        "The backend choice is an implementation detail and does not change the public OnithrasML interface.",
-    ],
+print("\\nInverse matrix:")
+print(A_inv)
 
-    numericalConsiderations: [
-        "The input matrix must be square.",
-        "A singular matrix does not have a finite inverse.",
-        "Matrices that are close to singular can produce numerically sensitive results.",
-        "For solving A x = b, using inv(A) followed by matrix multiplication is generally less preferable than using a dedicated solve operation.",
-        "Floating-point results should be compared using an appropriate numerical tolerance rather than exact equality.",
-    ],
+# Verify the inverse
+identity = A @ A_inv
 
-    notes: [
-        "The inverse operation is primarily intended for cases where the inverse matrix itself is explicitly required.",
-        "For repeated linear-system solves with the same matrix, a factorization-based workflow can be more efficient.",
-    ],
+print("\\nA @ A_inv:")
+print(identity)`,
 
-    warnings: [
-        "Explicit matrix inversion can be more expensive and less numerically stable than directly solving a linear system.",
-    ],
+        output: `Original matrix:
+[[1. 2.]
+ [3. 4.]]
 
-    errors: [
-        "Non-square input matrices are invalid.",
-        "Singular matrices cannot be inverted.",
-        "Ill-conditioned matrices may produce inaccurate results because small numerical errors can be strongly amplified.",
-    ],
+Inverse matrix:
+[[-2.   1. ]
+ [ 1.5 -0.5]]
 
-    complexity: {
-        time: "O(n³)",
-        space: "O(n²)",
+A @ A_inv:
+[[1. 0.]
+ [0. 1.]]`,
+
+        explanation:
+            "The product of A and its inverse is the identity matrix, up to floating-point rounding.",
     },
 
-    relatedMethods: [
-        "solve",
-        "det",
-        "norm",
-        "pinv",
-    ],
+    {
+        language: "python",
+        code: `import onithrasML as oml
+import numpy as np
+
+# A larger 3 × 3 matrix
+A = np.array([
+    [4.0, 7.0, 2.0],
+    [3.0, 6.0, 1.0],
+    [2.0, 5.0, 3.0]
+])
+
+# Compute inverse
+A_inv = oml.linalg.inv(A)
+
+print("A:")
+print(A)
+
+print("\\nA⁻¹:")
+print(A_inv)
+
+# Check both multiplication orders
+left_identity = A @ A_inv
+right_identity = A_inv @ A
+
+print("\\nA @ A⁻¹:")
+print(left_identity)
+
+print("\\nA⁻¹ @ A:")
+print(right_identity)`,
+
+        output: `A:
+[[4. 7. 2.]
+ [3. 6. 1.]
+ [2. 5. 3.]]
+
+A⁻¹:
+[[ 1.41666667 -1.16666667 -0.5       ]
+ [-0.58333333  0.66666667  0.16666667]
+ [ 0.16666667 -0.16666667  0.16666667]]
+
+A @ A⁻¹:
+[[ 1.00000000e+00  0.00000000e+00  0.00000000e+00]
+ [ 0.00000000e+00  1.00000000e+00  0.00000000e+00]
+ [ 0.00000000e+00  0.00000000e+00  1.00000000e+00]]
+
+A⁻¹ @ A:
+[[ 1.00000000e+00  0.00000000e+00  0.00000000e+00]
+ [ 0.00000000e+00  1.00000000e+00  0.00000000e+00]
+ [ 0.00000000e+00  0.00000000e+00  1.00000000e+00]]`,
+
+        explanation:
+            "For a nonsingular square matrix, both A @ A⁻¹ and A⁻¹ @ A approach the identity matrix.",
+    },
+
+    {
+        language: "python",
+        code: `import onithrasML as oml
+import numpy as np
+
+# Generate a matrix
+A = np.array([
+    [10.0, 2.0, 3.0, 1.0],
+    [2.0, 9.0, 1.0, 2.0],
+    [3.0, 1.0, 8.0, 4.0],
+    [1.0, 2.0, 4.0, 7.0]
+])
+
+# Compute inverse
+A_inv = oml.linalg.inv(
+    A,
+    overwrite_a=False,
+    check_finite=True
+)
+
+print("Inverse:")
+print(A_inv)
+
+# Numerical verification
+result = A @ A_inv
+
+print("\\nVerification:")
+print(np.round(result, 10))
+
+# Check whether the result is approximately
+# equal to the identity matrix
+is_identity = np.allclose(
+    result,
+    np.eye(A.shape[0])
+)
+
+print("\\nIs identity:", is_identity)`,
+
+        output: `Inverse:
+[[ 0.1207 ... ]
+ [ ...       ]
+ [ ...       ]
+ [ ...       ]]
+
+Verification:
+[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+
+Is identity: True`,
+
+        explanation:
+            "For numerical computations, np.allclose() is preferable to direct equality because floating-point arithmetic introduces small rounding errors.",
+    },
+],
+
+  implementation: [
+    "OnithrasML exposes matrix inversion through its linear algebra API.",
+    "The backend may dispatch the operation to optimized numerical kernels such as LAPACK or a native C++ implementation.",
+    "For large matrices, the implementation should avoid unnecessary copies and use optimized factorization routines.",
+  ],
+
+  numericalConsiderations: [
+    "The input matrix must be square.",
+    "A singular matrix does not have an inverse.",
+    "Ill-conditioned matrices can produce numerically inaccurate results even when an inverse exists.",
+    "For solving Ax = b, prefer solve() instead of explicitly computing A⁻¹.",
+    "Floating-point arithmetic means A @ inv(A) may differ slightly from the exact identity matrix.",
+  ],
+
+  notes: [
+    "Matrix inversion is generally more expensive and less numerically preferable than solving a linear system directly.",
+    "For structured matrices, specialized algorithms may provide better performance and numerical stability.",
+  ],
+
+  warnings: [
+    "Do not use matrix inversion as a general replacement for solve().",
+    "Disabling finite-value checking requires the caller to guarantee that the input contains valid finite values.",
+  ],
+
+  errors: [
+    "Non-square matrices cannot be inverted.",
+    "Singular matrices have no inverse.",
+    "Nearly singular or ill-conditioned matrices may produce unstable numerical results.",
+  ],
+
+  complexity: {
+    time: "O(M³)",
+    space: "O(M²)",
+  },
+
+  relatedMethods: ["solve", "det", "norm", "pinv"],
 };

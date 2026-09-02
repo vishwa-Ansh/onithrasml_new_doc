@@ -1,82 +1,92 @@
 import type { MethodDocumentation } from "../../data/docs/types";
+import Prism from "prismjs";
+import "prismjs/components/prism-python";
 import "./MethodPage.css";
 
 interface MethodPageProps {
     method: MethodDocumentation;
 }
 
+function highlightPython(code: string) {
+    return Prism.highlight(
+        code,
+        Prism.languages.python,
+        "python"
+    );
+}
+
 export function MethodPage({ method }: MethodPageProps) {
+    let sectionNumber = 1;
+
+    const getNumber = () =>
+        String(sectionNumber++).padStart(2, "0");
+
     return (
         <article className="method-page">
 
-            {/* Header */}
+            {/* HEADER */}
             <header className="method-page-header">
                 <div className="method-page-eyebrow">
-                    <span className="method-page-eyebrow-dot" />
                     {method.category}
                 </div>
 
-                <div className="method-page-title-row">
-                    <div>
-                        <h1>{method.title}</h1>
-
-                        <div className="method-page-name">
-                            <code>{method.name}()</code>
-
-                            {method.status && (
-                                <span
-                                    className={`method-status method-status-${method.status}`}
-                                >
-                                    {method.status}
-                                </span>
-                            )}
-                        </div>
-                    </div>
-                </div>
+                <h1>{method.title}</h1>
 
                 <p className="method-page-description">
                     {method.description}
                 </p>
+
+                <div className="method-page-meta">
+                    <code>{method.name}</code>
+
+                    {method.status && (
+                        <span
+                            className={`method-status ${method.status}`}
+                        >
+                            {method.status}
+                        </span>
+                    )}
+                </div>
             </header>
 
-            {/* Signature */}
+            {/* SIGNATURE */}
             <section
-                className="method-section"
                 id="signature"
+                className="method-section"
             >
                 <div className="method-section-number">
-                    01
+                    {getNumber()}
                 </div>
 
                 <div className="method-section-content">
                     <h2>Signature</h2>
 
-                    <div className="method-signature">
+                    <pre className="method-signature">
                         <code>{method.signature}</code>
-                    </div>
+                    </pre>
                 </div>
             </section>
 
-            {/* Parameters */}
+            {/* PARAMETERS */}
             {method.parameters &&
                 method.parameters.length > 0 && (
                     <section
-                        className="method-section"
                         id="parameters"
+                        className="method-section"
                     >
                         <div className="method-section-number">
-                            02
+                            {getNumber()}
                         </div>
 
                         <div className="method-section-content">
                             <h2>Parameters</h2>
 
-                            <div className="method-parameter-list">
+                            <div className="method-parameters">
                                 {method.parameters.map(
                                     (parameter) => (
                                         <div
-                                            className="method-parameter"
                                             key={parameter.name}
+                                            className="method-parameter"
                                         >
                                             <div className="method-parameter-header">
                                                 <code>
@@ -91,12 +101,18 @@ export function MethodPage({ method }: MethodPageProps) {
                                                     }
                                                 </span>
 
-                                                {parameter.required !==
-                                                    undefined && (
+                                                {parameter.shape && (
                                                     <small>
-                                                        {parameter.required
-                                                            ? "required"
-                                                            : "optional"}
+                                                        shape:{" "}
+                                                        {
+                                                            parameter.shape
+                                                        }
+                                                    </small>
+                                                )}
+
+                                                {parameter.required && (
+                                                    <small>
+                                                        required
                                                     </small>
                                                 )}
                                             </div>
@@ -125,71 +141,108 @@ export function MethodPage({ method }: MethodPageProps) {
                     </section>
                 )}
 
-            {/* Returns */}
+            {/* RETURNS */}
             {method.returns && (
                 <section
-                    className="method-section"
                     id="returns"
+                    className="method-section"
                 >
                     <div className="method-section-number">
-                        03
+                        {getNumber()}
                     </div>
 
                     <div className="method-section-content">
                         <h2>Returns</h2>
 
                         <div className="method-return">
-                            <code>
-                                {method.returns.type}
-                            </code>
+                            <div className="method-return-header">
+                                {method.returns.name && (
+                                    <code>
+                                        {method.returns.name}
+                                    </code>
+                                )}
+
+                                <span>
+                                    {method.returns.type}
+                                </span>
+
+                                {method.returns.shape && (
+                                    <small>
+                                        shape:{" "}
+                                        {method.returns.shape}
+                                    </small>
+                                )}
+                            </div>
 
                             <p>
-                                {
-                                    method.returns
-                                        .description
-                                }
+                                {method.returns.description}
                             </p>
                         </div>
                     </div>
                 </section>
             )}
 
-            {/* Mathematical Formula */}
+            {/* RAISES */}
+            {method.raises &&
+                method.raises.length > 0 && (
+                    <section
+                        id="raises"
+                        className="method-section"
+                    >
+                        <div className="method-section-number">
+                            {getNumber()}
+                        </div>
+
+                        <div className="method-section-content">
+                            <h2>Raises</h2>
+
+                            <div className="method-raises">
+                                {method.raises.map(
+                                    (item) => (
+                                        <div
+                                            key={item.error}
+                                            className="method-raise"
+                                        >
+                                            <code>
+                                                {item.error}
+                                            </code>
+
+                                            <p>
+                                                {
+                                                    item.description
+                                                }
+                                            </p>
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                        </div>
+                    </section>
+                )}
+
+            {/* FORMULA */}
             {method.formula && (
                 <section
-                    className="method-section"
                     id="mathematical-concept"
+                    className="method-section"
                 >
                     <div className="method-section-number">
-                        04
+                        {getNumber()}
                     </div>
 
                     <div className="method-section-content">
-                        <h2>
-                            Mathematical Concept
-                        </h2>
+                        <h2>Mathematical Concept</h2>
 
                         <div className="method-formula">
-                            {method.formula.title && (
-                                <div className="method-formula-title">
-                                    {
-                                        method.formula
-                                            .title
-                                    }
-                                </div>
-                            )}
-
-                            <div className="method-formula-expression">
-                                <code>
-                                    {
-                                        method.formula
-                                            .expression
-                                    }
-                                </code>
+                            <div className="method-formula-title">
+                                {method.formula.title}
                             </div>
 
-                            {method.formula
-                                .explanation && (
+                            <div className="method-formula-expression">
+                                {method.formula.expression}
+                            </div>
+
+                            {method.formula.explanation && (
                                 <p>
                                     {
                                         method.formula
@@ -202,15 +255,15 @@ export function MethodPage({ method }: MethodPageProps) {
                 </section>
             )}
 
-            {/* Examples */}
+            {/* EXAMPLES */}
             {method.examples &&
                 method.examples.length > 0 && (
                     <section
-                        className="method-section"
                         id="examples"
+                        className="method-section"
                     >
                         <div className="method-section-number">
-                            05
+                            {getNumber()}
                         </div>
 
                         <div className="method-section-content">
@@ -220,31 +273,51 @@ export function MethodPage({ method }: MethodPageProps) {
                                 {method.examples.map(
                                     (example, index) => (
                                         <div
-                                            className="method-example"
                                             key={index}
+                                            className="method-example"
                                         >
                                             <div className="method-example-header">
                                                 <span>
-                                                    {example.language.toUpperCase()}
+                                                    {
+                                                        example.language
+                                                    }
                                                 </span>
 
                                                 <span>
                                                     Example{" "}
-                                                    {index +
-                                                        1}
+                                                    {index + 1}
                                                 </span>
                                             </div>
 
-                                            <pre>
-                                                <code>
-                                                    {
-                                                        example.code
-                                                    }
-                                                </code>
+                                            <pre className="method-code">
+                                                <code
+                                                    className={`language-${example.language.toLowerCase()}`}
+                                                    dangerouslySetInnerHTML={{
+                                                        __html:
+                                                            example.language.toLowerCase() ===
+                                                            "python"
+                                                                ? highlightPython(
+                                                                      example.code
+                                                                  )
+                                                                : example.code
+                                                                    .replace(
+                                                                        /&/g,
+                                                                        "&amp;"
+                                                                    )
+                                                                    .replace(
+                                                                        /</g,
+                                                                        "&lt;"
+                                                                    )
+                                                                    .replace(
+                                                                        />/g,
+                                                                        "&gt;"
+                                                                    ),
+                                                    }}
+                                                />
                                             </pre>
 
                                             {example.output && (
-                                                <div className="method-example-output">
+                                                <div className="method-output">
                                                     <div className="method-output-label">
                                                         OUTPUT
                                                     </div>
@@ -274,46 +347,42 @@ export function MethodPage({ method }: MethodPageProps) {
                     </section>
                 )}
 
-            {/* Implementation */}
+            {/* IMPLEMENTATION */}
             {method.implementation &&
                 method.implementation.length > 0 && (
                     <section
-                        className="method-section"
                         id="implementation"
+                        className="method-section"
                     >
                         <div className="method-section-number">
-                            06
+                            {getNumber()}
                         </div>
 
                         <div className="method-section-content">
-                            <h2>
-                                Implementation
-                            </h2>
+                            <h2>Implementation</h2>
 
-                            {method.implementation.map(
-                                (paragraph, index) => (
-                                    <p
-                                        className="method-paragraph"
-                                        key={index}
-                                    >
-                                        {paragraph}
-                                    </p>
-                                )
-                            )}
+                            <ul className="method-list">
+                                {method.implementation.map(
+                                    (item, index) => (
+                                        <li key={index}>
+                                            {item}
+                                        </li>
+                                    )
+                                )}
+                            </ul>
                         </div>
                     </section>
                 )}
 
-            {/* Numerical Considerations */}
+            {/* NUMERICAL CONSIDERATIONS */}
             {method.numericalConsiderations &&
-                method.numericalConsiderations.length >
-                    0 && (
+                method.numericalConsiderations.length > 0 && (
                     <section
-                        className="method-section"
                         id="numerical-considerations"
+                        className="method-section"
                     >
                         <div className="method-section-number">
-                            07
+                            {getNumber()}
                         </div>
 
                         <div className="method-section-content">
@@ -334,14 +403,14 @@ export function MethodPage({ method }: MethodPageProps) {
                     </section>
                 )}
 
-            {/* Complexity */}
+            {/* COMPLEXITY */}
             {method.complexity && (
                 <section
-                    className="method-section"
                     id="complexity"
+                    className="method-section"
                 >
                     <div className="method-section-number">
-                        08
+                        {getNumber()}
                     </div>
 
                     <div className="method-section-content">
@@ -352,11 +421,7 @@ export function MethodPage({ method }: MethodPageProps) {
                                 <div>
                                     <span>TIME</span>
                                     <code>
-                                        {
-                                            method
-                                                .complexity
-                                                .time
-                                        }
+                                        {method.complexity.time}
                                     </code>
                                 </div>
                             )}
@@ -365,11 +430,7 @@ export function MethodPage({ method }: MethodPageProps) {
                                 <div>
                                     <span>SPACE</span>
                                     <code>
-                                        {
-                                            method
-                                                .complexity
-                                                .space
-                                        }
+                                        {method.complexity.space}
                                     </code>
                                 </div>
                             )}
@@ -378,98 +439,119 @@ export function MethodPage({ method }: MethodPageProps) {
                 </section>
             )}
 
-            {/* Notes */}
+            {/* NOTES */}
             {method.notes &&
                 method.notes.length > 0 && (
                     <section
-                        className="method-callout method-note"
                         id="notes"
+                        className="method-section"
                     >
-                        <div className="method-callout-label">
-                            NOTE
+                        <div className="method-section-number">
+                            {getNumber()}
                         </div>
 
-                        <ul>
-                            {method.notes.map(
-                                (note, index) => (
-                                    <li key={index}>
-                                        {note}
-                                    </li>
-                                )
-                            )}
-                        </ul>
+                        <div className="method-section-content">
+                            <h2>Notes</h2>
+
+                            <div className="method-callout method-note">
+                                <ul>
+                                    {method.notes.map(
+                                        (note, index) => (
+                                            <li key={index}>
+                                                {note}
+                                            </li>
+                                        )
+                                    )}
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                 )}
 
-            {/* Warnings */}
+            {/* WARNINGS */}
             {method.warnings &&
                 method.warnings.length > 0 && (
                     <section
-                        className="method-callout method-warning"
                         id="warnings"
+                        className="method-section"
                     >
-                        <div className="method-callout-label">
-                            WARNING
+                        <div className="method-section-number">
+                            {getNumber()}
                         </div>
 
-                        <ul>
-                            {method.warnings.map(
-                                (warning, index) => (
-                                    <li key={index}>
-                                        {warning}
-                                    </li>
-                                )
-                            )}
-                        </ul>
+                        <div className="method-section-content">
+                            <h2>Warnings</h2>
+
+                            <div className="method-callout method-warning">
+                                <ul>
+                                    {method.warnings.map(
+                                        (warning, index) => (
+                                            <li key={index}>
+                                                {warning}
+                                            </li>
+                                        )
+                                    )}
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                 )}
 
-            {/* Errors */}
+            {/* ERRORS */}
             {method.errors &&
                 method.errors.length > 0 && (
                     <section
-                        className="method-callout method-errors"
                         id="errors"
+                        className="method-section"
                     >
-                        <div className="method-callout-label">
-                            ERRORS & EDGE CASES
+                        <div className="method-section-number">
+                            {getNumber()}
                         </div>
 
-                        <ul>
-                            {method.errors.map(
-                                (error, index) => (
-                                    <li key={index}>
-                                        {error}
-                                    </li>
-                                )
-                            )}
-                        </ul>
+                        <div className="method-section-content">
+                            <h2>Errors</h2>
+
+                            <div className="method-callout method-error">
+                                <ul>
+                                    {method.errors.map(
+                                        (error, index) => (
+                                            <li key={index}>
+                                                {error}
+                                            </li>
+                                        )
+                                    )}
+                                </ul>
+                            </div>
+                        </div>
                     </section>
                 )}
 
-            {/* Related Methods */}
+            {/* RELATED METHODS */}
             {method.relatedMethods &&
                 method.relatedMethods.length > 0 && (
                     <section
-                        className="method-related"
                         id="related-methods"
+                        className="method-section"
                     >
-                        <h2>Related Methods</h2>
+                        <div className="method-section-number">
+                            {getNumber()}
+                        </div>
 
-                        <div className="method-related-list">
-                            {method.relatedMethods.map(
-                                (related) => (
-                                    <span
-                                        key={related}
-                                        className="method-related-item"
-                                    >
-                                        <code>
-                                            {related}()
-                                        </code>
-                                        <span>→</span>
-                                    </span>
-                                )
-                            )}
+                        <div className="method-section-content">
+                            <h2>Related Methods</h2>
+
+                            <div className="method-related">
+                                {method.relatedMethods.map(
+                                    (related) => (
+                                        <span
+                                            key={related}
+                                            className="method-related-item"
+                                        >
+                                            {related}
+                                        </span>
+                                    )
+                                )}
+                            </div>
                         </div>
                     </section>
                 )}

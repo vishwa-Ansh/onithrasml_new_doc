@@ -1,136 +1,229 @@
 import { NavLink } from "react-router-dom";
 
-const sections = [
+const moduleItems = [
     {
-        label: "GETTING STARTED",
-        items: [
-            {
-                label: "User Guide",
-                path: "/docs/v0.3",
-            },
-        ],
+        label: "Numerical Computing",
+        slug: "numerical-computations",
     },
     {
-        label: "MODULES",
-        items: [
-            {
-                label: "Numerical Computing",
-                path: "/docs/v0.3/modules/numerical-computations",
-            },
-            {
-                label: "Linear Algebra",
-                path: "/docs/v0.3/modules/linear-algebra",
-            },
-            {
-                label: "Statistics",
-                path: "/docs/v0.3/modules/statistics",
-            },
-            {
-                label: "Preprocessing",
-                path: "/docs/v0.3/modules/preprocessing",
-            },
-            {
-                label: "Imputation",
-                path: "/docs/v0.3/modules/imputation",
-            },
-            {
-                label: "Linear Models",
-                path: "/docs/v0.3/modules/linear-models",
-            },
-            {
-                label: "Metrics",
-                path: "/docs/v0.3/modules/metrics",
-            },
-            {
-                label: "Optimization",
-                path: "/docs/v0.3/modules/optimization",
-            },
-            {
-                label: "Algorithms",
-                path: "/docs/v0.3/modules/algorithms",
-            },
-        ],
+        label: "Linear Algebra",
+        slug: "linear-algebra",
     },
     {
-        label: "API REFERENCE",
-        items: [
-            {
-                label: "Numerical",
-                path: "/docs/v0.3/api/numerical",
-            },
-            {
-                label: "Linear Algebra",
-                path: "/docs/v0.3/api/linear-algebra",
-            },
-            {
-                label: "Statistics",
-                path: "/docs/v0.3/api/statistics",
-            },
-        ],
+        label: "Statistics",
+        slug: "statistics",
+    },
+    {
+        label: "Preprocessing",
+        slug: "preprocessing",
+    },
+    {
+        label: "Imputation",
+        slug: "imputation",
+    },
+    {
+        label: "Linear Models",
+        slug: "linear-models",
+    },
+    {
+        label: "Metrics",
+        slug: "metrics",
+    },
+    {
+        label: "Optimization",
+        slug: "optimization",
+    },
+    {
+        label: "Algorithms",
+        slug: "algorithms",
+    },
+];
+
+const apiItems = [
+    {
+        label: "Numerical",
+        slug: "numerical-computations",
+    },
+    {
+        label: "Linear Algebra",
+        slug: "linear-algebra",
+    },
+    {
+        label: "Statistics",
+        slug: "statistics",
     },
 ];
 
 export function DocsSidebar() {
     return (
-        <nav className="docs-sidebar" aria-label="Documentation navigation">
+        <nav
+            className="docs-sidebar"
+            aria-label="Documentation navigation"
+        >
+            {/* =====================================================
+                SIDEBAR HEADER
+            ===================================================== */}
+
             <div className="docs-sidebar-header">
                 <span className="docs-sidebar-eyebrow">
-                    ONITHRASML
+                    DOCUMENTATION
                 </span>
 
                 <span className="docs-sidebar-version">
-                    V0.3
+                    v0.3
                 </span>
             </div>
 
             <div className="docs-sidebar-sections">
-                {sections.map((section) => (
-                    <section
-                        className="docs-sidebar-section"
-                        key={section.label}
-                    >
-                        <div className="docs-sidebar-section-title">
-                            {section.label}
-                        </div>
 
-                        <div className="docs-sidebar-links">
-                            {section.items.map((item) => (
-                                <NavLink
-                                    key={item.path}
-                                    to={item.path}
-                                    end={item.path === "/docs/v0.3"}
-                                    className={({ isActive }) =>
-                                        `docs-sidebar-link ${
-                                            isActive ? "active" : ""
-                                        }`
-                                    }
-                                >
-                                    <span className="docs-sidebar-link-dot" />
+                {/* =================================================
+                    GETTING STARTED
+                ================================================= */}
 
-                                    <span className="docs-sidebar-link-text">
-                                        {item.label}
-                                    </span>
+                <div className="docs-sidebar-section">
+                    <div className="docs-sidebar-section-title">
+                        GETTING STARTED
+                    </div>
 
-                                    <span className="docs-sidebar-link-arrow">
-                                        →
-                                    </span>
-                                </NavLink>
-                            ))}
-                        </div>
-                    </section>
-                ))}
-            </div>
+                    <div className="docs-sidebar-links">
 
-            <div className="docs-sidebar-footer">
-                <span className="docs-sidebar-status-dot" />
+                        <NavLink
+                            to="/docs/v0.3"
+                            end
+                            className={({ isActive }) =>
+                                `docs-sidebar-link ${
+                                    isActive ? "active" : ""
+                                }`
+                            }
+                        >
+                            <span className="docs-sidebar-link-dot" />
 
-                <div>
-                    <span className="docs-sidebar-status-label">
-                        DOCUMENTATION
-                    </span>
+                            <span className="docs-sidebar-link-text">
+                                User Guide
+                            </span>
 
-                    <strong>v0.3</strong>
+                            <span className="docs-sidebar-link-arrow">
+                                →
+                            </span>
+                        </NavLink>
+
+                        <NavLink
+                            to="/docs/v0.3/install"
+                            className={({ isActive }) =>
+                                `docs-sidebar-link ${
+                                    isActive ? "active" : ""
+                                }`
+                            }
+                        >
+                            <span className="docs-sidebar-link-dot" />
+
+                            <span className="docs-sidebar-link-text">
+                                Installation
+                            </span>
+
+                            <span className="docs-sidebar-link-arrow">
+                                →
+                            </span>
+                        </NavLink>
+
+                    </div>
                 </div>
+
+
+                {/* =================================================
+                    MODULES
+                ================================================= */}
+
+                <div className="docs-sidebar-section">
+
+                    <div className="docs-sidebar-section-title">
+                        MODULES
+                    </div>
+
+                    <div className="docs-sidebar-links">
+                        {moduleItems.map((item) => (
+                            <NavLink
+                                key={item.slug}
+                                to={`/docs/v0.3/modules/${item.slug}`}
+                                className={({ isActive }) =>
+                                    `docs-sidebar-link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
+                            >
+                                <span className="docs-sidebar-link-dot" />
+
+                                <span className="docs-sidebar-link-text">
+                                    {item.label}
+                                </span>
+
+                                <span className="docs-sidebar-link-arrow">
+                                    →
+                                </span>
+                            </NavLink>
+                        ))}
+                    </div>
+
+                </div>
+
+
+                {/* =================================================
+                    API REFERENCE
+                ================================================= */}
+
+                <div className="docs-sidebar-section">
+
+                    <div className="docs-sidebar-section-title">
+                        API REFERENCE
+                    </div>
+
+                    <div className="docs-sidebar-links">
+                        {apiItems.map((item) => (
+                            <NavLink
+                                key={item.slug}
+                                to={`/docs/v0.3/modules/${item.slug}`}
+                                className={({ isActive }) =>
+                                    `docs-sidebar-link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
+                            >
+                                <span className="docs-sidebar-link-dot" />
+
+                                <span className="docs-sidebar-link-text">
+                                    {item.label}
+                                </span>
+
+                                <span className="docs-sidebar-link-arrow">
+                                    →
+                                </span>
+                            </NavLink>
+                        ))}
+                    </div>
+
+                </div>
+
+
+                {/* =================================================
+                    STATUS
+                ================================================= */}
+
+                <div className="docs-sidebar-footer">
+
+                    <span className="docs-sidebar-status-dot" />
+
+                    <div>
+                        <span className="docs-sidebar-status-label">
+                            SYSTEM STATUS
+                        </span>
+
+                        <strong>
+                            Documentation online
+                        </strong>
+                    </div>
+
+                </div>
+
             </div>
         </nav>
     );
