@@ -1,0 +1,121 @@
+.not-found-page {
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+}
+
+.not-found-content {
+    width: min(620px, 100%);
+    text-align: center;
+}
+
+.not-found-code {
+    display: block;
+    margin-bottom: 18px;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: #f97316;
+}
+
+.not-found-eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #64748b;
+}
+
+.not-found-content h1 {
+    margin: 0;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #0f172a;
+}
+
+.not-found-content p {
+    max-width: 500px;
+    margin: 24px auto 0;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #64748b;
+}
+
+.not-found-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.not-found-primary,
+.not-found-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.not-found-primary {
+    color: white;
+    background: #f97316;
+    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.2);
+}
+
+.not-found-secondary {
+    color: #334155;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.not-found-primary:hover,
+.not-found-secondary:hover {
+    transform: translateY(-2px);
+}
+
+.not-found-primary:hover {
+    box-shadow: 0 12px 30px rgba(249, 115, 22, 0.28);
+}
+
+.not-found-secondary:hover {
+    background: #f1f5f9;
+}
+
+@media (max-width: 640px) {
+    .not-found-page {
+        min-height: 60vh;
+        padding: 60px 20px;
+    }
+
+    .not-found-content h1 {
+        font-size: 46px;
+    }
+
+    .not-found-content p {
+        font-size: 15px;
+    }
+
+    .not-found-actions {
+        flex-direction: column;
+    }
+
+    .not-found-primary,
+    .not-found-secondary {
+        width: 100%;
+    }
+}

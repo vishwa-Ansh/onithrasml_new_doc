@@ -1,0 +1,342 @@
+.linear-algebra-page {
+    width: min(100%, 980px);
+    margin: 0 auto;
+    padding: 56px 32px 100px;
+}
+
+/* ─────────────────────────────────────────
+   Header
+───────────────────────────────────────── */
+
+.linear-algebra-header {
+    padding-bottom: 48px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.linear-algebra-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 20px;
+
+    color: #f97316;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.linear-algebra-eyebrow span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #f97316;
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
+}
+
+.linear-algebra-header h1 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: clamp(42px, 6vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+}
+
+.linear-algebra-header > p {
+    max-width: 720px;
+    margin: 22px 0 0;
+
+    color: #64748b;
+
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.linear-algebra-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+
+    margin-top: 26px;
+}
+
+.linear-algebra-meta span {
+    padding: 7px 10px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+
+    color: #64748b;
+    background: #f8fafc;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+/* ─────────────────────────────────────────
+   Methods
+───────────────────────────────────────── */
+
+.linear-algebra-methods {
+    padding-top: 18px;
+}
+
+.linear-algebra-group {
+    padding: 38px 0;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.linear-algebra-group:last-child {
+    border-bottom: 0;
+}
+
+.linear-algebra-group-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin-bottom: 20px;
+}
+
+.linear-algebra-group-header h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 25px;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+}
+
+.linear-algebra-group-header p {
+    max-width: 650px;
+    margin: 7px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.linear-algebra-group-count {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 30px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+
+    color: #94a3b8;
+    background: #f8fafc;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* ─────────────────────────────────────────
+   Method List
+───────────────────────────────────────── */
+
+.linear-algebra-method-list {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+.linear-algebra-method {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 18px 20px;
+
+    color: inherit;
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.linear-algebra-method + .linear-algebra-method {
+    border-top: 1px solid #e5e7eb;
+}
+
+.linear-algebra-method:hover {
+    background: #f8fafc;
+}
+
+.linear-algebra-method-main {
+    min-width: 0;
+}
+
+.linear-algebra-method-main code {
+    display: inline-block;
+
+    color: #c2410c;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.linear-algebra-method-main p {
+    margin: 6px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.linear-algebra-method-side {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    flex-shrink: 0;
+}
+
+.linear-algebra-method-status {
+    padding: 5px 8px;
+
+    border-radius: 999px;
+
+    font-family:
+        "SFMono-Regular",
+        "SF Mono",
+        Consolas,
+        monospace;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.linear-algebra-method-status-planned {
+    color: #92400e;
+    background: #ffedd5;
+}
+
+.linear-algebra-method-status-implemented {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.linear-algebra-method-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+
+    color: #64748b;
+
+    font-size: 15px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.linear-algebra-method:hover
+    .linear-algebra-method-arrow {
+    color: #f97316;
+    background: #fff7ed;
+    transform: translateX(3px);
+}
+
+/* ─────────────────────────────────────────
+   Responsive
+───────────────────────────────────────── */
+
+@media (max-width: 800px) {
+    .linear-algebra-page {
+        padding: 42px 22px 70px;
+    }
+
+    .linear-algebra-group-header {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 620px) {
+    .linear-algebra-page {
+        padding: 32px 16px 60px;
+    }
+
+    .linear-algebra-header {
+        padding-bottom: 34px;
+    }
+
+    .linear-algebra-header h1 {
+        font-size: 43px;
+    }
+
+    .linear-algebra-header > p {
+        font-size: 15px;
+    }
+
+    .linear-algebra-group {
+        padding: 30px 0;
+    }
+
+    .linear-algebra-group-header {
+        display: block;
+    }
+
+    .linear-algebra-group-count {
+        margin-top: 12px;
+    }
+
+    .linear-algebra-method {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    .linear-algebra-method-side {
+        gap: 8px;
+    }
+
+    .linear-algebra-method-status {
+        display: none;
+    }
+
+    .linear-algebra-method-arrow {
+        width: 28px;
+        height: 28px;
+    }
+}
