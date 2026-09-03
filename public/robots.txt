@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://onithrasml.vercel.app/sitemap.xml
