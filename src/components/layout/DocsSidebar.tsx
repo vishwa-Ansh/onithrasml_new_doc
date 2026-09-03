@@ -72,34 +72,28 @@ export function DocsSidebar() {
                     GETTING STARTED
                 ================================================= */}
 
-                {/* =================================================
+        {/* =================================================
             COMMUNITY
         ================================================= */}
 
-<div className="docs-sidebar-section">
-  <div className="docs-sidebar-section-title">
-    COMMUNITY
-  </div>
+        <div className="docs-sidebar-section">
+          <div className="docs-sidebar-section-title">COMMUNITY</div>
 
-  <div className="docs-sidebar-links">
-    <NavLink
-      to="/contribute"
-      className={({ isActive }) =>
-        `docs-sidebar-link ${isActive ? "active" : ""}`
-      }
-    >
-      <span className="docs-sidebar-link-dot" />
+          <div className="docs-sidebar-links">
+            <NavLink
+              to="/contribute"
+              className={({ isActive }) =>
+                `docs-sidebar-link ${isActive ? "active" : ""}`
+              }
+            >
+              <span className="docs-sidebar-link-dot" />
 
-      <span className="docs-sidebar-link-text">
-        Contributing
-      </span>
+              <span className="docs-sidebar-link-text">Contributing</span>
 
-      <span className="docs-sidebar-link-arrow">
-        →
-      </span>
-    </NavLink>
-  </div>
-</div>
+              <span className="docs-sidebar-link-arrow">→</span>
+            </NavLink>
+          </div>
+        </div>
 
         <div className="docs-sidebar-section">
           <div className="docs-sidebar-section-title">GETTING STARTED</div>
@@ -128,6 +122,20 @@ export function DocsSidebar() {
               <span className="docs-sidebar-link-dot" />
 
               <span className="docs-sidebar-link-text">Installation</span>
+
+              <span className="docs-sidebar-link-arrow">→</span>
+            </NavLink>
+
+             <NavLink
+              to="/visualizations"
+              end
+              className={({ isActive }) =>
+                `docs-sidebar-link ${isActive ? "active" : ""}`
+              }
+            >
+              <span className="docs-sidebar-link-dot" />
+
+              <span className="docs-sidebar-link-text">3D visualization</span>
 
               <span className="docs-sidebar-link-arrow">→</span>
             </NavLink>
