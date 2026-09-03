@@ -51,7 +51,7 @@ export function SiteHeader() {
           </span>
 
           <span className="logo-text">
-            <strong>onithras<b style={{color:"#6c9cf5"}}>ML</b></strong>
+            <strong>onithras<b style={{color:"#4a7aff"}}>ML</b></strong>
             <em>Machine learning in Python</em>
           </span>
         </Link>

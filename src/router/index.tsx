@@ -7,6 +7,8 @@ import { ContributePage } from "../pages/Contribute/ContributePage";
 import { ChangelogPage } from "../pages/Changelog/ChangelogPage";
 import { DatasetsPage } from "../pages/Datasets/DatasetsPage";
 import { DatasetDetailPage } from "../pages/Datasets/DatasetDetailPage";
+// import { VisualizationTestPage } from "../pages/VisualizationTest/VisualizationTestPage";
+import { VisualizationsPage } from "../pages/visualizations/VisualizationsPage";
 
 export function AppRouter() {
     return (
@@ -46,14 +48,20 @@ export function AppRouter() {
                 path="/contribute"
                 element={<ContributePage />}
             />
+
+           
+            <Route
+    path="/visualizations"
+    element={<VisualizationsPage />}
+/>
             <Route path="/changelog" element={<ChangelogPage />} />
 
             <Route path="/datasets" element={<DatasetsPage />} />
 
-<Route
-    path="/datasets/:slug"
-    element={<DatasetDetailPage />}
-/>
+            <Route
+                path="/datasets/:slug"
+                element={<DatasetDetailPage />}
+            />
 
             {/* 404 */}
             <Route
