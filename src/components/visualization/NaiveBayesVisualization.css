@@ -1,0 +1,734 @@
+/* =========================================================
+   NAIVE BAYES VISUALIZATION — LIGHT THEME
+========================================================= */
+
+.nb-visualization {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.nb-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 26px 28px 22px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    background: #ffffff;
+}
+
+.nb-eyebrow,
+.nb-section-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    color: #64748b;
+}
+
+.nb-header h3 {
+    margin: 0;
+
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    line-height: 1.2;
+    font-weight: 700;
+
+    color: #0f172a;
+}
+
+.nb-header p {
+    max-width: 720px;
+
+    margin: 9px 0 0;
+
+    font-size: 0.92rem;
+    line-height: 1.65;
+
+    color: #64748b;
+}
+
+.nb-status {
+    flex-shrink: 0;
+
+    padding: 7px 11px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    color: #475569;
+    background: #f8fafc;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+.nb-canvas {
+    position: relative;
+
+    width: 100%;
+    height: 560px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(241, 245, 249, 0.9),
+            transparent 58%
+        );
+}
+
+.nb-canvas canvas {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* =========================================================
+   STEP CONTROLS
+========================================================= */
+
+.nb-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 18px 24px;
+
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+
+    background: #f8fafc;
+}
+
+.nb-step-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 0;
+}
+
+.nb-step-title span {
+    font-size: 0.92rem;
+    font-weight: 650;
+
+    color: #1e293b;
+}
+
+.nb-step-title strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+
+    font-size: 0.7rem;
+
+    color: #475569;
+    background: #ffffff;
+}
+
+.nb-step-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nb-step-actions button {
+    min-height: 36px;
+
+    padding: 0 13px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 650;
+
+    color: #334155;
+    background: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        transform 160ms ease;
+}
+
+.nb-step-actions button:hover:not(:disabled) {
+    border-color: #94a3b8;
+
+    background: #f8fafc;
+
+    box-shadow:
+        0 3px 8px rgba(15, 23, 42, 0.07);
+
+    transform: translateY(-1px);
+}
+
+.nb-step-actions button:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   QUERY SECTION
+========================================================= */
+
+.nb-query {
+    margin: 20px 24px 0;
+    padding: 20px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+
+    background: #f8fafc;
+}
+
+.nb-query-heading h4 {
+    margin: 0;
+
+    font-size: 0.98rem;
+    font-weight: 650;
+
+    color: #1e293b;
+}
+
+.nb-query-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+
+    margin-top: 18px;
+}
+
+.nb-query-inputs label {
+    display: grid;
+    grid-template-columns: auto minmax(100px, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.nb-query-inputs label span {
+    font-size: 0.76rem;
+    font-weight: 600;
+
+    color: #64748b;
+
+    white-space: nowrap;
+}
+
+.nb-query-inputs input[type="range"] {
+    width: 100%;
+    min-width: 0;
+
+    accent-color: #334155;
+
+    cursor: pointer;
+}
+
+.nb-query-inputs label strong {
+    min-width: 34px;
+
+    text-align: right;
+
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+
+    color: #1e293b;
+}
+
+
+/* =========================================================
+   PROBABILITY CARDS
+========================================================= */
+
+.nb-probabilities {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+
+    margin: 20px 24px 0;
+}
+
+.nb-probability-card {
+    min-width: 0;
+
+    padding: 18px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.nb-probability-card > span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 0.73rem;
+    font-weight: 650;
+
+    color: #64748b;
+}
+
+.nb-probability-card strong {
+    display: block;
+
+    font-size: clamp(1.35rem, 3vw, 1.8rem);
+    line-height: 1;
+
+    font-variant-numeric: tabular-nums;
+
+    color: #0f172a;
+}
+
+.nb-probability-card small {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 0.68rem;
+
+    color: #94a3b8;
+}
+
+.nb-prediction-card {
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.nb-details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+
+    margin: 14px 24px 0;
+}
+
+.nb-detail-card {
+    min-width: 0;
+
+    padding: 18px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+
+    background: #ffffff;
+}
+
+.nb-detail-card h4 {
+    margin: 0 0 13px;
+
+    font-size: 0.9rem;
+    font-weight: 650;
+
+    color: #1e293b;
+}
+
+.nb-detail-card p {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin: 7px 0;
+
+    font-size: 0.75rem;
+    line-height: 1.5;
+
+    color: #64748b;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   FORMULA
+========================================================= */
+
+.nb-formula {
+    margin: 14px 24px 0;
+    padding: 19px 20px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+
+    background: #f8fafc;
+}
+
+.nb-formula > span {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+
+    color: #64748b;
+}
+
+.nb-formula code {
+    display: block;
+
+    overflow-x: auto;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    line-height: 1.6;
+
+    color: #1e293b;
+}
+
+.nb-formula p {
+    margin: 9px 0 0;
+
+    font-size: 0.74rem;
+    line-height: 1.55;
+
+    color: #64748b;
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.nb-legend {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+
+    margin: 14px 24px 24px;
+    padding-top: 4px;
+}
+
+.nb-legend > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 0.72rem;
+
+    color: #64748b;
+}
+
+.nb-dot {
+    width: 8px;
+    height: 8px;
+
+    flex: 0 0 8px;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    .nb-canvas {
+        height: 500px;
+    }
+
+    .nb-header {
+        padding: 23px 20px 20px;
+    }
+
+    .nb-controls {
+        padding: 16px 20px;
+    }
+
+    .nb-query,
+    .nb-probabilities,
+    .nb-details,
+    .nb-formula {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .nb-legend {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .nb-query-inputs {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+    .nb-visualization {
+        border-radius: 14px;
+    }
+
+    .nb-header {
+        display: block;
+
+        padding: 20px 16px 18px;
+    }
+
+    .nb-header p {
+        font-size: 0.84rem;
+        line-height: 1.6;
+    }
+
+    .nb-status {
+        display: inline-flex;
+
+        margin-top: 14px;
+    }
+
+    .nb-canvas {
+        height: 450px;
+    }
+
+    .nb-controls {
+        display: block;
+
+        padding: 15px 16px;
+    }
+
+    .nb-step-title {
+        justify-content: space-between;
+    }
+
+    .nb-step-actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        margin-top: 12px;
+    }
+
+    .nb-step-actions button {
+        width: 100%;
+        min-width: 0;
+
+        padding: 0 7px;
+
+        font-size: 0.7rem;
+    }
+
+    .nb-query {
+        margin: 16px 16px 0;
+        padding: 16px;
+    }
+
+    .nb-query-inputs {
+        gap: 16px;
+    }
+
+    .nb-query-inputs label {
+        grid-template-columns: 1fr auto;
+        gap: 7px 10px;
+    }
+
+    .nb-query-inputs label span {
+        grid-column: 1;
+    }
+
+    .nb-query-inputs label strong {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .nb-query-inputs input[type="range"] {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .nb-probabilities {
+        grid-template-columns: 1fr;
+
+        margin: 16px 16px 0;
+    }
+
+    .nb-details {
+        grid-template-columns: 1fr;
+
+        margin: 12px 16px 0;
+    }
+
+    .nb-formula {
+        margin: 12px 16px 0;
+    }
+
+    .nb-legend {
+        margin: 12px 16px 20px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+    .nb-canvas {
+        height: 400px;
+    }
+
+    .nb-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .nb-query-heading h4 {
+        font-size: 0.9rem;
+    }
+
+    .nb-probability-card {
+        padding: 15px;
+    }
+
+    .nb-detail-card {
+        padding: 15px;
+    }
+
+    .nb-formula {
+        padding: 16px;
+    }
+
+    .nb-formula code {
+        font-size: 0.72rem;
+    }
+
+    .nb-legend {
+        gap: 12px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 380px) {
+    .nb-header {
+        padding: 17px 13px;
+    }
+
+    .nb-canvas {
+        height: 360px;
+    }
+
+    .nb-controls {
+        padding: 13px;
+    }
+
+    .nb-query {
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+
+    .nb-probabilities,
+    .nb-details,
+    .nb-formula {
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+
+    .nb-legend {
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+
+    .nb-step-actions {
+        gap: 5px;
+    }
+
+    .nb-step-actions button {
+        font-size: 0.65rem;
+        padding: 0 4px;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+    .nb-step-actions button {
+        min-height: 42px;
+    }
+
+    .nb-query-inputs input[type="range"] {
+        min-height: 30px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .nb-step-actions button {
+        transition: none;
+    }
+}

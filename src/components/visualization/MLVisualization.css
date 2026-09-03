@@ -1,0 +1,1010 @@
+/* =========================================================
+   ML VISUALIZATION
+========================================================= */
+
+.ml-visualization {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #e3e0e8;
+    border-radius: 22px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08),
+        0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+
+/* =========================================================
+   3D CANVAS / GRAPH
+========================================================= */
+
+.ml-viz-canvas {
+    position: relative;
+
+    width: 100%;
+    height: 560px;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+.ml-viz-canvas canvas {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* =========================================================
+   MAIN CONTROLS
+========================================================= */
+
+.ml-viz-controls {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    padding: 18px;
+
+    border-top: 1px solid #eeeaf1;
+
+    background: #ffffff;
+
+    box-sizing: border-box;
+}
+
+.ml-viz-button {
+    min-height: 48px;
+
+    padding: 0 22px;
+
+    border: 1px solid #ddd9e2;
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    color: #24212b;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.07);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.ml-viz-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.11);
+}
+
+.ml-viz-button.primary {
+    border-color: #aa3bff;
+
+    background: #aa3bff;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(170, 59, 255, 0.24);
+}
+
+.ml-viz-button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   TRAINING PANEL
+========================================================= */
+
+.ml-viz-training {
+    position: relative;
+
+    width: auto;
+
+    margin: 0 18px 18px;
+
+    padding: 20px;
+
+    border: 1px solid #e3e0e8;
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.06);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   GENERIC ROW
+========================================================= */
+
+.ml-viz-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    min-width: 0;
+
+    color: #625d6d;
+
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.ml-viz-row + .ml-viz-row {
+    margin-top: 13px;
+}
+
+.ml-viz-row label {
+    flex: 0 0 auto;
+
+    color: #77717f;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.ml-viz-row > span {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   RANGE INPUT
+========================================================= */
+
+.ml-viz-range {
+    flex: 1 1 auto;
+
+    width: 100%;
+    min-width: 80px;
+
+    accent-color: #aa3bff;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   PHASE INDICATOR
+========================================================= */
+
+.ml-viz-phase {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 6px;
+
+    margin-top: 17px;
+}
+
+.ml-viz-phase span {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+
+    min-height: 40px;
+
+    padding: 8px 5px;
+
+    border: 1px solid #e3dfe8;
+    border-radius: 10px;
+
+    background: #f8f7f9;
+
+    color: #96919d;
+
+    text-align: center;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    box-sizing: border-box;
+}
+
+.ml-viz-phase span.active {
+    border-color: #d8aaff;
+
+    background: #fbf1ff;
+
+    color: #aa3bff;
+}
+
+
+/* =========================================================
+   PHASE DESCRIPTION
+========================================================= */
+
+.ml-viz-phase-description {
+    margin-top: 14px;
+
+    padding: 14px;
+
+    border-left: 3px solid #aa3bff;
+
+    background: #faf8fb;
+
+    color: #6b6573;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   ITERATION INFORMATION
+========================================================= */
+
+.ml-viz-iteration {
+    margin-top: 12px;
+
+    color: #746e7d;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+.ml-viz-iteration strong {
+    color: #17131d;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.ml-viz-progress {
+    width: 100%;
+    height: 6px;
+
+    margin-top: 12px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #eeeaf1;
+}
+
+.ml-viz-progress-bar {
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #aa3bff;
+
+    transition: width 0.2s ease;
+}
+
+
+/* =========================================================
+   FORMULA
+========================================================= */
+
+.ml-viz-formula {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    width: auto;
+
+    margin: 0 18px 18px;
+
+    padding: 14px 18px;
+
+    border: 1px solid #e3e0e8;
+    border-radius: 14px;
+
+    background: #faf9fb;
+
+    box-sizing: border-box;
+
+    overflow-x: auto;
+}
+
+.ml-viz-formula strong {
+    flex: 0 0 auto;
+
+    color: #77717f;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+.ml-viz-formula span {
+    flex: 0 0 auto;
+
+    color: #17131d;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   MODEL INFORMATION CARDS
+========================================================= */
+
+.ml-viz-model {
+    position: relative;
+
+    width: auto;
+
+    margin: 0 18px 18px;
+
+    padding: 18px;
+
+    border: 1px solid #e3e0e8;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 22px rgba(15, 23, 42, 0.05);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MODEL TITLE
+========================================================= */
+
+.ml-viz-model-title {
+    margin-bottom: 13px;
+
+    color: #77717f;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MODEL ROWS
+========================================================= */
+
+.ml-viz-model .ml-viz-row {
+    color: #302b37;
+}
+
+.ml-viz-model .ml-viz-row + .ml-viz-row {
+    margin-top: 11px;
+}
+
+
+/* =========================================================
+   GRADIENTS
+========================================================= */
+
+.ml-viz-model-gradients {
+    position: relative;
+}
+
+
+/* =========================================================
+   LOSS
+========================================================= */
+
+.ml-viz-loss {
+    position: relative;
+
+    width: auto;
+
+    margin: 0 18px 18px;
+
+    padding: 18px;
+
+    border: 1px solid #e3e0e8;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 22px rgba(15, 23, 42, 0.05);
+
+    box-sizing: border-box;
+}
+
+.ml-viz-loss-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+.ml-viz-loss-title {
+    color: #77717f;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+.ml-viz-loss-type {
+    flex: 0 0 auto;
+
+    color: #211d27;
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.ml-viz-loss-empty {
+    margin-top: 26px;
+
+    color: #827c8b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.ml-viz-loss-svg {
+    display: block;
+
+    width: 100%;
+    height: 70px;
+
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   K-MEANS LEGEND
+========================================================= */
+
+.ml-viz-legend {
+    position: relative;
+
+    width: auto;
+
+    margin: 0 18px 18px;
+
+    padding: 18px;
+
+    border: 1px solid #e3e0e8;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 22px rgba(15, 23, 42, 0.05);
+
+    box-sizing: border-box;
+}
+
+.ml-viz-legend-title {
+    margin-bottom: 12px;
+
+    color: #77717f;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+.ml-viz-legend-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #5f5968;
+
+    font-size: 13px;
+}
+
+.ml-viz-legend-item + .ml-viz-legend-item {
+    margin-top: 9px;
+}
+
+.ml-viz-legend-dot {
+    width: 9px;
+    height: 9px;
+
+    flex: 0 0 9px;
+
+    border-radius: 50%;
+}
+
+.ml-viz-legend-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 13px 0;
+
+    background: #e8e4eb;
+}
+
+.ml-viz-legend-centroid {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    flex: 0 0 18px;
+
+    border: 1px solid #d7d1dc;
+    border-radius: 50%;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .ml-viz-canvas {
+        height: 520px;
+    }
+
+    .ml-viz-training,
+    .ml-viz-model,
+    .ml-viz-loss,
+    .ml-viz-formula,
+    .ml-viz-legend {
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+
+    .ml-viz-training,
+    .ml-viz-model,
+    .ml-viz-loss,
+    .ml-viz-legend {
+        padding: 17px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .ml-visualization {
+        width: 100%;
+        max-width: 100%;
+
+        border-radius: 17px;
+    }
+
+
+    /* -----------------------------------------
+       GRAPH
+    ----------------------------------------- */
+
+    .ml-viz-canvas {
+        width: 100%;
+        height: 460px;
+    }
+
+
+    /* -----------------------------------------
+       CONTROLS
+    ----------------------------------------- */
+
+    .ml-viz-controls {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+
+        padding: 12px;
+    }
+
+    .ml-viz-button {
+        width: 100%;
+
+        min-height: 46px;
+
+        padding: 0 12px;
+
+        font-size: 14px;
+    }
+
+
+    /* -----------------------------------------
+       TRAINING
+    ----------------------------------------- */
+
+    .ml-viz-training {
+        margin: 0 10px 12px;
+
+        padding: 16px;
+
+        border-radius: 15px;
+    }
+
+
+    /* -----------------------------------------
+       ROW
+    ----------------------------------------- */
+
+    .ml-viz-row {
+        gap: 9px;
+
+        font-size: 13px;
+    }
+
+    .ml-viz-row label {
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       PHASE
+    ----------------------------------------- */
+
+    .ml-viz-phase {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 6px;
+    }
+
+    .ml-viz-phase span {
+        min-height: 40px;
+
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       FORMULA
+    ----------------------------------------- */
+
+    .ml-viz-formula {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        padding: 13px 15px;
+    }
+
+    .ml-viz-formula span {
+        font-size: 15px;
+    }
+
+
+    /* -----------------------------------------
+       MODEL
+    ----------------------------------------- */
+
+    .ml-viz-model {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        padding: 16px;
+
+        border-radius: 15px;
+    }
+
+
+    /* -----------------------------------------
+       LOSS
+    ----------------------------------------- */
+
+    .ml-viz-loss {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        padding: 16px;
+
+        border-radius: 15px;
+    }
+
+
+    /* -----------------------------------------
+       LEGEND
+    ----------------------------------------- */
+
+    .ml-viz-legend {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        padding: 16px;
+
+        border-radius: 15px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .ml-visualization {
+        border-radius: 15px;
+    }
+
+
+    /* -----------------------------------------
+       GRAPH
+    ----------------------------------------- */
+
+    .ml-viz-canvas {
+        height: 420px;
+    }
+
+
+    /* -----------------------------------------
+       CONTROLS
+    ----------------------------------------- */
+
+    .ml-viz-controls {
+        padding: 10px;
+    }
+
+    .ml-viz-button {
+        min-height: 45px;
+
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       TRAINING
+    ----------------------------------------- */
+
+    .ml-viz-training {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        padding: 14px;
+    }
+
+
+    /* -----------------------------------------
+       RANGE
+    ----------------------------------------- */
+
+    .ml-viz-range {
+        min-width: 70px;
+    }
+
+
+    /* -----------------------------------------
+       PHASE
+    ----------------------------------------- */
+
+    .ml-viz-phase {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* -----------------------------------------
+       DESCRIPTION
+    ----------------------------------------- */
+
+    .ml-viz-phase-description {
+        padding: 12px;
+
+        font-size: 12.5px;
+    }
+
+
+    /* -----------------------------------------
+       MODEL
+    ----------------------------------------- */
+
+    .ml-viz-model {
+        margin-bottom: 12px;
+
+        padding: 15px;
+    }
+
+
+    /* -----------------------------------------
+       LOSS
+    ----------------------------------------- */
+
+    .ml-viz-loss {
+        margin-bottom: 12px;
+
+        padding: 15px;
+    }
+
+
+    /* -----------------------------------------
+       LEGEND
+    ----------------------------------------- */
+
+    .ml-viz-legend {
+        margin-bottom: 12px;
+
+        padding: 15px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .ml-viz-canvas {
+        height: 390px;
+    }
+
+
+    .ml-viz-controls {
+        grid-template-columns: 1fr;
+    }
+
+
+    .ml-viz-button {
+        min-height: 44px;
+    }
+
+
+    .ml-viz-training {
+        padding: 13px;
+    }
+
+
+    .ml-viz-row {
+        gap: 7px;
+
+        font-size: 12px;
+    }
+
+
+    .ml-viz-row label {
+        font-size: 12px;
+    }
+
+
+    .ml-viz-phase span {
+        min-height: 38px;
+
+        font-size: 9.5px;
+    }
+
+
+    .ml-viz-model,
+    .ml-viz-loss,
+    .ml-viz-legend {
+        padding: 14px;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+========================================================= */
+
+@media (max-width: 340px) {
+
+    .ml-viz-canvas {
+        height: 370px;
+    }
+
+    .ml-viz-training {
+        padding: 12px;
+    }
+
+    .ml-viz-model,
+    .ml-viz-loss,
+    .ml-viz-legend {
+        padding: 13px;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .ml-viz-button:hover {
+        transform: none;
+
+        box-shadow:
+            0 5px 15px rgba(15, 23, 42, 0.07);
+    }
+
+    .ml-viz-button {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ml-viz-button,
+    .ml-viz-progress-bar {
+        transition: none;
+    }
+}
