@@ -381,4 +381,133 @@ export const datasets: DatasetInfo[] = [
             },
         ],
     },
+    {
+    name: "Students Performance",
+    slug: "students-performance",
+    type: "Regression",
+
+    description:
+        "A student performance dataset containing demographic information, parental education, lunch type, test preparation status, and mathematics, reading, and writing scores. It can be used for exploratory data analysis, regression, preprocessing, feature engineering, and educational data analysis.",
+
+    samples: 1002,
+
+    features: 7,
+
+    target: "math score",
+
+    file: "/datasets/StudentsPerformance.csv",
+
+    columns: [
+        {
+            name: "gender",
+            type: "categorical",
+            description:
+                "Gender of the student.",
+        },
+        {
+            name: "race/ethnicity",
+            type: "categorical",
+            description:
+                "Race or ethnicity group assigned to the student.",
+        },
+        {
+            name: "parental level of education",
+            type: "categorical",
+            description:
+                "Highest education level attained by the student's parent or parents.",
+        },
+        {
+            name: "lunch",
+            type: "categorical",
+            description:
+                "Type of lunch received by the student.",
+        },
+        {
+            name: "test preparation course",
+            type: "categorical",
+            description:
+                "Whether the student completed a test preparation course.",
+        },
+        {
+            name: "math score",
+            type: "numeric",
+            description:
+                "Student's mathematics test score.",
+        },
+        {
+            name: "reading score",
+            type: "numeric",
+            description:
+                "Student's reading test score.",
+        },
+        {
+            name: "writing score",
+            type: "numeric",
+            description:
+                "Student's writing test score.",
+        },
+    ],
+},
+
+{
+    name: "Insurance",
+    slug: "insurance",
+    type: "Regression",
+
+    description:
+        "A health insurance dataset containing demographic information, body mass index, number of children, smoking status, geographic region, and individual medical insurance charges. It can be used for regression, exploratory data analysis, preprocessing, feature engineering, and machine learning experiments.",
+
+    samples: 1340,
+
+    features: 6,
+
+    target: "charges",
+
+    file: "/datasets/insurance.csv",
+
+    columns: [
+        {
+            name: "age",
+            type: "integer",
+            description:
+                "Age of the insured person in years.",
+        },
+        {
+            name: "sex",
+            type: "categorical",
+            description:
+                "Sex of the insured person.",
+        },
+        {
+            name: "bmi",
+            type: "numeric",
+            description:
+                "Body Mass Index of the insured person.",
+        },
+        {
+            name: "children",
+            type: "integer",
+            description:
+                "Number of children or dependents covered by the insurance plan.",
+        },
+        {
+            name: "smoker",
+            type: "categorical",
+            description:
+                "Indicates whether the insured person is a smoker.",
+        },
+        {
+            name: "region",
+            type: "categorical",
+            description:
+                "Geographic region of the insured person.",
+        },
+        {
+            name: "charges",
+            type: "numeric",
+            description:
+                "Individual medical insurance charges and the regression target.",
+        },
+    ],
+},
 ];

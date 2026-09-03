@@ -51,7 +51,7 @@ export function SiteHeader() {
           </span>
 
           <span className="logo-text">
-            <strong>onithrasML</strong>
+            <strong>onithras<b style={{color:"#6c9cf5"}}>ML</b></strong>
             <em>Machine learning in Python</em>
           </span>
         </Link>
@@ -272,17 +272,46 @@ export function SiteHeader() {
               <span className="mobile-arrow">→</span>
             </NavLink>
 
+
+
             <NavLink
-              to="/docs/v0.3#api"
+              to="/contribute"
               onClick={closeMenu}
               className="mobile-link"
             >
               <span className="mobile-index">04</span>
 
+              <span>Contributing</span>
+
+              <span className="mobile-arrow">→</span>
+            </NavLink>
+
+            <NavLink
+              to="/datasets"
+              onClick={closeMenu}
+              className="mobile-link"
+            >
+              <span className="mobile-index">05</span>
+
+              <span>Datasets</span>
+
+              <span className="mobile-arrow">→</span>
+            </NavLink>
+            
+
+            <NavLink
+              to="/docs/v0.3#api"
+              onClick={closeMenu}
+              className="mobile-link"
+            >
+              <span className="mobile-index">06</span>
+
               <span>API Reference</span>
 
               <span className="mobile-arrow">→</span>
             </NavLink>
+
+                 
 
             <a
               href="https://github.com"
@@ -291,7 +320,7 @@ export function SiteHeader() {
               onClick={closeMenu}
               className="mobile-link"
             >
-              <span className="mobile-index">05</span>
+              <span className="mobile-index">07</span>
 
               <span>GitHub</span>
 
