@@ -1,0 +1,515 @@
+/* =========================================================
+   ONITHRASML
+   DOCS SIDEBAR
+   Minimal / Premium / Technical
+   ========================================================= */
+
+.docs-sidebar {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    border-right: 1px solid #e7e9ed;
+
+    color: #475569;
+
+    z-index: 100;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.docs-sidebar-header {
+    padding: 26px 22px 24px;
+
+    border-bottom: 1px solid #eef0f3;
+}
+
+.docs-sidebar-title {
+    color: #111827;
+
+    font-size: 0.88rem;
+    font-weight: 750;
+
+    letter-spacing: -0.01em;
+}
+
+.docs-sidebar-subtitle {
+    margin-top: 4px;
+
+    color: #9aa3af;
+
+    font-size: 0.67rem;
+
+    letter-spacing: 0.02em;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.docs-sidebar-sections {
+    flex: 1;
+
+    min-height: 0;
+
+    padding: 25px 13px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: #dfe3e8 transparent;
+}
+
+.docs-sidebar-sections::-webkit-scrollbar {
+    width: 4px;
+}
+
+.docs-sidebar-sections::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.docs-sidebar-sections::-webkit-scrollbar-thumb {
+    background: #dfe3e8;
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.docs-sidebar-section {
+    margin-bottom: 29px;
+}
+
+.docs-sidebar-section:last-child {
+    margin-bottom: 0;
+}
+
+.docs-sidebar-section-title {
+    padding: 0 10px;
+
+    margin-bottom: 9px;
+
+    color: #a0a8b3;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.58rem;
+    font-weight: 700;
+
+    letter-spacing: 0.13em;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.docs-sidebar-link {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 37px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 7px 10px;
+
+    color: #64748b;
+
+    border-radius: 5px;
+
+    font-size: 0.76rem;
+    font-weight: 520;
+
+    line-height: 1.3;
+
+    text-decoration: none;
+
+    transition:
+        color 150ms ease,
+        background 150ms ease,
+        padding 150ms ease;
+}
+
+.docs-sidebar-link:hover {
+    color: #111827;
+
+    background: #f8fafc;
+}
+
+.docs-sidebar-link.active {
+    color: #1d4ed8;
+
+    background: rgba(37, 99, 235, 0.055);
+
+    font-weight: 650;
+}
+
+.docs-sidebar-link.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+
+    width: 2px;
+
+    background: #2563eb;
+
+    border-radius: 0 2px 2px 0;
+}
+
+
+/* =========================================================
+   BOTTOM
+   ========================================================= */
+
+.docs-sidebar-bottom {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 20px;
+
+    border-top: 1px solid #eef0f3;
+
+    color: #a0a8b3;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 0.58rem;
+}
+
+.docs-sidebar-status {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.docs-sidebar-status span {
+    width: 6px;
+    height: 6px;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 3px rgba(34, 197, 94, 0.08);
+}
+
+.docs-sidebar-version {
+    color: #64748b;
+}
+
+
+/* =========================================================
+   MOBILE BUTTON
+   ========================================================= */
+
+.docs-mobile-menu-button {
+    display: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .docs-sidebar-header {
+        padding: 22px 17px;
+    }
+
+    .docs-sidebar-sections {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    .docs-sidebar-link {
+        font-size: 0.72rem;
+    }
+
+    .docs-sidebar-bottom {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    .docs-sidebar {
+        position: relative;
+
+        width: 100%;
+        height: 52px;
+
+        display: block;
+
+        border-right: 0;
+        border-bottom: 1px solid #e7e9ed;
+
+        overflow: visible;
+
+        background: #ffffff;
+    }
+
+
+    /* Mobile button */
+
+    .docs-mobile-menu-button {
+        width: 100%;
+        height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 16px;
+
+        color: #475569;
+
+        background: #ffffff;
+
+        border: 0;
+
+        cursor: pointer;
+
+        font-family:
+            ui-monospace,
+            SFMono-Regular,
+            Menlo,
+            Monaco,
+            Consolas,
+            monospace;
+
+        font-size: 0.62rem;
+        font-weight: 700;
+
+        letter-spacing: 0.08em;
+
+        text-transform: uppercase;
+    }
+
+    .docs-mobile-menu-icon {
+        width: 29px;
+        height: 29px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #475569;
+
+        background: #f8fafc;
+
+        border: 1px solid #e5e7eb;
+
+        border-radius: 5px;
+
+        font-family:
+            system-ui,
+            sans-serif;
+
+        font-size: 1rem;
+
+        line-height: 1;
+    }
+
+
+    /* Hide desktop header */
+
+    .docs-sidebar-header {
+        display: none;
+    }
+
+
+    /* Mobile navigation */
+
+    .docs-sidebar-sections {
+        position: absolute;
+
+        top: 52px;
+        left: 0;
+
+        width: 100%;
+
+        max-height: calc(100svh - 52px);
+
+        display: none;
+
+        padding: 18px 12px 24px;
+
+        background: rgba(255, 255, 255, 0.99);
+
+        border-bottom: 1px solid #e5e7eb;
+
+        box-shadow:
+            0 18px 40px rgba(15, 23, 42, 0.1);
+
+        overflow-y: auto;
+
+        z-index: 1001;
+    }
+
+    .docs-sidebar.mobile-open
+    .docs-sidebar-sections {
+        display: block;
+    }
+
+
+    /* Mobile sections */
+
+    .docs-sidebar-section {
+        margin-bottom: 25px;
+    }
+
+    .docs-sidebar-section-title {
+        padding-left: 9px;
+
+        margin-bottom: 7px;
+
+        font-size: 0.57rem;
+    }
+
+
+    /* Mobile links */
+
+    .docs-sidebar-link {
+        min-height: 45px;
+
+        padding: 9px 10px;
+
+        font-size: 0.78rem;
+    }
+
+    .docs-sidebar-link.active::before {
+        top: 8px;
+        bottom: 8px;
+    }
+
+
+    /* Hide bottom */
+
+    .docs-sidebar-bottom {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .docs-mobile-menu-button {
+        padding: 0 13px;
+    }
+
+    .docs-sidebar-sections {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    .docs-sidebar-link {
+        min-height: 46px;
+
+        font-size: 0.76rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .docs-mobile-menu-button {
+        padding: 0 12px;
+    }
+
+    .docs-mobile-menu-icon {
+        width: 27px;
+        height: 27px;
+    }
+
+    .docs-sidebar-link {
+        min-height: 44px;
+
+        font-size: 0.73rem;
+    }
+}
+
+
+/* =========================================================
+   TOUCH
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .docs-sidebar-link:hover {
+        color: #64748b;
+        background: transparent;
+    }
+
+    .docs-sidebar-link.active {
+        color: #1d4ed8;
+        background: rgba(37, 99, 235, 0.055);
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .docs-sidebar *,
+    .docs-sidebar *::before,
+    .docs-sidebar *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}

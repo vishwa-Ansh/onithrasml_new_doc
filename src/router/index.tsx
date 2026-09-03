@@ -1,9 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-
 import { HomePage } from "../pages/Home/HomePage";
 import { DocsPage } from "../pages/Docs/DocsPage";
 import { NotFoundPage } from "../pages/NotFound/NotFoundPage";
 import { InstallPage } from "../pages/Docs/InstallPage";
+import { ContributePage } from "../pages/Contribute/ContributePage";
+import { ChangelogPage } from "../pages/Changelog/ChangelogPage";
+import { DatasetsPage } from "../pages/Datasets/DatasetsPage";
+import { DatasetDetailPage } from "../pages/Datasets/DatasetDetailPage";
 
 export function AppRouter() {
     return (
@@ -39,6 +42,18 @@ export function AppRouter() {
                 path="/docs/:version/modules/:module/:method"
                 element={<DocsPage />}
             />
+            <Route
+                path="/contribute"
+                element={<ContributePage />}
+            />
+            <Route path="/changelog" element={<ChangelogPage />} />
+
+            <Route path="/datasets" element={<DatasetsPage />} />
+
+<Route
+    path="/datasets/:slug"
+    element={<DatasetDetailPage />}
+/>
 
             {/* 404 */}
             <Route
