@@ -11,63 +11,35 @@ import { DatasetDetailPage } from "../pages/Datasets/DatasetDetailPage";
 import { VisualizationsPage } from "../pages/visualizations/VisualizationsPage";
 
 export function AppRouter() {
-    return (
-        <Routes>
-            {/* Home */}
-            <Route
-                path="/"
-                element={<HomePage />}
-            />
+  return (
+    <Routes>
+      {/* Home */}
+      <Route path="/" element={<HomePage />} />
 
-            {/* Documentation home / User Guide */}
-            <Route
-                path="/docs/:version"
-                element={<DocsPage />}
-            />
+      {/* Documentation home / User Guide */}
+      <Route path="/docs/:version" element={<DocsPage />} />
 
-            <Route
+      <Route path="/docs/:version/install" element={<InstallPage />} />
 
-                path="/docs/:version/install"
+      {/* Module pages */}
+      <Route path="/docs/:version/modules/:slug" element={<DocsPage />} />
 
-                element={<InstallPage />}
+      {/* Method pages */}
+      <Route
+        path="/docs/:version/modules/:module/:method"
+        element={<DocsPage />}
+      />
+      <Route path="/contribute" element={<ContributePage />} />
 
-            />
+      <Route path="/visualizations" element={<VisualizationsPage />} />
+      <Route path="/changelog" element={<ChangelogPage />} />
 
-            {/* Module pages */}
-            <Route
-                path="/docs/:version/modules/:slug"
-                element={<DocsPage />}
-            />
+      <Route path="/datasets" element={<DatasetsPage />} />
 
-            {/* Method pages */}
-            <Route
-                path="/docs/:version/modules/:module/:method"
-                element={<DocsPage />}
-            />
-            <Route
-                path="/contribute"
-                element={<ContributePage />}
-            />
+      <Route path="/datasets/:slug" element={<DatasetDetailPage />} />
 
-           
-            <Route
-    path="/visualizations"
-    element={<VisualizationsPage />}
-/>
-            <Route path="/changelog" element={<ChangelogPage />} />
-
-            <Route path="/datasets" element={<DatasetsPage />} />
-
-            <Route
-                path="/datasets/:slug"
-                element={<DatasetDetailPage />}
-            />
-
-            {/* 404 */}
-            <Route
-                path="*"
-                element={<NotFoundPage />}
-            />
-        </Routes>
-    );
+      {/* 404 */}
+      <Route path="/*" element={<NotFoundPage />} />
+    </Routes>
+  );
 }
