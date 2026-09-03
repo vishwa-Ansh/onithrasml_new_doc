@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
-import "./DatasetsPage.css";
 import { datasets } from "../../data/datasets";
+import "./DatasetsPage.css";
 
 const featuredDatasets = datasets.slice(0, 3);
 
 export function DatasetsPage() {
+    const firstDataset = datasets[0];
+
     return (
         <main className="datasets-page">
-            {/* HERO */}
+            {/* =====================================================
+                HERO
+            ===================================================== */}
+
             <section className="datasets-hero">
                 <div className="datasets-hero-inner">
                     <div className="datasets-eyebrow">
@@ -25,7 +30,10 @@ export function DatasetsPage() {
                     </p>
 
                     <div className="datasets-hero-actions">
-                        <a href="#datasets" className="datasets-primary-button">
+                        <a
+                            href="#datasets"
+                            className="datasets-primary-button"
+                        >
                             Explore datasets
                             <span>↓</span>
                         </a>
@@ -45,14 +53,22 @@ export function DatasetsPage() {
                             Open datasets
                         </span>
 
-                        <span>6 datasets</span>
+                        <span>
+                            {datasets.length}{" "}
+                            {datasets.length === 1
+                                ? "dataset"
+                                : "datasets"}
+                        </span>
 
                         <span>CSV · NumPy · JSON</span>
                     </div>
                 </div>
             </section>
 
-            {/* FEATURED */}
+            {/* =====================================================
+                FEATURED DATASETS
+            ===================================================== */}
+
             <section className="datasets-featured">
                 <div className="datasets-section-heading">
                     <div>
@@ -64,60 +80,78 @@ export function DatasetsPage() {
                     </div>
 
                     <p>
-                        Begin with a small collection of well-known datasets
-                        designed for learning, testing, and benchmarking.
+                        Begin with a collection of datasets designed for
+                        learning, testing, analysis, and machine learning
+                        experiments.
                     </p>
                 </div>
 
-                <div className="datasets-featured-grid">
-                    {featuredDatasets.map((dataset, index) => (
-                        <Link
-                            to={`/datasets/${dataset.slug}`}
-                            className="dataset-featured-card"
-                            key={dataset.slug}
-                        >
-                            <div className="dataset-card-top">
-                                <span className="dataset-number">
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
+                {featuredDatasets.length > 0 ? (
+                    <div className="datasets-featured-grid">
+                        {featuredDatasets.map((dataset, index) => (
+                            <Link
+                                to={`/datasets/${dataset.slug}`}
+                                className="dataset-featured-card"
+                                key={dataset.slug}
+                            >
+                                <div className="dataset-card-top">
+                                    <span className="dataset-number">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </span>
 
-                                <span className="dataset-type">
-                                    {dataset.type}
-                                </span>
-                            </div>
-
-                            <h3>{dataset.name}</h3>
-
-                            <p>{dataset.description}</p>
-
-                            <div className="dataset-stats">
-                                <div>
-                                    <strong>{dataset.samples}</strong>
-                                    <span>Samples</span>
+                                    <span className="dataset-type">
+                                        {dataset.type}
+                                    </span>
                                 </div>
 
-                                <div>
-                                    <strong>{dataset.features}</strong>
-                                    <span>Features</span>
+                                <h3>{dataset.name}</h3>
+
+                                <p>{dataset.description}</p>
+
+                                <div className="dataset-stats">
+                                    <div>
+                                        <strong>
+                                            {dataset.samples.toLocaleString()}
+                                        </strong>
+
+                                        <span>Samples</span>
+                                    </div>
+
+                                    <div>
+                                        <strong>{dataset.features}</strong>
+
+                                        <span>Features</span>
+                                    </div>
+
+                                    <div>
+                                        <strong>{dataset.target}</strong>
+
+                                        <span>Target</span>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <strong>{dataset.target}</strong>
-                                    <span>Target</span>
+                                <div className="dataset-card-link">
+                                    <span>View dataset</span>
+                                    <span>→</span>
                                 </div>
-                            </div>
-
-                            <div className="dataset-card-link">
-                                View dataset
-                                <span>→</span>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
+                            </Link>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="datasets-empty">
+                        No datasets are currently available.
+                    </div>
+                )}
             </section>
 
-            {/* ALL DATASETS */}
-            <section className="datasets-all" id="datasets">
+            {/* =====================================================
+                ALL DATASETS
+            ===================================================== */}
+
+            <section
+                className="datasets-all"
+                id="datasets"
+            >
                 <div className="datasets-section-heading">
                     <div>
                         <span className="datasets-section-label">
@@ -129,101 +163,125 @@ export function DatasetsPage() {
 
                     <div className="datasets-count">
                         <strong>{datasets.length}</strong>
-                        <span>available datasets</span>
+
+                        <span>
+                            {datasets.length === 1
+                                ? "available dataset"
+                                : "available datasets"}
+                        </span>
                     </div>
                 </div>
 
-                <div className="datasets-table">
-                    <div className="datasets-table-header">
-                        <span>DATASET</span>
-                        <span>TYPE</span>
-                        <span>SAMPLES</span>
-                        <span>FEATURES</span>
-                        <span />
-                    </div>
+                {datasets.length > 0 ? (
+                    <div className="datasets-table">
+                        <div className="datasets-table-header">
+                            <span>DATASET</span>
+                            <span>TYPE</span>
+                            <span>SAMPLES</span>
+                            <span>FEATURES</span>
+                            <span />
+                        </div>
 
-                    {datasets.map((dataset, index) => (
-                        <Link
-                            to={`/datasets/${dataset.slug}`}
-                            className="datasets-table-row"
-                            key={dataset.slug}
-                        >
-                            <div className="dataset-table-name">
-                                <span>
-                                    {String(index + 1).padStart(2, "0")}
+                        {datasets.map((dataset, index) => (
+                            <Link
+                                to={`/datasets/${dataset.slug}`}
+                                className="datasets-table-row"
+                                key={dataset.slug}
+                            >
+                                <div className="dataset-table-name">
+                                    <span>
+                                        {String(index + 1).padStart(2, "0")}
+                                    </span>
+
+                                    <div>
+                                        <strong>{dataset.name}</strong>
+
+                                        <small>
+                                            Target: {dataset.target}
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <span className="dataset-table-type">
+                                    {dataset.type}
                                 </span>
 
-                                <div>
-                                    <strong>{dataset.name}</strong>
+                                <span>
+                                    {dataset.samples.toLocaleString()}
+                                </span>
 
-                                    <small>{dataset.target}</small>
-                                </div>
-                            </div>
+                                <span>{dataset.features}</span>
 
-                            <span className="dataset-table-type">
-                                {dataset.type}
-                            </span>
-
-                            <span>{dataset.samples}</span>
-
-                            <span>{dataset.features}</span>
-
-                            <span className="dataset-table-arrow">
-                                →
-                            </span>
-                        </Link>
-                    ))}
-                </div>
+                                <span className="dataset-table-arrow">
+                                    →
+                                </span>
+                            </Link>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="datasets-empty">
+                        No datasets are currently available.
+                    </div>
+                )}
             </section>
 
-            {/* HOW TO USE */}
-            <section className="datasets-usage">
-                <div className="datasets-usage-content">
-                    <span className="datasets-section-label">
-                        QUICK START
-                    </span>
+            {/* =====================================================
+                QUICK START
+            ===================================================== */}
 
-                    <h2>
-                        Load data.
-                        <br />
-                        Start computing.
-                    </h2>
+            {firstDataset && (
+                <section className="datasets-usage">
+                    <div className="datasets-usage-content">
+                        <span className="datasets-section-label">
+                            QUICK START
+                        </span>
 
-                    <p>
-                        Use datasets directly in your Python workflow and
-                        combine them with OnithrasML's numerical and machine
-                        learning tools.
-                    </p>
-                </div>
+                        <h2>
+                            Load data.
+                            <br />
+                            Start computing.
+                        </h2>
 
-                <div className="datasets-code-card">
-                    <div className="datasets-code-header">
-                        <span>PYTHON</span>
-                        <span>EXAMPLE</span>
+                        <p>
+                            Use datasets directly in your Python workflow
+                            and combine them with OnithrasML's numerical
+                            and machine learning tools.
+                        </p>
                     </div>
 
-                    <pre>
-                        <code>{`from onithrasml.datasets import load_iris
+                    <div className="datasets-code-card">
+                        <div className="datasets-code-header">
+                            <span>PYTHON</span>
 
-data = load_iris()
+                            <span>{firstDataset.name.toUpperCase()}</span>
+                        </div>
+
+                        <pre>
+                            <code>{`from onithrasml.datasets import load_${firstDataset.slug}
+
+data = load_${firstDataset.slug}()
 
 X = data.data
 y = data.target
 
 print(X.shape)
 print(y.shape)`}</code>
-                    </pre>
+                        </pre>
 
-                    <div className="datasets-code-output">
-                        <span>OUTPUT</span>
+                        <div className="datasets-code-output">
+                            <span>OUTPUT</span>
 
-                        <code>{`(150, 4)
-(150,)`}</code>
+                            <code>{`(${firstDataset.samples}, ${firstDataset.features})
+(${firstDataset.samples},)`}</code>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
-            {/* DATA FORMATS */}
+            {/* =====================================================
+                DATA FORMATS
+            ===================================================== */}
+
             <section className="datasets-formats">
                 <div>
                     <span className="datasets-section-label">
@@ -236,7 +294,9 @@ print(y.shape)`}</code>
                 <div className="datasets-format-grid">
                     <div className="datasets-format-card">
                         <span>01</span>
+
                         <strong>CSV</strong>
+
                         <p>
                             Simple tabular data for spreadsheets, scripts,
                             and data analysis.
@@ -245,7 +305,9 @@ print(y.shape)`}</code>
 
                     <div className="datasets-format-card">
                         <span>02</span>
+
                         <strong>JSON</strong>
+
                         <p>
                             Structured data suitable for applications and
                             programmatic workflows.
@@ -254,7 +316,9 @@ print(y.shape)`}</code>
 
                     <div className="datasets-format-card">
                         <span>03</span>
+
                         <strong>NumPy</strong>
+
                         <p>
                             Numerical arrays ready to use in scientific
                             computing workflows.
@@ -263,7 +327,10 @@ print(y.shape)`}</code>
                 </div>
             </section>
 
-            {/* CTA */}
+            {/* =====================================================
+                CTA
+            ===================================================== */}
+
             <section className="datasets-cta">
                 <div>
                     <span className="datasets-section-label">

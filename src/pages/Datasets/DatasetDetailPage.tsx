@@ -1,331 +1,640 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { datasets } from "../../data/datasets";
 import "./DatasetDetailPage.css";
 
-const datasetData: Record<
-    string,
-    {
-        name: string;
-        type: string;
-        description: string;
-        samples: number;
-        features: number;
-        target: string;
-        columns: string[];
-        preview: string[][];
+interface CsvData {
+    headers: string[];
+    rows: string[][];
+}
+
+function parseCSV(text: string): CsvData {
+    const rows: string[][] = [];
+    let row: string[] = [];
+    let cell = "";
+    let insideQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const nextChar = text[i + 1];
+
+        if (char === '"') {
+            if (insideQuotes && nextChar === '"') {
+                cell += '"';
+                i++;
+            } else {
+                insideQuotes = !insideQuotes;
+            }
+        } else if (char === "," && !insideQuotes) {
+            row.push(cell);
+            cell = "";
+        } else if (
+            (char === "\n" || char === "\r") &&
+            !insideQuotes
+        ) {
+            if (char === "\r" && nextChar === "\n") {
+                i++;
+            }
+
+            row.push(cell);
+            cell = "";
+
+            if (row.some((value) => value.trim() !== "")) {
+                rows.push(row);
+            }
+
+            row = [];
+        } else {
+            cell += char;
+        }
     }
-> = {
-    iris: {
-        name: "Iris",
-        type: "Classification",
-        description:
-            "The Iris dataset contains measurements of iris flowers and is commonly used for classification, visualization, and introductory machine learning experiments.",
-        samples: 150,
-        features: 4,
-        target: "species",
-        columns: [
-            "sepal_length",
-            "sepal_width",
-            "petal_length",
-            "petal_width",
-            "species",
-        ],
-        preview: [
-            ["5.1", "3.5", "1.4", "0.2", "setosa"],
-            ["4.9", "3.0", "1.4", "0.2", "setosa"],
-            ["4.7", "3.2", "1.3", "0.2", "setosa"],
-            ["4.6", "3.1", "1.5", "0.2", "setosa"],
-            ["5.0", "3.6", "1.4", "0.2", "setosa"],
-        ],
-    },
 
-    diabetes: {
-        name: "Diabetes",
-        type: "Regression",
-        description:
-            "A numerical regression dataset containing physiological measurements associated with disease progression.",
-        samples: 442,
-        features: 10,
-        target: "disease_progression",
-        columns: [
-            "age",
-            "sex",
-            "bmi",
-            "bp",
-            "s1",
-            "s2",
-            "s3",
-            "s4",
-            "s5",
-            "s6",
-        ],
-        preview: [
-            ["0.038", "0.051", "0.062", "0.021", "0.043", "0.034", "0.044", "0.019", "0.018", "0.023"],
-            ["-0.002", "-0.045", "-0.051", "-0.026", "-0.005", "-0.019", "0.074", "-0.039", "-0.068", "-0.092"],
-            ["0.085", "0.050", "0.044", "-0.005", "-0.046", "-0.034", "-0.032", "-0.003", "0.003", "-0.026"],
-        ],
-    },
+    if (cell.length > 0 || row.length > 0) {
+        row.push(cell);
 
-    wine: {
-        name: "Wine",
-        type: "Classification",
-        description:
-            "A dataset containing chemical analysis measurements of wines belonging to different cultivars.",
-        samples: 178,
-        features: 13,
-        target: "class",
-        columns: [
-            "alcohol",
-            "malic_acid",
-            "ash",
-            "alcalinity",
-            "magnesium",
-            "phenols",
-        ],
-        preview: [
-            ["14.23", "1.71", "2.43", "15.6", "127", "2.80"],
-            ["13.20", "1.78", "2.14", "11.2", "100", "2.65"],
-            ["13.16", "2.36", "2.67", "18.6", "101", "2.80"],
-            ["14.37", "1.95", "2.50", "16.8", "113", "3.85"],
-        ],
-    },
-};
+        if (row.some((value) => value.trim() !== "")) {
+            rows.push(row);
+        }
+    }
+
+    if (rows.length === 0) {
+        return {
+            headers: [],
+            rows: [],
+        };
+    }
+
+    return {
+        headers: rows[0],
+        rows: rows.slice(1),
+    };
+}
 
 export function DatasetDetailPage() {
     const { slug } = useParams<{ slug: string }>();
 
-    const dataset = slug ? datasetData[slug] : undefined;
+    const dataset = datasets.find(
+        (item) => item.slug === slug
+    );
+
+    const [csvData, setCsvData] = useState<CsvData>({
+        headers: [],
+        rows: [],
+    });
+
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        if (!dataset) {
+            setLoading(false);
+            return;
+        }
+
+        let cancelled = false;
+
+        async function loadDataset() {
+            try {
+                setLoading(true);
+                setError("");
+
+                const response = await fetch(dataset.file);
+
+                if (!response.ok) {
+                    throw new Error(
+                        `Failed to load dataset (${response.status})`
+                    );
+                }
+
+                const text = await response.text();
+                const parsed = parseCSV(text);
+
+                if (!cancelled) {
+                    setCsvData(parsed);
+                }
+            } catch (err) {
+                if (!cancelled) {
+                    setError(
+                        err instanceof Error
+                            ? err.message
+                            : "Unable to load dataset."
+                    );
+                }
+            } finally {
+                if (!cancelled) {
+                    setLoading(false);
+                }
+            }
+        }
+
+        loadDataset();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [dataset]);
+
+    const previewRows = useMemo(
+        () => csvData.rows.slice(0, 10),
+        [csvData.rows]
+    );
+
+    const columns = dataset?.columns ?? [];
 
     if (!dataset) {
         return (
-            <main className="dataset-not-found">
-                <span className="datasets-section-label">
-                    DATASET NOT FOUND
-                </span>
+            <main className="dataset-detail-page">
+                <section className="dataset-not-found">
+                    <span className="datasets-section-label">
+                        DATASET NOT FOUND
+                    </span>
 
-                <h1>Dataset unavailable.</h1>
+                    <h1>We couldn't find that dataset.</h1>
 
-                <p>
-                    The dataset you are looking for does not exist in the
-                    current OnithrasML dataset library.
-                </p>
+                    <p>
+                        The dataset you are looking for does not exist
+                        or may have been removed.
+                    </p>
 
-                <Link to="/datasets">← Back to datasets</Link>
+                    <Link
+                        to="/datasets"
+                        className="dataset-back-button"
+                    >
+                        <span>Back to datasets</span>
+                        <span>←</span>
+                    </Link>
+                </section>
             </main>
         );
     }
 
+    const actualSamples =
+        csvData.rows.length > 0
+            ? csvData.rows.length
+            : dataset.samples;
+
+    const previewHeaders =
+        csvData.headers.length > 0
+            ? csvData.headers
+            : columns.map((column) => column.name);
+
     return (
         <main className="dataset-detail-page">
-            {/* HEADER */}
+
+            {/* =====================================================
+                HERO
+            ===================================================== */}
+
             <section className="dataset-detail-hero">
                 <div className="dataset-detail-hero-inner">
+
                     <Link
                         to="/datasets"
                         className="dataset-back-link"
                     >
-                        ← All datasets
+                        <span>←</span>
+                        Back to datasets
                     </Link>
 
                     <div className="dataset-detail-eyebrow">
                         ONITHRASML · DATASET
                     </div>
 
-                    <div className="dataset-title-row">
+                    <div className="dataset-detail-heading">
+
                         <div>
-                            <div className="dataset-type-badge">
+                            <span className="dataset-detail-type">
                                 {dataset.type}
-                            </div>
+                            </span>
 
                             <h1>{dataset.name}</h1>
+
+                            <p>{dataset.description}</p>
                         </div>
 
-                        <span className="dataset-detail-index">
-                            #{String(
-                                Object.keys(datasetData).indexOf(
-                                    dataset.name.toLowerCase()
-                                ) + 1
-                            ).padStart(2, "0")}
-                        </span>
+                        <div className="dataset-detail-download">
+
+                            <a
+                                href={dataset.file}
+                                download
+                                className="dataset-download-button"
+                            >
+                                <span>Download CSV</span>
+                                <span>↓</span>
+                            </a>
+
+                            <small>
+                                {dataset.file}
+                            </small>
+
+                        </div>
+
                     </div>
 
-                    <p>{dataset.description}</p>
+                    <div className="dataset-detail-stats">
+
+                        <div>
+                            <span>SAMPLES</span>
+                            <strong>
+                                {actualSamples.toLocaleString()}
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>FEATURES</span>
+                            <strong>{dataset.features}</strong>
+                        </div>
+
+                        <div>
+                            <span>TARGET</span>
+                            <strong>{dataset.target}</strong>
+                        </div>
+
+                        <div>
+                            <span>FORMAT</span>
+                            <strong>CSV</strong>
+                        </div>
+
+                    </div>
+
                 </div>
             </section>
 
-            {/* STATS */}
-            <section className="dataset-detail-content">
-                <div className="dataset-detail-stats">
-                    <div>
-                        <span>OBSERVATIONS</span>
-                        <strong>{dataset.samples}</strong>
-                    </div>
+            {/* =====================================================
+                DATA PREVIEW
+            ===================================================== */}
+
+            <section className="dataset-preview-section">
+
+                <div className="dataset-section-heading">
 
                     <div>
-                        <span>FEATURES</span>
-                        <strong>{dataset.features}</strong>
+                        <span className="datasets-section-label">
+                            DATA PREVIEW
+                        </span>
+
+                        <h2>Inspect the data.</h2>
                     </div>
 
-                    <div>
-                        <span>TARGET</span>
-                        <strong>{dataset.target}</strong>
-                    </div>
+                    <p>
+                        A preview of the first 10 rows is shown below.
+                        Download the complete dataset for your experiments.
+                    </p>
 
-                    <div>
-                        <span>TASK</span>
-                        <strong>{dataset.type}</strong>
-                    </div>
                 </div>
 
-                {/* DATA PREVIEW */}
-                <section className="dataset-preview-section">
-                    <div className="dataset-detail-section-heading">
-                        <div>
-                            <span className="datasets-section-label">
-                                DATA PREVIEW
-                            </span>
+                <div className="dataset-preview-card">
 
-                            <h2>Inspect the data.</h2>
+                    {loading && (
+                        <div className="dataset-loading">
+                            <span className="dataset-loading-dot" />
+                            Loading dataset...
                         </div>
+                    )}
 
-                        <span className="dataset-preview-note">
-                            First rows
-                        </span>
-                    </div>
+                    {!loading && error && (
+                        <div className="dataset-error">
+                            <strong>Unable to load preview.</strong>
 
-                    <div className="dataset-preview-wrapper">
-                        <table className="dataset-preview-table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
+                            <p>{error}</p>
 
-                                    {dataset.columns.map((column) => (
-                                        <th key={column}>{column}</th>
-                                    ))}
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {dataset.preview.map((row, rowIndex) => (
-                                    <tr key={rowIndex}>
-                                        <td>{rowIndex}</td>
-
-                                        {row.map((value, columnIndex) => (
-                                            <td key={columnIndex}>
-                                                {value}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                {/* FEATURES */}
-                <section className="dataset-columns-section">
-                    <div className="dataset-detail-section-heading">
-                        <div>
-                            <span className="datasets-section-label">
-                                FEATURES
-                            </span>
-
-                            <h2>Dataset columns.</h2>
-                        </div>
-                    </div>
-
-                    <div className="dataset-columns-grid">
-                        {dataset.columns.map((column, index) => (
-                            <div
-                                className="dataset-column-card"
-                                key={column}
+                            <a
+                                href={dataset.file}
+                                download
+                                className="dataset-download-button"
                             >
-                                <span>
-                                    {String(index + 1).padStart(2, "0")}
-                                </span>
+                                Download CSV
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    )}
 
-                                <code>{column}</code>
+                    {!loading &&
+                        !error &&
+                        previewHeaders.length > 0 && (
+                            <div className="dataset-table-wrapper">
 
-                                <small>
-                                    {column === dataset.target
-                                        ? "Target variable"
-                                        : "Feature"}
-                                </small>
+                                <table className="dataset-preview-table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+
+                                            {previewHeaders.map(
+                                                (header) => (
+                                                    <th key={header}>
+                                                        {header}
+                                                    </th>
+                                                )
+                                            )}
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {previewRows.map(
+                                            (row, rowIndex) => (
+                                                <tr key={rowIndex}>
+
+                                                    <td>
+                                                        {rowIndex + 1}
+                                                    </td>
+
+                                                    {previewHeaders.map(
+                                                        (_, columnIndex) => (
+                                                            <td
+                                                                key={
+                                                                    columnIndex
+                                                                }
+                                                            >
+                                                                {row[
+                                                                    columnIndex
+                                                                ] ?? "—"}
+                                                            </td>
+                                                        )
+                                                    )}
+
+                                                </tr>
+                                            )
+                                        )}
+                                    </tbody>
+
+                                </table>
+
                             </div>
-                        ))}
-                    </div>
-                </section>
+                        )}
 
-                {/* PYTHON */}
-                <section className="dataset-code-section">
-                    <div className="dataset-code-info">
+                    {!loading &&
+                        !error &&
+                        previewRows.length === 0 && (
+                            <div className="dataset-empty-preview">
+                                No preview data available.
+                            </div>
+                        )}
+
+                </div>
+
+                <div className="dataset-preview-footer">
+                    <span>
+                        Showing{" "}
+                        <strong>
+                            {Math.min(
+                                10,
+                                actualSamples
+                            )}
+                        </strong>{" "}
+                        of{" "}
+                        <strong>
+                            {actualSamples.toLocaleString()}
+                        </strong>{" "}
+                        rows
+                    </span>
+
+                    <a
+                        href={dataset.file}
+                        download
+                    >
+                        Download complete dataset →
+                    </a>
+                </div>
+
+            </section>
+
+            {/* =====================================================
+                COLUMNS
+            ===================================================== */}
+
+            <section className="dataset-columns-section">
+
+                <div className="dataset-section-heading">
+
+                    <div>
+                        <span className="datasets-section-label">
+                            SCHEMA
+                        </span>
+
+                        <h2>Understand every column.</h2>
+                    </div>
+
+                    <p>
+                        Each column is documented so you can understand
+                        the structure of the dataset before modeling.
+                    </p>
+
+                </div>
+
+                <div className="dataset-columns-grid">
+
+                    {columns.map((column, index) => {
+
+                        const isTarget =
+                            column.name === dataset.target;
+
+                        return (
+                            <article
+                                className={`dataset-column-card ${
+                                    isTarget
+                                        ? "target"
+                                        : ""
+                                }`}
+                                key={column.name}
+                            >
+
+                                <div className="dataset-column-top">
+
+                                    <span>
+                                        {String(index + 1).padStart(
+                                            2,
+                                            "0"
+                                        )}
+                                    </span>
+
+                                    {isTarget && (
+                                        <small>
+                                            TARGET
+                                        </small>
+                                    )}
+
+                                </div>
+
+                                <h3>
+                                    {column.name}
+                                </h3>
+
+                                <code>
+                                    {column.type}
+                                </code>
+
+                                <p>
+                                    {column.description}
+                                </p>
+
+                            </article>
+                        );
+                    })}
+
+                </div>
+
+            </section>
+
+            {/* =====================================================
+                MACHINE LEARNING
+            ===================================================== */}
+
+            <section className="dataset-ml-section">
+
+                <div className="dataset-ml-content">
+
+                    <span className="datasets-section-label">
+                        MACHINE LEARNING
+                    </span>
+
+                    <h2>
+                        A dataset for
+                        <br />
+                        experimentation.
+                    </h2>
+
+                    <p>
+                        Use this dataset for exploratory data analysis,
+                        preprocessing, feature engineering, regression
+                        experiments, model evaluation, and learning.
+                    </p>
+
+                </div>
+
+                <div className="dataset-ml-card">
+
+                    <div className="dataset-ml-card-header">
+                        <span>DATASET PROFILE</span>
+                        <span>v0.3</span>
+                    </div>
+
+                    <div className="dataset-ml-list">
+
+                        <div>
+                            <span>Problem type</span>
+                            <strong>
+                                {dataset.type}
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Target variable</span>
+                            <strong>
+                                {dataset.target}
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Input columns</span>
+                            <strong>
+                                {dataset.features}
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Dataset size</span>
+                            <strong>
+                                {actualSamples.toLocaleString()} rows
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            {/* =====================================================
+                PYTHON
+            ===================================================== */}
+
+            <section className="dataset-python-section">
+
+                <div className="dataset-section-heading">
+
+                    <div>
                         <span className="datasets-section-label">
                             PYTHON
                         </span>
 
-                        <h2>
-                            Load it
-                            <br />
-                            in your workflow.
-                        </h2>
-
-                        <p>
-                            Load the dataset and use its features and target
-                            directly in your numerical or machine learning
-                            workflow.
-                        </p>
+                        <h2>Load it in seconds.</h2>
                     </div>
 
-                    <div className="dataset-detail-code">
-                        <div className="dataset-code-top">
-                            <span>PYTHON</span>
-                            <span>EXAMPLE</span>
-                        </div>
+                    <p>
+                        The CSV file can be loaded directly into your
+                        Python data workflow.
+                    </p>
 
-                        <pre>
-                            <code>{`from onithrasml.datasets import load_${slug}
-
-data = load_${slug}()
-
-X = data.data
-y = data.target
-
-print(X.shape)
-print(y.shape)`}</code>
-                        </pre>
-                    </div>
-                </section>
-
-                {/* DOWNLOAD */}
-                <section className="dataset-download">
-                    <div>
-                        <span className="datasets-section-label">
-                            DOWNLOAD
-                        </span>
-
-                        <h2>Take the data with you.</h2>
-
-                        <p>
-                            Download the dataset in a format that fits your
-                            workflow.
-                        </p>
-                    </div>
-
-                    <div className="dataset-download-buttons">
-                        <button type="button">CSV</button>
-                        <button type="button">JSON</button>
-                        <button type="button">NumPy</button>
-                    </div>
-                </section>
-
-                {/* FOOTER */}
-                <div className="dataset-detail-footer">
-                    <Link to="/datasets">← Dataset library</Link>
-
-                    <Link to="/contribute">
-                        Contribute a dataset →
-                    </Link>
                 </div>
+
+                <div className="dataset-python-card">
+
+                    <div className="dataset-python-header">
+                        <span>PYTHON</span>
+                        <span>
+                            {dataset.name.toUpperCase()}
+                        </span>
+                    </div>
+
+                    <pre>
+                        <code>{`import pandas as pd
+
+data = pd.read_csv("${dataset.slug}.csv")
+
+print(data.shape)
+print(data.head())`}</code>
+                    </pre>
+
+                    <div className="dataset-python-output">
+
+                        <span>OUTPUT</span>
+
+                        <code>
+                            ({actualSamples},{" "}
+                            {dataset.columns.length})
+                        </code>
+
+                    </div>
+
+                </div>
+
             </section>
+
+            {/* =====================================================
+                DOWNLOAD CTA
+            ===================================================== */}
+
+            <section className="dataset-detail-cta">
+
+                <div>
+                    <span className="datasets-section-label">
+                        READY TO EXPERIMENT?
+                    </span>
+
+                    <h2>
+                        Download the
+                        <br />
+                        complete dataset.
+                    </h2>
+
+                    <p>
+                        Get the full CSV file and start working with
+                        {` ${dataset.name}`} in your own environment.
+                    </p>
+                </div>
+
+                <a
+                    href={dataset.file}
+                    download
+                    className="dataset-cta-download"
+                >
+                    <span>Download CSV</span>
+                    <span>↓</span>
+                </a>
+
+            </section>
+
         </main>
     );
 }
