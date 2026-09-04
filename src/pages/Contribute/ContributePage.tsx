@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ContributePage.css";
 
@@ -79,10 +80,88 @@ const workflow = [
     },
 ];
 
+const initialFormData = {
+    fullName: "",
+    email: "",
+    phone: "",
+    country: "",
+    city: "",
+    githubUsername: "",
+    contributionType: "",
+    contributionTitle: "",
+    repository: "",
+    contributionDate: "",
+    technologies: "",
+    description: "",
+    linkedin: "",
+    portfolio: "",
+    additionalMessage: "",
+};
+
 export function ContributePage() {
+    const [formData, setFormData] = useState(initialFormData);
+    const [submitting, setSubmitting] = useState(false);
+    const [message, setMessage] = useState("");
+    const [error, setError] = useState("");
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+
+        setFormData((previous) => ({
+            ...previous,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        setSubmitting(true);
+        setMessage("");
+        setError("");
+
+        try {
+            const response = await fetch(
+                "http://localhost:3000/api/contributions",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                }
+            );
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    result.message || "Unable to submit contribution."
+                );
+            }
+
+            setMessage(
+                `Contribution submitted successfully. Certificate ID: ${result.certificateId}`
+            );
+
+            if (result.downloadUrl) {
+                window.open(result.downloadUrl, "_blank");
+            }
+
+            // setFormData(initialFormData);
+        } catch (err) {
+            setError(
+                err instanceof Error
+                    ? err.message
+                    : "Something went wrong. Please try again."
+            );
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     return (
         <main className="contribute-page">
-            {/* HERO */}
             <section className="contribute-hero">
                 <div className="contribute-hero-inner">
                     <div className="contribute-eyebrow">
@@ -106,9 +185,9 @@ export function ContributePage() {
                     <div className="contribute-actions">
                         <a
                             className="contribute-primary-button"
-                            href="#workflow"
+                            href="#contributor-form"
                         >
-                            Start contributing
+                            Become a contributor
                             <span>↓</span>
                         </a>
 
@@ -163,7 +242,6 @@ export function ContributePage() {
                 </div>
             </section>
 
-            {/* INTRO */}
             <section className="contribute-section contribute-intro">
                 <div className="contribute-section-label">
                     <span>01</span>
@@ -194,7 +272,6 @@ export function ContributePage() {
                 </div>
             </section>
 
-            {/* CONTRIBUTION TYPES */}
             <section className="contribute-section">
                 <div className="contribute-section-label">
                     <span>02</span>
@@ -225,7 +302,6 @@ export function ContributePage() {
                 </div>
             </section>
 
-            {/* WORKFLOW */}
             <section
                 className="contribute-section contribute-workflow"
                 id="workflow"
@@ -272,7 +348,6 @@ export function ContributePage() {
                 </div>
             </section>
 
-            {/* DEVELOPMENT */}
             <section className="contribute-section development-section">
                 <div className="contribute-section-label">
                     <span>04</span>
@@ -354,7 +429,6 @@ export function ContributePage() {
                 </div>
             </section>
 
-            {/* GUIDELINES */}
             <section className="contribute-section guidelines-section">
                 <div className="contribute-section-label">
                     <span>05</span>
@@ -364,8 +438,10 @@ export function ContributePage() {
                 <div className="guidelines-grid">
                     <div className="guideline">
                         <span>01</span>
+
                         <div>
                             <h3>Keep changes focused</h3>
+
                             <p>
                                 One Pull Request should ideally solve one
                                 problem or introduce one focused improvement.
@@ -375,8 +451,10 @@ export function ContributePage() {
 
                     <div className="guideline">
                         <span>02</span>
+
                         <div>
                             <h3>Write tests</h3>
+
                             <p>
                                 Numerical code should be validated against
                                 expected results, edge cases, and known
@@ -387,8 +465,10 @@ export function ContributePage() {
 
                     <div className="guideline">
                         <span>03</span>
+
                         <div>
                             <h3>Document public APIs</h3>
+
                             <p>
                                 New public functions, classes, and algorithms
                                 should include clear documentation and useful
@@ -399,8 +479,10 @@ export function ContributePage() {
 
                     <div className="guideline">
                         <span>04</span>
+
                         <div>
                             <h3>Explain your PR</h3>
+
                             <p>
                                 Explain the problem, your approach, and how
                                 you verified the implementation.
@@ -410,11 +492,389 @@ export function ContributePage() {
                 </div>
             </section>
 
-            {/* FINAL CTA */}
+            <section
+                className="contribute-section contributor-registration"
+                id="contributor-form"
+            >
+                <div className="contribute-section-label">
+                    <span>06</span>
+                    CONTRIBUTOR REGISTRATION
+                </div>
+
+                <div className="contributor-registration-heading">
+                    <div>
+                        <h2>
+                            Tell us about
+                            <br />
+                            <span>your contribution.</span>
+                        </h2>
+                    </div>
+
+                    <p>
+                        Submit your contribution details and receive your
+                        OnithrasML contribution certificate.
+                    </p>
+                </div>
+
+                <form
+                    className="contributor-form"
+                    onSubmit={handleSubmit}
+                >
+                    <div className="form-section">
+                        <div className="form-section-heading">
+                            <span>01</span>
+
+                            <div>
+                                <h3>Personal information</h3>
+
+                                <p>
+                                    Tell us how we can identify and contact
+                                    you.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="form-grid">
+                            <div className="form-field form-field-full">
+                                <label htmlFor="fullName">
+                                    Full name *
+                                </label>
+
+                                <input
+                                    id="fullName"
+                                    name="fullName"
+                                    type="text"
+                                    value={formData.fullName}
+                                    onChange={handleChange}
+                                    placeholder="Enter your full name"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-field">
+                                <label htmlFor="email">
+                                    Email address *
+                                </label>
+
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder="you@example.com"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-field">
+                                <label htmlFor="phone">
+                                    Phone number
+                                </label>
+
+                                <input
+                                    id="phone"
+                                    name="phone"
+                                    type="tel"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    placeholder="+91 XXXXX XXXXX"
+                                />
+                            </div>
+
+                            <div className="form-field">
+                                <label htmlFor="country">
+                                    Country
+                                </label>
+
+                                <input
+                                    id="country"
+                                    name="country"
+                                    type="text"
+                                    value={formData.country}
+                                    onChange={handleChange}
+                                    placeholder="India"
+                                />
+                            </div>
+
+                            <div className="form-field">
+                                <label htmlFor="city">
+                                    City
+                                </label>
+
+                                <input
+                                    id="city"
+                                    name="city"
+                                    type="text"
+                                    value={formData.city}
+                                    onChange={handleChange}
+                                    placeholder="Lucknow"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="form-section">
+                        <div className="form-section-heading">
+                            <span>02</span>
+
+                            <div>
+                                <h3>Contribution information</h3>
+
+                                <p>
+                                    Give us the details of your contribution.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="form-grid">
+                            <div className="form-field">
+                                <label htmlFor="contributionType">
+                                    Contribution type *
+                                </label>
+
+                                <select
+                                    id="contributionType"
+                                    name="contributionType"
+                                    value={formData.contributionType}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="">
+                                        Select contribution type
+                                    </option>
+
+                                    <option value="Bug Report">
+                                        Bug Report
+                                    </option>
+
+                                    <option value="Algorithm">
+                                        Algorithm / Code
+                                    </option>
+
+                                    <option value="Documentation">
+                                        Documentation
+                                    </option>
+
+                                    <option value="Testing">
+                                        Testing
+                                    </option>
+
+                                    <option value="Feature">
+                                        Feature / Idea
+                                    </option>
+
+                                    <option value="Performance">
+                                        Performance Improvement
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div className="form-field">
+                                <label htmlFor="contributionDate">
+                                    Contribution date *
+                                </label>
+
+                                <input
+                                    id="contributionDate"
+                                    name="contributionDate"
+                                    type="date"
+                                    value={formData.contributionDate}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-field form-field-full">
+                                <label htmlFor="contributionTitle">
+                                    Contribution title *
+                                </label>
+
+                                <input
+                                    id="contributionTitle"
+                                    name="contributionTitle"
+                                    type="text"
+                                    value={formData.contributionTitle}
+                                    onChange={handleChange}
+                                    placeholder="Example: Improved matrix multiplication performance"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-field">
+                                <label htmlFor="githubUsername">
+                                    GitHub username *
+                                </label>
+
+                                <input
+                                    id="githubUsername"
+                                    name="githubUsername"
+                                    type="text"
+                                    value={formData.githubUsername}
+                                    onChange={handleChange}
+                                    placeholder="your-github-username"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-field">
+                                <label htmlFor="repository">
+                                    Repository / PR link
+                                </label>
+
+                                <input
+                                    id="repository"
+                                    name="repository"
+                                    type="url"
+                                    value={formData.repository}
+                                    onChange={handleChange}
+                                    placeholder="https://github.com/..."
+                                />
+                            </div>
+
+                            <div className="form-field form-field-full">
+                                <label htmlFor="technologies">
+                                    Technologies / tools used
+                                </label>
+
+                                <input
+                                    id="technologies"
+                                    name="technologies"
+                                    type="text"
+                                    value={formData.technologies}
+                                    onChange={handleChange}
+                                    placeholder="Python, NumPy, C++, pytest..."
+                                />
+                            </div>
+
+                            <div className="form-field form-field-full">
+                                <label htmlFor="description">
+                                    Contribution description *
+                                </label>
+
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    value={formData.description}
+                                    onChange={handleChange}
+                                    placeholder="Describe what you contributed, what problem it solves, and how you tested it."
+                                    rows={7}
+                                    required
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="form-section">
+                        <div className="form-section-heading">
+                            <span>03</span>
+
+                            <div>
+                                <h3>Additional information</h3>
+
+                                <p>
+                                    Add your professional links.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="form-grid">
+                            <div className="form-field">
+                                <label htmlFor="linkedin">
+                                    LinkedIn
+                                </label>
+
+                                <input
+                                    id="linkedin"
+                                    name="linkedin"
+                                    type="url"
+                                    value={formData.linkedin}
+                                    onChange={handleChange}
+                                    placeholder="https://linkedin.com/in/..."
+                                />
+                            </div>
+
+                            <div className="form-field">
+                                <label htmlFor="portfolio">
+                                    Portfolio / Website
+                                </label>
+
+                                <input
+                                    id="portfolio"
+                                    name="portfolio"
+                                    type="url"
+                                    value={formData.portfolio}
+                                    onChange={handleChange}
+                                    placeholder="https://yourwebsite.com"
+                                />
+                            </div>
+
+                            <div className="form-field form-field-full">
+                                <label htmlFor="additionalMessage">
+                                    Additional message
+                                </label>
+
+                                <textarea
+                                    id="additionalMessage"
+                                    name="additionalMessage"
+                                    value={formData.additionalMessage}
+                                    onChange={handleChange}
+                                    placeholder="Anything else you would like us to know?"
+                                    rows={5}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="contributor-submit-area">
+                        <div className="contributor-submit-info">
+                            <strong>
+                                Your contribution certificate
+                            </strong>
+
+                            <p>
+                                Submit your contribution and receive a
+                                generated OnithrasML certificate.
+                            </p>
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="contributor-submit-button"
+                            disabled={submitting}
+                        >
+                            {submitting
+                                ? "Generating..."
+                                : "Submit contribution"}
+
+                            <span>→</span>
+                        </button>
+                    </div>
+
+                    {message && (
+                        <div className="form-success-message">
+                            <span>✓</span>
+                            {message}
+                        </div>
+                    )}
+
+                    {error && (
+                        <div className="form-error-message">
+                            <span>!</span>
+                            {error}
+                        </div>
+                    )}
+                </form>
+            </section>
+
             <section className="contribute-final">
                 <div>
                     <div className="contribute-section-label">
-                        <span>06</span>
+                        <span>07</span>
                         JOIN THE PROJECT
                     </div>
 

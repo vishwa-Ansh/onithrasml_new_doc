@@ -9,6 +9,7 @@ import { DatasetsPage } from "../pages/Datasets/DatasetsPage";
 import { DatasetDetailPage } from "../pages/Datasets/DatasetDetailPage";
 // import { VisualizationTestPage } from "../pages/VisualizationTest/VisualizationTestPage";
 import { VisualizationsPage } from "../pages/visualizations/VisualizationsPage";
+import { AboutPage } from "../pages/About/AboutPage";
 
 export function AppRouter() {
   return (
@@ -37,6 +38,7 @@ export function AppRouter() {
       <Route path="/datasets" element={<DatasetsPage />} />
 
       <Route path="/datasets/:slug" element={<DatasetDetailPage />} />
+      <Route path ="/about" element={<AboutPage />} />  
 
       {/* 404 */}
       <Route path="/*" element={<NotFoundPage />} />
