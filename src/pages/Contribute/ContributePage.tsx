@@ -122,7 +122,7 @@ export function ContributePage() {
 
         try {
             const response = await fetch(
-                "http://localhost:3000/api/contributions",
+                "https://librarybackend-eta.vercel.app/api/contributions",
                 {
                     method: "POST",
                     headers: {
