@@ -2055,3 +2055,56 @@
         margin-right: 16px;
     }
 }
+
+
+.certificate-download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 18px;
+    padding: 14px 22px;
+    border: none;
+    background: #0f172a;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 750;
+    letter-spacing: 0.01em;
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.certificate-download-button:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.certificate-download-button span {
+    font-size: 17px;
+    line-height: 1;
+}
+
+.form-success-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.form-success-message > span {
+    flex-shrink: 0;
+}
+
+.form-success-message > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+    .certificate-download-button {
+        width: 100%;
+    }
+}
