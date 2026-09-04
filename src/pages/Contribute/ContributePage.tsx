@@ -103,6 +103,9 @@ export function ContributePage() {
     const [submitting, setSubmitting] = useState(false);
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+    const [certificateData, setCertificateData] = useState("");
+    const [certificateFileName, setCertificateFileName] = useState("");
+    const [certificateId, setCertificateId] = useState("");
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -113,12 +116,79 @@ export function ContributePage() {
         }));
     };
 
+    const handleDownloadCertificate = () => {
+        if (!certificateData) {
+            return;
+        }
+
+        try {
+            const byteCharacters = atob(certificateData);
+
+            const byteNumbers = new Array(
+                byteCharacters.length
+            );
+
+            for (
+                let i = 0;
+                i < byteCharacters.length;
+                i++
+            ) {
+                byteNumbers[i] =
+                    byteCharacters.charCodeAt(i);
+            }
+
+            const byteArray = new Uint8Array(
+                byteNumbers
+            );
+
+            const blob = new Blob(
+                [byteArray],
+                {
+                    type: "application/pdf",
+                }
+            );
+
+            const url = URL.createObjectURL(blob);
+
+            const link =
+                document.createElement("a");
+
+            link.href = url;
+
+            link.download =
+                certificateFileName ||
+                `${certificateId}.pdf`;
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            document.body.removeChild(link);
+
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+            }, 1000);
+        } catch (downloadError) {
+            console.error(
+                "Certificate download error:",
+                downloadError
+            );
+
+            setError(
+                "Unable to download the certificate. Please try again."
+            );
+        }
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         setSubmitting(true);
         setMessage("");
         setError("");
+        setCertificateData("");
+        setCertificateFileName("");
+        setCertificateId("");
 
         try {
             const response = await fetch(
@@ -136,7 +206,8 @@ export function ContributePage() {
 
             if (!response.ok) {
                 throw new Error(
-                    result.message || "Unable to submit contribution."
+                    result.message ||
+                        "Unable to submit contribution."
                 );
             }
 
@@ -144,11 +215,20 @@ export function ContributePage() {
                 `Contribution submitted successfully. Certificate ID: ${result.certificateId}`
             );
 
-            if (result.downloadUrl) {
-                window.open(result.downloadUrl, "_blank");
-            }
+            setCertificateId(
+                result.certificateId || ""
+            );
 
-            // setFormData(initialFormData);
+            if (result.pdfBase64) {
+                setCertificateData(
+                    result.pdfBase64
+                );
+
+                setCertificateFileName(
+                    result.fileName ||
+                        `${result.certificateId}.pdf`
+                );
+            }
         } catch (err) {
             setError(
                 err instanceof Error
@@ -211,7 +291,10 @@ export function ContributePage() {
                     </div>
                 </div>
 
-                <div className="contribute-hero-visual" aria-hidden="true">
+                <div
+                    className="contribute-hero-visual"
+                    aria-hidden="true"
+                >
                     <div className="contribute-grid" />
 
                     <div className="contribute-orbit orbit-one" />
@@ -858,7 +941,25 @@ export function ContributePage() {
                     {message && (
                         <div className="form-success-message">
                             <span>✓</span>
-                            {message}
+
+                            <div>
+                                <strong>
+                                    {message}
+                                </strong>
+
+                                {certificateData && (
+                                    <button
+                                        type="button"
+                                        className="certificate-download-button"
+                                        onClick={
+                                            handleDownloadCertificate
+                                        }
+                                    >
+                                        Download Certificate
+                                        <span>↓</span>
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     )}
 
