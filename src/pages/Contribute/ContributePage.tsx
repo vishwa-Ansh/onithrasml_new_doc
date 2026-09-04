@@ -209,7 +209,7 @@ export function ContributePage() {
                     result.message ||
                         "Unable to submit contribution."
                 );
-            }
+            };
 
             setMessage(
                 `Contribution submitted successfully. Certificate ID: ${result.certificateId}`
