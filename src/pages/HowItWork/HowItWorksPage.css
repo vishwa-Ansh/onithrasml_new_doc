@@ -1,8 +1,15 @@
 .oni-how-page {
+    width: 100%;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     background: #ffffff;
     color: #111827;
+}
+
+.oni-how-page *,
+.oni-how-page *::before,
+.oni-how-page *::after {
+    box-sizing: border-box;
 }
 
 .oni-how-container {
@@ -24,6 +31,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
     min-height: 780px;
     overflow: hidden;
     background: #fafafa;
@@ -54,13 +62,14 @@
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-columns: 1fr 0.82fr;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 0.82fr);
     align-items: center;
-    gap: 80px;
+    gap: clamp(40px, 6vw, 80px);
     padding: 120px 0;
 }
 
 .oni-how-hero-content {
+    width: 100%;
     max-width: 650px;
 }
 
@@ -77,6 +86,7 @@
 
 .oni-how-eyebrow::before {
     content: "";
+    flex: 0 0 auto;
     width: 7px;
     height: 7px;
     border-radius: 50%;
@@ -84,22 +94,30 @@
 }
 
 .oni-how-hero h1 {
+    max-width: 700px;
     margin: 25px 0 27px;
     color: #111827;
-    font-size: clamp(58px, 7vw, 92px);
+    font-size: clamp(54px, 7vw, 92px);
     line-height: 0.92;
     letter-spacing: -0.07em;
+    overflow-wrap: break-word;
 }
 
 .oni-how-hero h1 span {
     display: block;
-    background: linear-gradient(100deg, #111827 15%, #6366f1 65%, #7c3aed);
+    background: linear-gradient(
+        100deg,
+        #111827 15%,
+        #6366f1 65%,
+        #7c3aed
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
 .oni-how-hero-content > p {
+    width: 100%;
     max-width: 610px;
     margin: 0;
     color: #64748b;
@@ -109,12 +127,14 @@
 
 .oni-how-hero-meta {
     display: flex;
+    flex-wrap: wrap;
     gap: 35px;
     margin-top: 45px;
 }
 
 .oni-how-hero-meta div {
     display: flex;
+    min-width: 100px;
     flex-direction: column;
     gap: 5px;
 }
@@ -122,15 +142,20 @@
 .oni-how-hero-meta strong {
     color: #111827;
     font-size: 24px;
+    line-height: 1;
     letter-spacing: -0.04em;
 }
 
 .oni-how-hero-meta span {
     color: #94a3b8;
     font-size: 10px;
+    line-height: 1.4;
 }
 
 .oni-how-architecture-preview {
+    width: 100%;
+    max-width: 500px;
+    justify-self: end;
     overflow: hidden;
     border: 1px solid #dce3eb;
     border-radius: 18px;
@@ -145,7 +170,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
+    min-height: 50px;
     padding: 0 19px;
     border-bottom: 1px solid #e8edf2;
     color: #94a3b8;
@@ -162,6 +187,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    min-width: 0;
     padding: 12px;
     border: 1px solid transparent;
     border-radius: 11px;
@@ -177,6 +203,7 @@
 
 .oni-preview-node > span {
     display: flex;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     width: 30px;
@@ -190,8 +217,16 @@
 
 .oni-preview-node div {
     display: flex;
+    min-width: 0;
     flex-direction: column;
     gap: 3px;
+}
+
+.oni-preview-node strong,
+.oni-preview-node small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .oni-preview-node strong {
@@ -212,14 +247,14 @@
 }
 
 .oni-how-overview {
-    padding: 140px 0 120px;
+    padding: clamp(90px, 10vw, 140px) 0 clamp(80px, 9vw, 120px);
     background: #ffffff;
 }
 
 .oni-overview-layout {
     display: grid;
-    grid-template-columns: 1fr 0.72fr;
-    gap: 100px;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+    gap: clamp(45px, 8vw, 100px);
     align-items: start;
 }
 
@@ -232,9 +267,10 @@
 .oni-final-content h2 {
     margin: 20px 0;
     color: #111827;
-    font-size: clamp(40px, 5vw, 66px);
+    font-size: clamp(38px, 5vw, 66px);
     line-height: 1;
     letter-spacing: -0.06em;
+    overflow-wrap: break-word;
 }
 
 .oni-overview-copy {
@@ -249,8 +285,9 @@
 }
 
 .oni-stack {
+    width: 100%;
     max-width: 950px;
-    margin: 80px auto 0;
+    margin: clamp(50px, 7vw, 80px) auto 0;
     text-align: center;
 }
 
@@ -298,13 +335,14 @@
 
 .oni-stack-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
 }
 
 .oni-stack-grid > div,
 .oni-stack-bottom > div {
     display: flex;
+    min-width: 0;
     flex-direction: column;
     gap: 8px;
     padding: 25px 15px;
@@ -315,14 +353,14 @@
 
 .oni-stack-bottom {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
 }
 
 .oni-architecture-section {
     position: relative;
     overflow: hidden;
-    padding: 130px 0;
+    padding: clamp(90px, 10vw, 130px) 0;
     background: #fafafa;
 }
 
@@ -334,10 +372,10 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 0.65fr;
-    gap: 100px;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.65fr);
+    gap: clamp(45px, 8vw, 100px);
     align-items: end;
-    margin-bottom: 100px;
+    margin-bottom: clamp(60px, 8vw, 100px);
 }
 
 .oni-architecture-header p {
@@ -350,6 +388,7 @@
 .oni-timeline {
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 
 .oni-timeline::before {
@@ -372,7 +411,7 @@
 .oni-timeline-step {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 70px 1fr;
+    grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
     min-height: 300px;
     align-items: center;
 }
@@ -429,6 +468,7 @@
 
 .oni-step-layer {
     display: inline-flex;
+    max-width: 100%;
     padding: 7px 10px;
     border: 1px solid #dce3eb;
     border-radius: 7px;
@@ -442,7 +482,7 @@
 .oni-step-card h3 {
     margin: 17px 0 10px;
     color: #111827;
-    font-size: 24px;
+    font-size: clamp(20px, 2.2vw, 24px);
     line-height: 1.15;
     letter-spacing: -0.04em;
 }
@@ -456,7 +496,7 @@
 
 .oni-step-data {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 7px;
     margin-top: 22px;
 }
@@ -500,11 +540,12 @@
 }
 
 .oni-layers-section {
-    padding: 140px 0;
+    padding: clamp(90px, 10vw, 140px) 0;
     background: #ffffff;
 }
 
 .oni-centered-heading {
+    width: 100%;
     max-width: 760px;
     margin: 0 auto;
     text-align: center;
@@ -520,12 +561,13 @@
 
 .oni-layers-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
     margin-top: 70px;
 }
 
 .oni-layer-card {
+    min-width: 0;
     min-height: 330px;
     padding: 25px;
     border: 1px solid #e1e7ee;
@@ -544,6 +586,7 @@
 .oni-layer-top {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     color: #a0aec0;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 9px;
@@ -567,6 +610,7 @@
     margin: 20px 0 10px;
     color: #111827;
     font-size: 21px;
+    line-height: 1.2;
     letter-spacing: -0.035em;
 }
 
@@ -593,11 +637,12 @@
 }
 
 .oni-dataflow-section {
-    padding: 120px 0;
+    padding: clamp(80px, 9vw, 120px) 0;
     background: #f8fafc;
 }
 
 .oni-dataflow-box {
+    width: 100%;
     overflow: hidden;
     border: 1px solid #dfe5ec;
     border-radius: 24px;
@@ -607,9 +652,9 @@
 
 .oni-dataflow-header {
     display: grid;
-    grid-template-columns: 1fr 0.65fr;
-    gap: 80px;
-    padding: 60px;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.65fr);
+    gap: clamp(40px, 7vw, 80px);
+    padding: clamp(35px, 5vw, 60px);
     border-bottom: 1px solid #e8edf2;
 }
 
@@ -624,11 +669,12 @@
 .oni-dataflow {
     display: flex;
     align-items: stretch;
+    width: 100%;
     padding: 45px 35px;
 }
 
 .oni-dataflow-item {
-    flex: 1;
+    flex: 1 1 0;
     min-width: 0;
 }
 
@@ -657,6 +703,7 @@
 
 .oni-dataflow-item strong {
     display: block;
+    overflow-wrap: anywhere;
     color: #111827;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 17px;
@@ -672,6 +719,7 @@
 
 .oni-dataflow-arrow {
     display: flex;
+    flex: 0 0 auto;
     align-items: flex-start;
     padding: 9px 20px 0;
     color: #a0aec0;
@@ -679,14 +727,14 @@
 }
 
 .oni-example-section {
-    padding: 140px 0;
+    padding: clamp(90px, 10vw, 140px) 0;
     background: #ffffff;
 }
 
 .oni-example-layout {
     display: grid;
-    grid-template-columns: 0.72fr 1fr;
-    gap: 90px;
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+    gap: clamp(45px, 8vw, 90px);
     align-items: center;
 }
 
@@ -703,7 +751,7 @@
 
 .oni-example-points > div {
     display: grid;
-    grid-template-columns: 35px 1fr;
+    grid-template-columns: 35px minmax(0, 1fr);
     gap: 15px;
     padding: 14px 0;
     border-bottom: 1px solid #edf0f3;
@@ -723,6 +771,8 @@
 }
 
 .oni-code-window {
+    width: 100%;
+    min-width: 0;
     overflow: hidden;
     border-radius: 17px;
     background: #111827;
@@ -733,7 +783,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    height: 48px;
+    min-height: 48px;
     padding: 0 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     color: #64748b;
@@ -759,6 +809,8 @@
 }
 
 .oni-code-window pre {
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     margin: 0;
     padding: 30px;
@@ -766,12 +818,20 @@
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 11px;
     line-height: 1.9;
+    tab-size: 4;
+}
+
+.oni-code-window code {
+    display: block;
+    width: max-content;
+    min-width: 100%;
 }
 
 .oni-code-result {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
     padding: 14px 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     color: #64748b;
@@ -782,17 +842,18 @@
 .oni-code-result strong {
     color: #86efac;
     font-weight: 500;
+    overflow-wrap: anywhere;
 }
 
 .oni-concepts-section {
-    padding: 130px 0;
+    padding: clamp(90px, 9vw, 130px) 0;
     background: #fafafa;
 }
 
 .oni-concepts-layout {
     display: grid;
-    grid-template-columns: 0.85fr 1fr;
-    gap: 100px;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    gap: clamp(50px, 8vw, 100px);
 }
 
 .oni-concepts-layout > div:first-child p {
@@ -808,7 +869,7 @@
 
 .oni-concept {
     display: grid;
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 40px minmax(0, 1fr);
     gap: 20px;
     padding: 27px 0;
     border-bottom: 1px solid #dfe5ec;
@@ -838,7 +899,7 @@
 .oni-final-section {
     position: relative;
     overflow: hidden;
-    padding: 150px 0;
+    padding: clamp(100px, 12vw, 150px) 0;
     background: #111827;
 }
 
@@ -867,6 +928,7 @@
 .oni-final-content {
     position: relative;
     z-index: 2;
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
@@ -931,30 +993,52 @@
     color: #cbd5e1;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
+    .oni-how-container {
+        width: min(100% - 44px, 1050px);
+    }
+
     .oni-how-hero .oni-how-container {
+        grid-template-columns: minmax(0, 1fr) minmax(310px, 0.78fr);
         gap: 45px;
     }
 
-    .oni-overview-layout,
-    .oni-architecture-header,
-    .oni-dataflow-header,
-    .oni-concepts-layout {
-        gap: 55px;
+    .oni-how-hero h1 {
+        font-size: clamp(52px, 7vw, 76px);
+    }
+
+    .oni-overview-layout {
+        gap: 50px;
+    }
+
+    .oni-architecture-header {
+        gap: 50px;
+    }
+
+    .oni-step-card {
+        max-width: 440px;
     }
 
     .oni-layers-grid {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .oni-layer-card {
+        padding: 22px;
     }
 
     .oni-example-layout {
         gap: 50px;
     }
+
+    .oni-concepts-layout {
+        gap: 55px;
+    }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .oni-how-container {
-        width: min(100% - 36px, 680px);
+        width: min(100% - 40px, 760px);
     }
 
     .oni-how-hero {
@@ -963,19 +1047,22 @@
 
     .oni-how-hero .oni-how-container {
         grid-template-columns: 1fr;
+        gap: 55px;
         padding: 90px 0;
     }
 
+    .oni-how-hero-content {
+        max-width: 700px;
+    }
+
     .oni-how-hero h1 {
-        font-size: clamp(54px, 12vw, 78px);
+        max-width: 650px;
+        font-size: clamp(52px, 10vw, 78px);
     }
 
     .oni-how-architecture-preview {
-        max-width: 600px;
-    }
-
-    .oni-how-overview {
-        padding: 100px 0;
+        max-width: 620px;
+        justify-self: start;
     }
 
     .oni-overview-layout {
@@ -983,74 +1070,35 @@
         gap: 25px;
     }
 
-    .oni-stack {
-        margin-top: 55px;
+    .oni-overview-copy {
+        max-width: 650px;
+        padding-top: 0;
     }
 
-    .oni-architecture-section {
-        padding: 100px 0;
+    .oni-stack-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .oni-architecture-header {
         grid-template-columns: 1fr;
         gap: 20px;
-        margin-bottom: 65px;
     }
 
-    .oni-timeline::before {
-        left: 28px;
-        transform: none;
+    .oni-architecture-header p {
+        max-width: 650px;
     }
 
-    .oni-timeline-step {
-        display: grid;
-        grid-template-columns: 56px 1fr;
-        min-height: auto;
-        padding: 32px 0;
-    }
-
-    .oni-step-number {
-        grid-column: 1;
-        grid-row: 1;
-        width: 56px;
-        height: 56px;
-    }
-
-    .oni-timeline-right .oni-step-card,
-    .oni-timeline-left .oni-step-card {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: start;
-        width: 100%;
-        margin: 0 0 0 24px;
-    }
-
-    .oni-step-card {
-        max-width: 560px;
-    }
-
-    .oni-layers-section {
-        padding: 100px 0;
-    }
-
-    .oni-dataflow {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 35px;
-    }
-
-    .oni-dataflow-arrow {
-        display: none;
+    .oni-layers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .oni-dataflow-header {
         grid-template-columns: 1fr;
         gap: 20px;
-        padding: 45px;
     }
 
-    .oni-example-section {
-        padding: 100px 0;
+    .oni-dataflow-header p {
+        max-width: 650px;
     }
 
     .oni-example-layout {
@@ -1058,8 +1106,12 @@
         gap: 55px;
     }
 
-    .oni-concepts-section {
-        padding: 100px 0;
+    .oni-example-copy > p {
+        max-width: 650px;
+    }
+
+    .oni-code-window {
+        max-width: 700px;
     }
 
     .oni-concepts-layout {
@@ -1068,47 +1120,41 @@
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
     .oni-how-container {
-        width: calc(100% - 30px);
+        width: min(100% - 32px, 680px);
+    }
+
+    .oni-how-grid {
+        background-size: 40px 40px;
     }
 
     .oni-how-hero .oni-how-container {
-        padding: 75px 0;
+        padding: 80px 0;
     }
 
     .oni-how-hero h1 {
-        font-size: 50px;
+        margin: 20px 0 22px;
+        font-size: clamp(46px, 10vw, 68px);
+        line-height: 0.95;
     }
 
     .oni-how-hero-content > p {
-        font-size: 14px;
+        font-size: 15px;
+        line-height: 1.75;
     }
 
     .oni-how-hero-meta {
-        gap: 20px;
-        flex-wrap: wrap;
-        margin-top: 32px;
+        gap: 25px;
+        margin-top: 35px;
     }
 
     .oni-how-hero-meta strong {
-        font-size: 20px;
+        font-size: 21px;
     }
 
-    .oni-how-hero-meta span {
-        font-size: 9px;
-    }
-
-    .oni-preview-flow {
-        padding: 18px 15px;
-    }
-
-    .oni-stack-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .oni-stack-bottom {
-        grid-template-columns: 1fr;
+    .oni-how-overview {
+        padding: 90px 0;
     }
 
     .oni-overview-layout h2,
@@ -1118,7 +1164,282 @@
     .oni-example-copy h2,
     .oni-concepts-layout h2,
     .oni-final-content h2 {
-        font-size: 39px;
+        font-size: clamp(36px, 8vw, 54px);
+    }
+
+    .oni-stack {
+        margin-top: 50px;
+    }
+
+    .oni-stack-user,
+    .oni-stack-api {
+        padding: 20px 16px;
+    }
+
+    .oni-stack-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .oni-stack-grid > div,
+    .oni-stack-bottom > div {
+        padding: 20px 12px;
+    }
+
+    .oni-stack-grid strong,
+    .oni-stack-bottom strong {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    .oni-architecture-section {
+        padding: 90px 0;
+    }
+
+    .oni-timeline::before {
+        left: 27px;
+        transform: none;
+    }
+
+    .oni-timeline-step {
+        display: grid;
+        grid-template-columns: 54px minmax(0, 1fr);
+        min-height: auto;
+        padding: 30px 0;
+    }
+
+    .oni-step-number {
+        grid-column: 1;
+        grid-row: 1;
+        width: 54px;
+        height: 54px;
+    }
+
+    .oni-timeline-right .oni-step-card,
+    .oni-timeline-left .oni-step-card {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: start;
+        width: 100%;
+        max-width: none;
+        margin: 0 0 0 22px;
+    }
+
+    .oni-step-card {
+        padding: 24px;
+    }
+
+    .oni-step-card h3 {
+        font-size: 21px;
+    }
+
+    .oni-step-data {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .oni-layers-section {
+        padding: 90px 0;
+    }
+
+    .oni-layers-grid {
+        margin-top: 55px;
+    }
+
+    .oni-layer-card {
+        min-height: 300px;
+    }
+
+    .oni-layer-icon {
+        margin-top: 35px;
+    }
+
+    .oni-dataflow-section {
+        padding: 80px 0;
+    }
+
+    .oni-dataflow-header {
+        padding: 40px 30px;
+    }
+
+    .oni-dataflow {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 35px 25px;
+        padding: 40px 30px;
+    }
+
+    .oni-dataflow-arrow {
+        display: none;
+    }
+
+    .oni-dataflow-item p {
+        max-width: 220px;
+    }
+
+    .oni-example-section {
+        padding: 90px 0;
+    }
+
+    .oni-code-window pre {
+        padding: 25px;
+    }
+
+    .oni-concepts-section {
+        padding: 90px 0;
+    }
+
+    .oni-final-section {
+        padding: 100px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .oni-how-container {
+        width: calc(100% - 28px);
+    }
+
+    .oni-how-grid {
+        background-size: 34px 34px;
+    }
+
+    .oni-how-orb {
+        width: 420px;
+        height: 420px;
+        filter: blur(80px);
+    }
+
+    .oni-how-orb-one {
+        top: -230px;
+        left: -220px;
+    }
+
+    .oni-how-orb-two {
+        right: -220px;
+        bottom: -220px;
+    }
+
+    .oni-how-hero .oni-how-container {
+        padding: 70px 0;
+    }
+
+    .oni-how-eyebrow,
+    .oni-section-label {
+        font-size: 9px;
+        letter-spacing: 0.13em;
+    }
+
+    .oni-how-hero h1 {
+        font-size: clamp(43px, 12vw, 60px);
+        letter-spacing: -0.065em;
+    }
+
+    .oni-how-hero-content > p {
+        font-size: 14px;
+    }
+
+    .oni-how-hero-meta {
+        gap: 18px;
+    }
+
+    .oni-how-hero-meta div {
+        min-width: 80px;
+    }
+
+    .oni-how-hero-meta strong {
+        font-size: 19px;
+    }
+
+    .oni-how-hero-meta span {
+        font-size: 8px;
+    }
+
+    .oni-how-architecture-preview {
+        border-radius: 14px;
+    }
+
+    .oni-preview-top {
+        min-height: 44px;
+        padding: 0 13px;
+        font-size: 8px;
+    }
+
+    .oni-preview-flow {
+        padding: 16px 12px;
+    }
+
+    .oni-preview-node {
+        gap: 10px;
+        padding: 9px;
+    }
+
+    .oni-preview-node > span {
+        width: 27px;
+        height: 27px;
+    }
+
+    .oni-preview-node strong {
+        font-size: 11px;
+    }
+
+    .oni-preview-node small {
+        font-size: 8px;
+    }
+
+    .oni-preview-line {
+        height: 17px;
+        margin-left: 21px;
+    }
+
+    .oni-how-overview {
+        padding: 75px 0;
+    }
+
+    .oni-overview-layout h2,
+    .oni-architecture-header h2,
+    .oni-centered-heading h2,
+    .oni-dataflow-header h2,
+    .oni-example-copy h2,
+    .oni-concepts-layout h2,
+    .oni-final-content h2 {
+        font-size: clamp(34px, 10vw, 47px);
+        line-height: 1.02;
+    }
+
+    .oni-overview-copy p {
+        font-size: 14px;
+    }
+
+    .oni-stack {
+        margin-top: 42px;
+    }
+
+    .oni-stack-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .oni-stack-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .oni-stack-arrow {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .oni-stack-grid > div,
+    .oni-stack-bottom > div {
+        padding: 18px 14px;
+    }
+
+    .oni-architecture-section {
+        padding: 75px 0;
+    }
+
+    .oni-architecture-header {
+        margin-bottom: 45px;
+    }
+
+    .oni-architecture-header p {
+        font-size: 14px;
     }
 
     .oni-timeline::before {
@@ -1126,8 +1447,8 @@
     }
 
     .oni-timeline-step {
-        grid-template-columns: 46px 1fr;
-        padding: 27px 0;
+        grid-template-columns: 46px minmax(0, 1fr);
+        padding: 24px 0;
     }
 
     .oni-step-number {
@@ -1138,71 +1459,327 @@
 
     .oni-timeline-right .oni-step-card,
     .oni-timeline-left .oni-step-card {
-        margin-left: 17px;
+        margin-left: 16px;
     }
 
     .oni-step-card {
-        padding: 20px;
+        padding: 19px;
         border-radius: 14px;
     }
 
+    .oni-step-layer {
+        padding: 6px 8px;
+        font-size: 7px;
+    }
+
     .oni-step-card h3 {
-        font-size: 20px;
+        margin: 14px 0 9px;
+        font-size: 19px;
     }
 
     .oni-step-card > p {
         font-size: 12px;
+        line-height: 1.65;
     }
 
     .oni-step-data {
         grid-template-columns: 1fr;
+        gap: 6px;
+        margin-top: 18px;
+    }
+
+    .oni-step-data div {
+        padding: 9px;
+    }
+
+    .oni-step-data strong {
+        font-size: 9px;
+    }
+
+    .oni-layers-section {
+        padding: 75px 0;
+    }
+
+    .oni-centered-heading p {
+        font-size: 13px;
     }
 
     .oni-layers-grid {
         grid-template-columns: 1fr;
-        margin-top: 50px;
+        gap: 13px;
+        margin-top: 45px;
     }
 
     .oni-layer-card {
         min-height: auto;
+        padding: 21px;
+        border-radius: 15px;
+    }
+
+    .oni-layer-icon {
+        margin-top: 35px;
+    }
+
+    .oni-layer-card h3 {
+        font-size: 20px;
+    }
+
+    .oni-layer-card p {
+        font-size: 12px;
     }
 
     .oni-dataflow-section {
-        padding: 80px 0;
+        padding: 70px 0;
+    }
+
+    .oni-dataflow-box {
+        border-radius: 17px;
     }
 
     .oni-dataflow-header {
-        padding: 32px 24px;
+        padding: 32px 20px;
+    }
+
+    .oni-dataflow-header p {
+        font-size: 13px;
     }
 
     .oni-dataflow {
         grid-template-columns: 1fr;
-        padding: 30px 24px;
+        gap: 28px;
+        padding: 30px 20px;
+    }
+
+    .oni-dataflow-item {
+        padding-bottom: 24px;
+        border-bottom: 1px solid #edf0f3;
+    }
+
+    .oni-dataflow-item:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .oni-dataflow-item > span {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 14px;
+    }
+
+    .oni-dataflow-item strong {
+        font-size: 15px;
     }
 
     .oni-dataflow-item p {
         max-width: none;
+        font-size: 11px;
     }
 
-    .oni-code-window pre {
-        padding: 22px 17px;
-        font-size: 9px;
+    .oni-example-section {
+        padding: 75px 0;
+    }
+
+    .oni-example-layout {
+        gap: 40px;
+    }
+
+    .oni-example-copy > p {
+        font-size: 13px;
+    }
+
+    .oni-example-points {
+        margin-top: 25px;
+    }
+
+    .oni-example-points > div {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .oni-example-points p {
+        font-size: 11px;
+    }
+
+    .oni-code-window {
+        border-radius: 13px;
     }
 
     .oni-code-top {
-        grid-template-columns: 1fr auto;
+        min-height: 43px;
+        padding: 0 12px;
+        font-size: 8px;
     }
 
-    .oni-code-top > span:last-child {
-        display: none;
+    .oni-code-window pre {
+        padding: 20px 15px;
+        font-size: 8px;
+        line-height: 1.85;
+    }
+
+    .oni-code-result {
+        padding: 12px 15px;
+        font-size: 8px;
+    }
+
+    .oni-concepts-section {
+        padding: 75px 0;
+    }
+
+    .oni-concepts-layout {
+        gap: 45px;
+    }
+
+    .oni-concepts-layout > div:first-child p {
+        font-size: 13px;
+    }
+
+    .oni-concept {
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 13px;
+        padding: 22px 0;
+    }
+
+    .oni-concept h3 {
+        font-size: 17px;
+    }
+
+    .oni-concept p {
+        font-size: 11px;
+    }
+
+    .oni-final-section {
+        padding: 85px 0;
+    }
+
+    .oni-final-content > p {
+        font-size: 13px;
     }
 
     .oni-final-actions {
         flex-direction: column;
+        gap: 9px;
+        width: 100%;
+        margin-top: 28px;
     }
 
     .oni-primary-button,
     .oni-secondary-button {
         width: 100%;
+        min-height: 47px;
+    }
+}
+
+@media (max-width: 380px) {
+    .oni-how-container {
+        width: calc(100% - 22px);
+    }
+
+    .oni-how-hero .oni-how-container {
+        padding: 60px 0;
+    }
+
+    .oni-how-hero h1 {
+        font-size: 40px;
+    }
+
+    .oni-how-hero-content > p {
+        font-size: 13px;
+    }
+
+    .oni-how-hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .oni-how-hero-meta div {
+        min-width: 0;
+    }
+
+    .oni-how-hero-meta strong {
+        font-size: 17px;
+    }
+
+    .oni-how-hero-meta span {
+        font-size: 7px;
+    }
+
+    .oni-preview-node {
+        padding: 7px;
+    }
+
+    .oni-preview-node > span {
+        width: 24px;
+        height: 24px;
+        font-size: 7px;
+    }
+
+    .oni-preview-node strong {
+        font-size: 10px;
+    }
+
+    .oni-preview-node small {
+        font-size: 7px;
+    }
+
+    .oni-preview-line {
+        margin-left: 19px;
+    }
+
+    .oni-overview-layout h2,
+    .oni-architecture-header h2,
+    .oni-centered-heading h2,
+    .oni-dataflow-header h2,
+    .oni-example-copy h2,
+    .oni-concepts-layout h2,
+    .oni-final-content h2 {
+        font-size: 33px;
+    }
+
+    .oni-timeline::before {
+        left: 21px;
+    }
+
+    .oni-timeline-step {
+        grid-template-columns: 42px minmax(0, 1fr);
+    }
+
+    .oni-step-number {
+        width: 42px;
+        height: 42px;
+    }
+
+    .oni-timeline-right .oni-step-card,
+    .oni-timeline-left .oni-step-card {
+        margin-left: 13px;
+    }
+
+    .oni-step-card {
+        padding: 16px;
+    }
+
+    .oni-step-card h3 {
+        font-size: 18px;
+    }
+
+    .oni-step-card > p {
+        font-size: 11px;
+    }
+
+    .oni-layer-card {
+        padding: 18px;
+    }
+
+    .oni-dataflow-header {
+        padding: 28px 17px;
+    }
+
+    .oni-dataflow {
+        padding: 26px 17px;
+    }
+
+    .oni-code-window pre {
+        padding: 18px 12px;
+        font-size: 7.5px;
     }
 }
