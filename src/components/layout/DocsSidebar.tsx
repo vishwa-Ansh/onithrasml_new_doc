@@ -92,6 +92,22 @@ export function DocsSidebar() {
 
               <span className="docs-sidebar-link-arrow">→</span>
             </NavLink>
+
+            <NavLink
+              to="/work-flow"
+              className={({ isActive }) =>
+                `docs-sidebar-link ${isActive ? "active" : ""}`
+              }
+            >
+              <span className="docs-sidebar-link-dot" />
+
+              <span className="docs-sidebar-link-text">How it works</span>
+
+              <span className="docs-sidebar-link-arrow">→</span>
+            </NavLink>
+
+
+
           </div>
         </div>
 

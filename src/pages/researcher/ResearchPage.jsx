@@ -15,7 +15,7 @@ const founders = [
         ],
         github: "https://github.com/vishwa-Ansh",
         linkedin: "https://www.linkedin.com/in/ansh-vishwakarma-2b55b4361/"
-        
+
     },
     {
         name: "Nitish Vishwakarma",
@@ -32,37 +32,48 @@ const founders = [
         ],
         github: "https://github.com/nitiish877",
         linkedin: "https://www.linkedin.com/in/nitish-vishwakarma-1590683a3/"
-        
+
     }
 ];
 
 const researchers = [
     {
         name: "Shubham yadav",
-        role: "Deep Researcher",
+        role: "Research, developer",
         area: "Machine Learning",
+        email: 'shudhamyaduvanshi2787@gmail.com',
         image: "/images/research/researcher-01.jpg"
     },
     {
         name: "Nitish vishwakarma ",
-        role: "Scientific Computing Researcher",
+        role: " Founder , Core Researcher ",
         area: "Scientific Computing",
+        email: 'nitishhh087@gmail.com',
+
         image: "/images/research/founder-02.jpg",
-        
+
     },
     {
-        name:"Ansh vishwakarma",
-        role: "Numerical Methods Researcher",
+        name: "Ansh vishwakarma",
+        role: "Scientific Computing Researcher",
         area: "Numerical Methods",
+        email: 'vishwaansh243@gmail.com',
+
         image: "/images/research/founder-01.jpg",
-        
+
     },
     // {
-    //     name: "Researcher Name",
-    //     role: "Linear Algebra Researcher",
-    //     area: "Linear Algebra",
-    //     image: "/images/research/researcher-04.jpg"
+    //     name: "Nitish vishwakarma ",
+    //     role: "Scientific Computing Researcher",
+    //     area: "Scientific Computing",
+    //     email: 'vishwaansh243@gmail.com',
+
+    //     image: "/images/research/founder-02.jpg",
+
     // },
+    
+    
+
     // {
     //     name: "Researcher Name",
     //     role: "Optimization Researcher",
@@ -87,7 +98,7 @@ const teamMembers = [
         github: "https://github.com/vishwa-Ansh",
         linkedin: "https://www.linkedin.com/in/ansh-vishwakarma-2b55b4361/"
     },
-   
+
     // {
     //     name: "Team Member",
     //     role: "Developer Experience",
@@ -336,10 +347,6 @@ export default function ResearchPage() {
                                             researcher.name
                                         }
                                     />
-
-                                    <span>
-                                        0{index + 1}
-                                    </span>
                                 </div>
 
                                 <div className="researcher-body">
@@ -358,6 +365,11 @@ export default function ResearchPage() {
                                     <p>
                                         {
                                             researcher.role
+                                        }
+                                    </p>
+                                    <p style={{color:'rgba(62, 62, 59, 0.76)', fontSize:'10px'}}>
+                                        {
+                                            researcher.email
                                         }
                                     </p>
                                 </div>

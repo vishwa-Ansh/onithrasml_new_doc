@@ -11,6 +11,7 @@ import { DatasetDetailPage } from "../pages/Datasets/DatasetDetailPage";
 import { VisualizationsPage } from "../pages/visualizations/VisualizationsPage";
 import { AboutPage } from "../pages/About/AboutPage";
 import ResearchPage from "../pages/researcher/ResearchPage";
+import HowItWorksPage from "../pages/HowItWork/HowItWorksPage";
 
 export function AppRouter() {
   return (
@@ -40,8 +41,8 @@ export function AppRouter() {
 
       <Route path="/datasets/:slug" element={<DatasetDetailPage />} />
       <Route path ="/about" element={<AboutPage />} />  
-      <Route path="/reseach" element={<ResearchPage/>} />
-
+      <Route path="/researcher" element={<ResearchPage/>} />
+      <Route path="/work-flow" element={<HowItWorksPage/>} />
       {/* 404 */}
       <Route path="/*" element={<NotFoundPage />} />
     </Routes>

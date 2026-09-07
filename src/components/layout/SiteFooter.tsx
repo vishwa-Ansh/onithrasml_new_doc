@@ -55,12 +55,16 @@ export function SiteFooter() {
           {/* Documentation */}
           <div className="footer-column">
             <span className="footer-column-label">DOCUMENTATION</span>
+            <Link to="/researcher">Researcher</Link>
 
             <Link to="/docs/v0.3">User Guide</Link>
 
             <Link to="/docs/v0.3#install">Installation</Link>
 
             <Link to="/docs/v0.3#api">API Reference</Link>
+            <Link to="/work-flow">How it works</Link>
+
+
 
             <Link to="/docs/v0.3">Examples</Link>
           </div>
